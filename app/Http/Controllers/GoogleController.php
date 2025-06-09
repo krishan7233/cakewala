@@ -19,9 +19,6 @@ class GoogleController extends Controller
 public function redirectToGoogle()
     {
   
-  $GOOGLE_CLIENT_ID="393208854407-uh2ijpsevjib35g06irh25f216sa5pmv.apps.googleusercontent.com";
-$GOOGLE_CLIENT_SECRET="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";
-$GOOGLE_REDIRECT_URI="https://azure-bee-177357.hostingersite.com/auth/google/callback";
        $query = http_build_query([
     'client_id' => $GOOGLE_CLIENT_ID,
     'redirect_uri' => $GOOGLE_REDIRECT_URI,
@@ -49,9 +46,6 @@ return redirect("https://accounts.google.com/o/oauth2/v2/auth?$query");
         
         $session_id = Session::getId();
         
-          $GOOGLE_CLIENT_ID="393208854407-uh2ijpsevjib35g06irh25f216sa5pmv.apps.googleusercontent.com";
-$GOOGLE_CLIENT_SECRET="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";
-$GOOGLE_REDIRECT_URI="https://azure-bee-177357.hostingersite.com/auth/google/callback";
 
         if (!$request->has('code')) {
             return 'Authorization code not found in request.';
