@@ -105,7 +105,7 @@
                                     <tr>
                                         <th>Image</th>
                                         <th>Main Category</th>
-                                        <th>Name</th>
+                                        <th>SubCategory Name</th>
                                         <th>Description</th>
                                         <th>Status</th>
                                         <th>Action</th>

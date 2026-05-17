@@ -186,7 +186,7 @@ padding-left: 0!important;
         @foreach($cartItems as $item)
         @php
         $itemTotal = $item->price * $item->quantity + $item->shipping_charge;
-        $delivery_charge+=$item->shipping_charge;
+        //$delivery_charge+=$item->shipping_charge;
         $subtotalPrice+=$item->price * $item->quantity;
         $totalPrice += $itemTotal;
       @endphp
@@ -194,9 +194,9 @@ padding-left: 0!important;
             <img src="{{ asset($item->product->images->first()->image)}}" alt="Trio Mousse Cake">
                 <div class="item-info">
                   <h4>{{ $item->product->name }}</h4>
-                  <p>dilivery date time :{{ $item->delivery_date }} {{ $item->time_slot }}</p>
-                  <p>message : {{ $item->product_message }}</p>
-                  <p>shipping Charges :₹ {{$item->shipping_charge}}</p>
+                  <!--<p>dilivery date time :{{ $item->delivery_date }} {{ $item->time_slot }}</p>-->
+                  <!--<p>message : {{ $item->product_message }}</p>-->
+                  <!--<p>shipping Charges :₹ {{$item->shipping_charge}}</p>-->
                   <div class="price">Price :₹ {{ $item->price * $item->quantity }}</div>
                   <div class="small">Weight: {{ $item->variant->size ?? 'Default' }}</div>
                   <div class="qty-selector">
@@ -226,18 +226,20 @@ padding-left: 0!important;
         <span>₹ {{ number_format(@$subtotalPrice, 2) }}</span>
       </div>
       <div class="summary-row">
-        <span>Delivery Charges</span>
-        <span style="color: green;">₹ {{$delivery_charge}}</span>
+        <!--<span>Delivery Charges</span>-->
+        <!--<span style="color: green;">₹ {{$delivery_charge}}</span>-->
       </div>
       <div class="summary-row grand-total">
         <span>Grand Total</span>
         <span>₹ {{ number_format(@$totalPrice, 2) }}</span>
       </div>
-      @if(Auth::check() && Auth::user()->role == 2)
-          <a class="btn" href="{{ route('product.checkout') }}">Place Order</a>
-      @else
-          <a class="btn" href="{{ route('login') }}">Place Order</a>
-      @endif
+        <a class="btn" href="{{ route('product.checkout') }}">Place Order</a>
+        
+      <!--@if(Auth::check() && Auth::user()->role == 2)-->
+        
+      <!--@else-->
+      <!--    <a class="btn" href="{{ route('login') }}">Place Order</a>-->
+      <!--@endif-->
 
       <a href="{{route('web.index')}}" class="continue-link">Continue Shopping</a>
      

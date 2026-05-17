@@ -164,7 +164,7 @@
   <div class="contact-info">
     <div class="info-box">
       <strong>Phone:</strong>
-      9899282368
+      9873739058
     </div>
     <div class="info-box">
       <strong>Email:</strong>

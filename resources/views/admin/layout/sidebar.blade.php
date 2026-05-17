@@ -133,6 +133,26 @@
 								</ul>
 							</div>
 						</li>
+						
+						
+							<li class="has-sub">
+							<a class="sidenav-item-link" href="javascript:void(0)">
+								<i class="mdi mdi-cart"></i>
+								<span class="nav-text">Cart Orders</span> <b class="caret"></b>
+							</a>
+							<div class="collapse">
+								<ul class="sub-menu" id="orders" data-parent="#sidebar-menu">
+								
+									<li class="">
+										<a class="sidenav-item-link" href="{{ route('admin.cart-orders') }}">
+											<span class="nav-text">Cart Order</span>
+										</a>
+									</li>
+								
+								</ul>
+							</div>
+						</li>
+						
 						<!-- Manual Order -->
 						<li class="">
 							<a class="sidenav-item-link" href="{{ route('admin.manualOrder') }}">

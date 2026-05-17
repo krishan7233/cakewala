@@ -1,5 +1,12 @@
 @extends('admin.app')
 @section('content')
+<style>
+    .see-more {
+        cursor: pointer;
+        color: #007bff;
+        text-decoration: underline;
+    }
+</style>
 
 	<!-- CONTENT WRAPPER -->
     <div class="ec-content-wrapper">
@@ -65,16 +72,37 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
-
+                                    
                                     <div class="form-group row">
-                                        <label class="col-12 col-form-label">Description</label> 
+                                        <label class="col-12 col-form-label">Eggless Option</label> 
+                                            <input type="checkbox" id="eggless_option" name="eggless_option" value="1" >
+                                    </div> 
+                                    <div class="form-group row">
+                                        <label class="col-12 col-form-label">Meta Title</label> 
                                         <div class="col-12">
-                                            <textarea id="cat_description" name="cat_description" cols="40" rows="4" class="form-control"></textarea>
+                                            <input type="text" id="meta_title" name="meta_title" class="form-control">
+                                        </div>
+                                    </div> 
+                                    <div class="form-group row">
+                                        <label class="col-12 col-form-label">Meta Description</label> 
+                                        <div class="col-12">
+                                            <input type="text" id="cat_description" name="cat_description"  class="form-control">
                                         </div>
                                     </div> 
 
+                                      <div class="form-group row">
+                                        <label class="col-12 col-form-label">Google Analytics </label> 
+                                        <div class="col-12">
+                                            <textarea id="google_analytics" name="google_analytics" cols="40" rows="4" class="form-control"></textarea>
+                                        </div>
+                                    </div> 
                                     
+                                      <div class="form-group row">
+                                        <label class="col-12 col-form-label">Footer Description</label> 
+                                        <div class="col-12">
+                                            <textarea id="footer_description" name="footer_description" cols="40" rows="4" class="form-control"></textarea>
+                                        </div>
+                                    </div> 
 
                                     <div class="row">
                                         <div class="col-12">
@@ -98,8 +126,11 @@
                                                             <th>Image</th>
                                                             <th>Name</th>
                                                             <th>Slug</th>
-                                                            <th>Description</th>
-                                                     
+                                                            
+                                                            <th>Meta Description</th>
+                                                         <th>Meta Title</th>
+                                                          <th>Google Analytics</th>
+                                                           <th>Footer Description</th>
                                                             <th>Status</th>
                                                            
                                                             <th>Action</th>
@@ -107,31 +138,7 @@
                                                     </thead>
                 
                                                     <tbody>
-                                                        {{-- <tr>
-                                                            <td><img class="cat-thumb" src="assets/img/category/clothes.png" alt="Product Image" /></td>
-                                                            <td>Clothes</td>
-                                                           
-                                                            <td>ffffffffffff</td>
-                                                    
-                                                            <td>ACTIVE</td>
-                                                            <td>
-                                                                <div class="btn-group">
-                                                                    <button type="button"
-                                                                        class="btn btn-outline-success">Info</button>
-                                                                    <button type="button"
-                                                                        class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
-                                                                        data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                        aria-expanded="false" data-display="static">
-                                                                        <span class="sr-only">Info</span>
-                                                                    </button>
-                
-                                                                    <div class="dropdown-menu">
-                                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr> --}}
+                                                       
                                                        
                                                         
                                                     </tbody>
@@ -147,6 +154,23 @@
             </div>
         </div> <!-- End Content -->
     </div> <!-- End Content Wrapper -->
+
+
+<!-- Footer Description Modal -->
+<div class="modal fade" id="footerModal" tabindex="-1" role="dialog" aria-labelledby="footerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Full Footer Description</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="footerFullContent"></div>
+    </div>
+  </div>
+</div>
+
 
 @endsection
 
@@ -176,12 +200,21 @@
                     { data: 'name', name: 'name' },
                     { data: 'cat_slug', name: 'cat_slug' },
                     { data: 'description', name: 'description' },
+                     { data: 'meta_title', name: 'meta_title' },
+                      { data: 'google_analytics', name: 'google_analytics' },
+                       { data: 'footer_description', name: 'footer_description' },
                     { data: 'status', name: 'status' },
                     { data: 'action', name: 'action', orderable: false, searchable: false }
                 ]
             });
 
 
+$(document).on('click', '.see-more', function(e) {
+    e.preventDefault();
+    let fullText = $(this).data('full');
+    $('#footerFullContent').text(fullText);
+    $('#footerModal').modal('show');
+});
 
 
             $(document).on('click', '.editCategory', function (e) {
@@ -198,7 +231,11 @@
                     $('#category_id').val(data.id);
                     $('#category_name').val(data.name);
                       $('#cat_slug').val(data.cat_slug);
-                    $('#cat_description').val(data.description);
+                      $('#cat_description').val(data.description);
+                    $('#eggless_option').prop('checked', data.eggless_option == 1);
+                      $('#meta_title').val(data.meta_title);
+                      $('#google_analytics').val(data.google_analytics);
+                      $('#footer_description').val(data.footer_description);
                     
                     if (data.photo) {
                         $('#previewImage').attr('src',  '/' + data.photo).show();

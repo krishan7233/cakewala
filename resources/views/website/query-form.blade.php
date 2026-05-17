@@ -5,7 +5,7 @@
   .container3 {
     width: 100%;
     max-width: 600px;
-    margin: 190px auto 80px auto;
+    margin: 190px auto 0px auto;
     padding: 0 20px;
   }
 
@@ -88,9 +88,62 @@ h3 {
     background: #f2f5f9;
     padding: 10px;
 }
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 37%!important;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+}
   }
-</style>
+#loader-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  display: flex; /* important for centering */
+}
 
+.loader-content {
+  text-align: center;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #eee;
+  border-top: 6px solid #7e57c2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+.loader-content p {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+    
+  </style>
+
+
+<div id="loader-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.7); z-index:9999; justify-content:center; align-items:center;">
+  <div style="text-align:center;">
+    <div class="spinner" style="border: 5px solid #f3f3f3; border-top: 5px solid #7e57c2; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;"></div>
+    <p style="margin-top:10px; color:#333; font-weight:bold;">Please wait...</p>
+  </div>
+</div>
 <div class="container3">
   <form class="form-container" method="POST" enctype="multipart/form-data" id="queryForm">
     @csrf
@@ -135,15 +188,136 @@ h3 {
     </div>
 
     <div class="form-group">
-      <label for="date_time">Delivery Date and Time</label>
-      <input type="text" id="date_time" name="date_time" placeholder="e.g. 2025-06-10 4:00 PM" />
+      <label for="date_time">Delivery Date</label>
+      <input type="date" id="date_time" name="date_time" placeholder="e.g. 2025-06-10" />
     </div>
 
     <button type="submit" class="submit-btn">SUBMIT</button>
   </form>
  
 </div>
+
+<style>
+  .testimonial-section {
+    width: 100%;
+ 
+    background-size: cover;
+    padding: 30px 20px;
+    position: relative;
+  }
+
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 65%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+}
+  .testimonial-section h2 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #4d4d4d;
+  }
+.testimonial-section img {
+    border-style: none;
+    width: 100%;
+}
+ 
+.swiper-container.testimonialSwiper {
+    padding: 20px 0;
+    overflow: hidden;
+}
+  .testimonial-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 25px 20px;
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .testimonial-card h4 {
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 18px;
+  }
+
+  .testimonial-card .stars {
+    color: #f4c150;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .swiper-container.testimonialSwiper {
+    padding: 20px 0;
+  }
+
+ 
+
+  .testimonial-button-prev {
+    left: 15px;
+  }
+
+  .testimonial-button-next {
+    right: 15px;
+  }
+
+  @media (max-width: 768px) {
+    .testimonial-card {
+      max-width: 95%;
+    }
+  }
+</style>
+
 <div class="container">
+    
+    <div class="testimonial-section">
+  <h2>Customised Cakes Gallery</h2>
+
+
+  <div class="swiper-container testimonialSwiper">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
+        <img src="https://cakeplaza.in/assets/website/img/cuscopy.jpg" alt="Anniversary Cake" class="carousel-img" />
+      </div>
+
+      <div class="swiper-slide">
+        <img src="https://cakeplaza.in/assets/website/img/cuscopy8.jpg" alt="Birthday Cake" class="carousel-img" />
+      </div>
+
+      <div class="swiper-slide">
+        <img src="https://cakeplaza.in/assets/website/img/cuscopy2.jpg" alt="Cake for Her" class="carousel-img" />
+      </div>
+
+      <div class="swiper-slide">
+        <img src="https://cakeplaza.in/assets/website/img/cuscopy3.jpg" alt="Cake for Him" class="carousel-img" />
+      </div>
+
+      <div class="swiper-slide">
+        <img src="https://cakeplaza.in/assets/website/img/cuscopy4.jpg" alt="Christmas Cake" class="carousel-img" />
+      </div>
+     <div class="swiper-slide">
+        <img src="https://cakeplaza.in/assets/website/img/cuscopy5.jpg" alt="Christmas Cake" class="carousel-img" />
+      </div>
+      <div class="swiper-slide">
+        <img src="https://cakeplaza.in/assets/website/img/cuscopy6.jpg" alt="Christmas Cake" class="carousel-img" />
+      </div>
+      <div class="swiper-slide">
+        <img src="https://cakeplaza.in/assets/website/img/cuscopy7.jpg" alt="Christmas Cake" class="carousel-img" />
+      </div>
+    </div>
+
+    <div class="testimonial-button-prev"></div>
+    <div class="testimonial-button-next"></div>
+  </div>
+</div>
+
      <h3>Our Customised Cakes</h3>
   <p>Our team of professional bakers are highly trained and equipped to bake any kind of cake you want. Our QA’s keep a tap on quality, design and presentation at each step while it is produced and we guarantee to match upto 99% of your expectations.
 <br>
@@ -167,9 +341,10 @@ Alternatively you can also Call or WhatsApp us on +91 9873739058</p>
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         beforeSend: function () {
-          // You can show a loader here
+          $('#loader-overlay').fadeIn(); // Show loader
         },
         success: function (response) {
+          $('#loader-overlay').fadeOut(); // Hide loader
           if (response.status === 'success') {
             Swal.fire({
               icon: 'success',

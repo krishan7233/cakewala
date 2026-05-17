@@ -2,7 +2,9 @@
 @section('content')
     <main>
         <style>
-        
+        .form-box {
+    width: 100%;
+}
             .card .card-content .card-title {
                 margin-bottom: 0;
             }
@@ -193,11 +195,21 @@ strong {
 }
                         
                                 @media only screen and (max-width: 600px) {
+                                       a#openFilterBtn {
+                                     display: none!important;
+                                      }
               .catEventHome .col.s2 {
     width: 25%!important;
     padding-left: 10px;
    
              }
+             .upcoming-occasions-section {
+   margin: 0 0px!important;
+}
+             .occasion-card h3 {
+    font-size: 14px!important;
+    font-weight: 600;
+}
              .adbHomePage img {
     height: 150px;
 }
@@ -264,10 +276,10 @@ span.name {
     font-size: 10px!important;
 }
 span.moneyCal {
-    font-size: 10px!important;
+    font-size: 14px!important;
 }
  span.moneySymbol {
-    font-size: 10px!important;
+    font-size: 14px!important;
 }                                   
                                     
    span.badge {
@@ -276,7 +288,20 @@ span.moneyCal {
     span.cat {
     font-size: 9px!important;
 }     
-                                    
+           
+   .shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))!important;
+    gap: 10px;
+}
+.shop-image {
+   height: 150px!important;
+}       
+.shop-label {
+    padding: 15px 10px;
+    font-size: 11px!important;
+    font-weight: 600;
+}
                                 }
                         @media(min-width:930px) and (max-width:1221px){
                             .occasion-cat{
@@ -969,58 +994,309 @@ span.moneyCal {
     height: auto;
     
 }
-              
+ .shop-section {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.shop-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #4d4d4d;
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.shop-card {
+  background: #fff;
+  border-radius: 0px;
+  
+  overflow: hidden;
+  text-decoration: none;
+  color: #000;
+  transition: box-shadow 0.3s ease;
+}
+
+.shop-label {
+ border: 1px solid #ccc;
+}
+
+.shop-image {
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+  overflow: hidden;
+  height: 300px;
+}
+
+.shop-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.shop-label {
+  padding: 15px 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+      
               
         </style>
 
      
         <div style="" class=" max-container observerForCategory">
-            <div class="row catEventHome" style="">
-                @foreach ($categorys as $category)
-                    <div class="adobeEventPos col s2 padding-f1">
-                        <div style="aspect-ratio:1">
-                            <a class="center-align" href="{{ route('product.by.category', $category->cat_slug) }}">
-                                <img alt="cake delivery" loading="lazy" widgetType="featured category"
-                                    class="responsive-img imageRadius" src="{{ asset($category->photo) }}"
-                                    style="width:100%; height:100%">
-                            </a>
-                        </div>
-                        <div class="wrapped-f1">{{ $category->name }}</div>
-                    </div>
-                @endforeach
-       </div>
+         <div class="row catEventHome" style="">
+
+    <div class="adobeEventPos col s2 padding-f1">
+        <div style="aspect-ratio:1">
+            <a class="center-align" href="http://localhost:8000/designer-cakes">
+                <img alt="Designer Cakes" loading="lazy" widgettype="featured category" class="responsive-img imageRadius" src="http://localhost:8000/assets/category_photos/1752428132_6873ee6433683.jpg" style="width:100%; height:100%">
+            </a>
+        </div>
+        <div class="wrapped-f1">Designer Cakes</div>
+    </div>
+
+    <div class="adobeEventPos col s2 padding-f1">
+        <div style="aspect-ratio:1">
+            <a class="center-align" href="http://localhost:8000/kids-cake">
+                <img alt="Kids Cake" loading="lazy" widgettype="featured category" class="responsive-img imageRadius" src="http://localhost:8000/assets/category_photos/1748113884_683219dc7aa8e.jpg" style="width:100%; height:100%">
+            </a>
+        </div>
+        <div class="wrapped-f1">Kids Cake</div>
+    </div>
+
+    <div class="adobeEventPos col s2 padding-f1">
+        <div style="aspect-ratio:1">
+            <a class="center-align" href="http://localhost:8000/anniversary-cakes">
+                <img alt="Anniversary Cakes" loading="lazy" widgettype="featured category" class="responsive-img imageRadius" src="http://localhost:8000/assets/category_photos/1752428286_6873eefe77a90.jpg" style="width:100%; height:100%">
+            </a>
+        </div>
+        <div class="wrapped-f1">Anniversary Cakes</div>
+    </div>
+
+    <div class="adobeEventPos col s2 padding-f1">
+        <div style="aspect-ratio:1">
+            <a class="center-align" href="http://localhost:8000/birthday-cakes">
+                <img alt="Birthday Cakes" loading="lazy" widgettype="featured category" class="responsive-img imageRadius" src="http://localhost:8000/assets/category_photos/1752428227_6873eec3bb982.jpg" style="width:100%; height:100%">
+            </a>
+        </div>
+        <div class="wrapped-f1">Birthday Cakes</div>
+    </div>
+
+    <div class="adobeEventPos col s2 padding-f1">
+        <div style="aspect-ratio:1">
+            <a class="center-align" href="https://www.cakeplaza.in/cheesecakes">
+                <img alt="Festive & Seasonal Cakes" loading="lazy" widgettype="featured category" class="responsive-img imageRadius" src="http://localhost:8000/assets/website/img/cheesecake.jpg" style="width:100%; height:100%">
+            </a>
+        </div>
+        <div class="wrapped-f1">Cheesecakes</div>
+    </div>
+
+    <div class="adobeEventPos col s2 padding-f1">
+        <div style="aspect-ratio:1">
+            <a class="center-align" href="http://localhost:8000/plants">
+                <img alt="Plants" loading="lazy" widgettype="featured category" class="responsive-img imageRadius" src="http://localhost:8000/assets/category_photos/1752512548_6875382410376.jpg" style="width:100%; height:100%">
+            </a>
+        </div>
+        <div class="wrapped-f1">Plants</div>
+    </div>
+
+    <div class="adobeEventPos col s2 padding-f1">
+        <div style="aspect-ratio:1">
+            <a class="center-align" href="http://localhost:8000/flowers">
+                <img alt="Flowers" loading="lazy" widgettype="featured category" class="responsive-img imageRadius" src="http://localhost:8000/assets/category_photos/1752428451_6873efa33881d.jpg" style="width:100%; height:100%">
+            </a>
+        </div>
+        <div class="wrapped-f1">Flowers</div>
+    </div>
+
+    <div class="adobeEventPos col s2 padding-f1">
+        <div style="aspect-ratio:1">
+            <a class="center-align" href="http://localhost:8000/combos">
+                <img alt="Combos" loading="lazy" widgettype="featured category" class="responsive-img imageRadius" src="http://localhost:8000/assets/category_photos/1752428360_6873ef48f40c9.jpg" style="width:100%; height:100%">
+            </a>
+        </div>
+        <div class="wrapped-f1">Combos</div>
+    </div>
+
+</div>
+
        
        
           <div class="adbHomePage container" style="max-width: 1920px!important;width: 100%!important;margin-top:0px;">
-       <div class="swiper-container desk_banners adobeHeroBanner"
-              style="margin:0 auto;padding:0 0 0;text-align: center;position:relative; overflow: hidden;">
-             <div class="swiper-wrapper">
+ <div class="swiper-container desk_banners adobeHeroBanner"
+     style="margin:0 auto;padding:0 0 0;text-align: center;position:relative; overflow: hidden;">
+    <div class="swiper-wrapper">
 
-                  @foreach ($banners as $banner)
-                   <div class="swiper-slide">
-                          <a class="center-align" href="best-selling-plants86b7.html?showMain=true">
-                              <img alt="dynamic" height="auto" style="width:100%" loading="lazy"
-                               src="{{ asset($banner->image) }}" title="Plant Delivery In India">
-                          </a>
-               </div>
-                 @endforeach
+        <div class="swiper-slide">
+            <a class="center-align" href="http://localhost:8000/combos">
+                <img alt="Combos Banner" height="auto" style="width:100%" loading="lazy"
+                     src="http://localhost:8000/assets/banners/1750618907_6858531b591b0.jpg" title="Combos">
+            </a>
+        </div>
+
+        <div class="swiper-slide">
+            <a class="center-align" href="http://localhost:8000/plants">
+                <img alt="Plants Banner" height="auto" style="width:100%" loading="lazy"
+                     src="http://localhost:8000/assets/banners/1750618951_685853478b565.jpg" title="Plants">
+            </a>
+        </div>
+
+        <div class="swiper-slide">
+            <a class="center-align" href="http://localhost:8000/flowers">
+                <img alt="Flowers Banner" height="auto" style="width:100%" loading="lazy"
+                     src="http://localhost:8000/assets/banners/1751175215_6860d02fdb576.jpg" title="Flowers">
+            </a>
+        </div>
+
+        <div class="swiper-slide">
+            <a class="center-align" href="http://localhost:8000/anniversary-cakes">
+                <img alt="Anniversary Cakes Banner" height="auto" style="width:100%" loading="lazy"
+                     src="http://localhost:8000/assets/banners/1751175269_6860d065168ec.jpg" title="Anniversary Cakes">
+            </a>
+        </div>
+
+    </div>
+
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
 
 
-         </div>
-         <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-         </div>
         </div>
          
             <div style="margin-top:-7px;margin: 0 auto;padding-top:0px!important;padding-left: 26px;margin-bottom: 19px;" class=" max-container observerForCategory">
+               
+               <div class="shop-section">
+  <h2 class="shop-title">Shop By Occasions & Relations</h2>
+  <div class="shop-grid">
+
+    <a href="https://www.cakeplaza.in/anniversary-cakes" class="shop-card">
+      <div class="shop-image">
+        <img src="http://localhost:8000/assets/website/img/Anniversary-1024x1024.png" alt="Anniversary Cakes">
+      </div>
+      <div class="shop-label">Anniversary Cakes</div>
+    </a>
+
+    <a href="https://www.cakeplaza.in/birthday-cakes" class="shop-card">
+      <div class="shop-image">
+        <img src="http://localhost:8000/assets/website/img/birthday-1-1024x1024.png" alt="Birthday">
+      </div>
+      <div class="shop-label">Birthday</div>
+    </a>
+
+    <a href="https://www.cakeplaza.in/cakes-for-her" class="shop-card">
+      <div class="shop-image">
+        <img src="http://localhost:8000/assets/website/img/cake-for-her-2-1024x1024.png" alt="Cakes for Her">
+      </div>
+      <div class="shop-label">Cakes for Her</div>
+    </a>
+
+    <a href="https://www.cakeplaza.in/cakes-for-him" class="shop-card">
+      <div class="shop-image">
+        <img src="http://localhost:8000/assets/website/img/cake-for-him-1-1024x1024.png" alt="Cakes for Him">
+      </div>
+      <div class="shop-label">Cakes for Him</div>
+    </a>
+
+  </div>
+</div>
+<style>
+.upcoming-occasions-section {
+    background-color: #7B3F00;
+    padding: 20px 20px;
+    margin: 0 20px;
+}
+.upcoming-occasions-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.upcoming-occasions-container .heading {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.occasion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.occasion-card {
+  text-align: center;
+  color: white;
+}
+
+.occasion-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
+.occasion-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.upcoming-occasions-container a {
+  color:#fff;
+}
+/* Responsive - Desktop */
+@media screen and (min-width: 768px) {
+  .occasion-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+.upcoming-occasions-container .heading {
+    font-size: 24px;
+    text-align: center;
+}
+}
+
+</style>
+
+<!--<div class="upcoming-occasions-section">
+  <div class="upcoming-occasions-container">
+    <h2 class="heading">Upcoming Occasions</h2>
+    <div class="occasion-grid">
+      <div class="occasion-card">
+        <a href="#"><img src="http://localhost:8000/assets/website/img/Bhaidooj.png" alt="Bhai Dooj">
+        <h3>Bhai Dooj</h3></a>
+      </div>
+      <div class="occasion-card">
+       <a href="#"> <img src="http://localhost:8000/assets/website/img/Christmas.png" alt="Christmas Cakes">
+        <h3>Christmas Cakes</h3></a>
+      </div>
+      <div class="occasion-card">
+      <a href="#">  <img src="http://localhost:8000/assets/website/img/Diwali.png" alt="Diwali">
+        <h3>Diwali</h3></a>
+      </div>
+      <div class="occasion-card">
+       <a href="#"> <img src="http://localhost:8000/assets/website/img/Karwacjauth.png" alt="Karwa Chauth">
+        <h3>Karwa Chauth</h3></a>
+      </div>
+    </div>
+  </div>
+</div>-->
+
                
                 <div class="row catEventHomeWithTitle"
                     style=" margin: 0 auto ;padding-top:0px!important;margin-top: 8px;margin-top: -10px;">
                     <div class="col l12 s12 m12" style="padding:0;margin-bottom:6px;margin:0 auto;">
                         <div class="desktop-left-title"
-                            style="text-align: center;font-size: 34px!important;margin-top: 40px;">
-                            kidscake
+                            style="text-align: center;font-size: 24px!important;margin-top:60px;">
+                            Kids Cake
                         </div>
                     </div>
                      
@@ -1029,7 +1305,7 @@ span.moneyCal {
                         <div class=" col l4 s4 desktop-left-title">
                         </div>
                         <div class=" col l4 s4 desktop-left-title">
-                            <div class="color: #333333;" style="text-align: center;font-size: 20px;font-weight: 500;">
+                            <div class="color: #333333;" style="text-align: center;font-size: 16px;font-weight: 500;">
                                 Dreamy cakes for every occasion</div>
                         </div>
                         <a style="color:white" href="{{ route('product.by.category', 'kids-cake') }}">
@@ -1056,6 +1332,12 @@ span.moneyCal {
                                 <div class="card "
                                     style='border-radius:14px;box-shadow:none;overflow:hidden;margin:0;background-color: #FFFFFF!important;'>
                                     <div class="card-image">
+                                      
+                            @if($product->product_type)
+                            <div class="center-align new-product-tag bg-best-seller ">{{$product->product_type??''}}</div>
+                            @endif 
+                                   
+
                                         <img loading ="lazy" alt="Birthday Cakes" widgetType="cake category"
                                             class=" lazyload responsive-img "
                                             src="{{ asset($product->images->first()->image) }}"
@@ -1088,7 +1370,7 @@ span.moneyCal {
                 <div class="row catEventHomeWithTitle max-container" style=" margin: 0 auto ;padding-top:0px!important;">
                     <div class="col l12 s12 m12" style="padding:0;margin-bottom:6px;margin:0 auto;">
                         <div class="desktop-left-title"
-                            style="text-align: center;font-size: 34px!important;margin-top: 35px;margin-top: 0px;">
+                            style="text-align: center;font-size: 24px!important;margin-top: 35px;margin-top: 0px;">
                             Designer Cakes
                         </div>
                     </div>
@@ -1098,7 +1380,7 @@ span.moneyCal {
                         <div class=" col l4 s4 desktop-left-title">
                         </div>
                         <div class=" col l4 s4 desktop-left-title">
-                            <div class="color: #333333;" style="text-align: center;font-size: 20px;font-weight: 500;">
+                            <div class="color: #333333;" style="text-align: center;font-size: 16px;font-weight: 500;">
                                 Petals of Happiness</div>
                         </div>
                         <a style="color:white" href="{{ route('product.by.category', 'designer-cakes') }}"> 
@@ -1126,6 +1408,10 @@ span.moneyCal {
                                 <div class="card "
                                     style='border-radius:14px;box-shadow:none;overflow:hidden;margin:0;background-color: #FFFFFF!important;'>
                                     <div class="card-image">
+                                       @if($product->product_type)
+                            <div class="center-align new-product-tag bg-best-seller ">{{$product->product_type??''}}</div>
+                            @endif 
+
                                         <img alt="Birthday Flowers" loading ="lazy" widgetType="flower category"
                                             class=" lazyload responsive-img "
                                             src="{{ asset($product->images->first()->image) }}"
@@ -1160,7 +1446,7 @@ span.moneyCal {
 
 
              
-                <div class="row center-align container man"
+             <!--   <div class="row center-align container man"
                     style='padding: 32px 47px 32px 71px;background: #FFFAEB 0% 0% no-repeat padding-box;border-radius: 20px;margin: 0px 22px;max-width: 1540px;padding-right: 0px;margin-top:40px'>
                     <div class="col l12 m12 safe_portn" style="float: none; margin: 0 auto;">
                         <div class=" col s3 m3 l3"
@@ -1226,12 +1512,12 @@ span.moneyCal {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <div class="row catEventHomeWithTitle max-container"
                     style=" margin: 0 auto!important;padding-top:0px!important;">
                     <div class="col l12 s12 m12" style="padding:0;margin-bottom:6px;margin:0 auto;">
                         <div class="desktop-left-title"
-                            style="margin-left: 5px;text-align: center;font-size: 34px!important;margin-top: 31px;margin-top: 60px;padding-bottom: 3px!important;">
+                            style="margin-left: 5px;text-align: center;font-size: 24px!important;margin-top: 31px;margin-top: 0px;padding-bottom: 3px!important;">
                             Combos and Hampers
                         </div>
                     </div>
@@ -1242,7 +1528,7 @@ span.moneyCal {
                         <div class=" col l4 s4 desktop-left-title">
                         </div>
                         <div class=" col l4 s4 desktop-left-title">
-                            <div class="color: #333333;" style="text-align: center;font-size: 20px;font-weight: 500;">
+                            <div class="color: #333333;" style="text-align: center;font-size: 16px;font-weight: 500;">
                                 Tailored For Every Occasion</div>
                         </div>
                         <a style="color:white" href="{{ route('product.by.category', 'kids-cake') }}">
@@ -1270,6 +1556,10 @@ span.moneyCal {
                             <div class="card "
                                 style='border-radius:14px;box-shadow:none;overflow:hidden;margin:0;background-color: #FFFFFF!important;'>
                                 <div class="card-image">
+                                       @if($product->product_type)
+                            <div class="center-align new-product-tag bg-best-seller ">{{$product->product_type??''}}</div>
+                            @endif 
+
                                     <img alt="Flowers and Teddy" loading ="lazy" widgetType="combos category"
                                         class=" lazyload responsive-img "
                                         src="{{ asset($product->images->first()->image) }}"
@@ -1300,7 +1590,7 @@ span.moneyCal {
                     style=" margin: 0 auto!important;padding-top:0px!important;">
                     <div class="col l12 s12 m12" style="padding:0;margin-bottom:6px;margin:0 auto;">
                         <div class="desktop-left-title"
-                            style="text-align: center;font-size: 34px!important;margin-top: 30px;">
+                            style="text-align: center;font-size: 24px!important;margin-top: 30px;">
                             Festive Seasonal
                         </div>
                     </div>
@@ -1309,7 +1599,7 @@ span.moneyCal {
                         <div class=" col l4 s4 desktop-left-title">
                         </div>
                         <div class=" col l4 s4 desktop-left-title">
-                            <div class="color: #333333;" style="text-align: center;font-size: 20px;font-weight: 500;">Add
+                            <div class="color: #333333;" style="text-align: center;font-size: 16px;font-weight: 500;">Add
                                 greens to your living space</div>
                         </div>
                         <a style="color:white" href="{{ route('product.by.category', 'festive-seasonal-cakes') }}">
@@ -1334,6 +1624,10 @@ span.moneyCal {
                                 <div class="card "
                                     style='border-radius:14px;box-shadow:none;overflow:hidden;margin:0;background-color: #FFFFFF!important;'>
                                     <div class="card-image">
+                                       @if($product->product_type)
+                            <div class="center-align new-product-tag bg-best-seller ">{{$product->product_type??''}}</div>
+                            @endif 
+
                                         <img alt="Indoor Plants" loading ="lazy" widgetType="plant category"
                                             class=" lazyload responsive-img "
                                             src="{{ asset($product->images->first()->image) }}"
@@ -1375,7 +1669,7 @@ span.moneyCal {
                     style=" margin: 0 auto!important;padding-top:0px!important;margin-top: -10px;">
                     <div class="col l12 s12 m12" style="padding:0;margin-bottom:6px;margin:0 auto;">
                         <div class="desktop-left-title"
-                            style="text-align: center;font-size: 34px!important;margin-top: 60px;">
+                            style="text-align: center;font-size: 24px!important;margin-top: 60px;">
                             Chocolates
                         </div>
                     </div>
@@ -1385,7 +1679,7 @@ span.moneyCal {
                         <div class=" col l4 s4 desktop-left-title">
                         </div>
                         <div class=" col l4 s4 desktop-left-title" style="    font-size: 19px!important;">
-                            <div style="text-align: center;font-size: 20px;font-weight: 500;">Sweet Temptations to Share
+                            <div style="text-align: center;font-size: 16px;font-weight: 500;">Sweet Temptations to Share
                             </div>
                         </div>
                         <a style="color:white" href="{{ route('product.by.category', 'kids-cake') }}">
@@ -1411,6 +1705,10 @@ span.moneyCal {
                             <div class="card "
                                 style='border-radius:14px;box-shadow:none;overflow:hidden;margin:0;background-color: #FFFFFF!important;'>
                                 <div class="card-image">
+                                       @if($product->product_type)
+                            <div class="center-align new-product-tag bg-best-seller ">{{$product->product_type??''}}</div>
+                            @endif 
+
                                     <img alt="Chocolate Combos" widgetType="chocolate category"
                                         class=" lazyload responsive-img "
                                         src="{{ asset($product->images->first()->image) }}"
@@ -1448,8 +1746,8 @@ span.moneyCal {
                     style=" margin: 0 auto!important;padding-top:30px!important;padding-left: 15px;padding-right: 17px;">
                     <div class="col l12 s12 m12" style="padding:0;margin-bottom:6px;margin:0 auto">
                         <div class="col l12 s12 desktop-left-title"
-                            style="text-align:center;font-size: 34px!important;margin-top: -14px;margin-bottom: 8px;">
-                            Gift Categories
+                            style="text-align:center;font-size: 24px!important;margin-top: -14px;margin-bottom: 8px;">
+                            Cake Categories
                         </div>
 
                     </div>
@@ -1460,6 +1758,7 @@ span.moneyCal {
                             <div class="card "
                                 style='border-radius:14px;box-shadow:none;overflow:hidden;margin:0;background-color: #FFFFFF!important;'>
                                 <div class="card-image">
+                                    
                                     <img alt="Jewellery" loading ="lazy" widgetType="explore more categories"
                                         class=" lazyload responsive-img "
                                         src="{{ asset($category->photo) }}"
@@ -1492,7 +1791,310 @@ span.moneyCal {
 
           
             </div>
-            <div class="section container" style="margin:0 auto!important;">
+            
+            <style>
+  .section-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  .image-box {
+    flex: 1 1 50%;
+    padding: 10px;
+  }
+
+  .image-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+
+  .form-box {
+    flex: 1 1 50%;
+    padding: 10px;
+  }
+
+  .form-box h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #4d4d4d;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+  }
+
+  .form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  .submit-btn {
+    background-color: #ff4c61;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .submit-btn:hover {
+    background-color: #e84355;
+  }
+
+  @media (max-width: 768px) {
+    .section-container {
+      flex-direction: column;
+    }
+
+    .image-box, .form-box {
+      flex: 1 1 100%;
+      padding: 10px 0;
+    }
+
+    .form-box h2 {
+      text-align: center;
+    }
+  }
+</style>
+
+<div class="section-container">
+
+  <div class="image-box">
+    <img src="http://localhost:8000/assets/website/img/Untitled-1.png" alt="Bake Your Own Cake">
+  </div>
+
+  <div class="form-box">
+    <form class="form-container" method="POST" enctype="multipart/form-data" id="queryForm">
+      @csrf
+      <h2>Bake Your Own Cake!</h2>
+
+      <div class="form-group">
+        <label for="weight">Select size of the cake *</label>
+        <select name="weight" id="weight" required>
+          <option value="">-- Select --</option>
+          <option value="0.5kg">0.5KG (Serves 4-6)</option>
+          <option value="1kg">1KG (Serves 6-8)</option>
+          <option value="1.5kg">1.5KG (Serves 9-10)</option>
+          <option value="2kg">2KG (Serves 10-15)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="reference_photo">What kind of cake would you like it to resemble?</label>
+        <input type="file" id="reference_photo" name="reference_photo" accept="image/*" />
+      </div>
+
+      <div class="form-group">
+        <label for="details">Tell us about the details</label>
+        <textarea id="details" name="details" placeholder="Flavour, Message on cake, Additional detailing, etc"></textarea>
+      </div>
+
+      <h3 style="margin: 15px 0 10px; font-size: 18px;">Delivery Details</h3>
+
+      <div class="form-group">
+        <label for="receiver_name">Name</label>
+        <input type="text" id="receiver_name" name="receiver_name" placeholder="Name" />
+      </div>
+
+      <div class="form-group">
+        <label for="contact_number">Phone</label>
+        <input type="text" id="contact_number" name="contact_number" placeholder="Enter Phone No" />
+      </div>
+
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" placeholder="City" />
+      </div>
+
+      <div class="form-group">
+        <label for="date_time">Delivery Date</label>
+        <input type="date" id="date_time" name="date_time" placeholder="e.g. 2025-06-10" />
+      </div>
+
+      <button type="submit" class="submit-btn">SUBMIT</button>
+    </form>
+  </div>
+
+</div>
+
+
+<style>
+  .testimonial-section {
+    width: 100%;
+    background: url('http://localhost:8000/assets/website/img/bg2-h1-1-1.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 60px 20px;
+    position: relative;
+  }
+
+  .testimonial-section h2 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #4d4d4d;
+  }
+
+  .testimonial-section p {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    color: #4d4d4d;
+    font-size: 16px;
+  }
+.swiper-container.testimonialSwiper {
+    padding: 20px 0;
+    overflow: hidden;
+}
+  /*.testimonial-card {*/
+  /*  background: #fff;*/
+  /*  border-radius: 8px;*/
+  /*  padding: 25px 20px;*/
+  /*  max-width: 90%;*/
+  /*  margin: 0 auto;*/
+  /*  text-align: left;*/
+  /*  box-shadow: 0 4px 15px rgba(0,0,0,0.1);*/
+  /*}*/
+  
+  .testimonial-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 25px 20px;
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    HEIGHT:215PX;
+}
+
+  .testimonial-card h4 {
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 18px;
+  }
+
+  .testimonial-card .stars {
+    color: #f4c150;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .swiper-container.testimonialSwiper {
+    padding: 20px 0;
+  }
+
+ 
+  .testimonial-button-prev::after,
+  .testimonial-button-next::after {
+    font-size: 18px;
+  }
+
+  .testimonial-button-prev {
+    left: 15px;
+  }
+
+  .testimonial-button-next {
+    right: 15px;
+  }
+
+  @media (max-width: 768px) {
+    .testimonial-card {
+      max-width: 95%;
+    }
+  }
+</style>
+
+<div class="testimonial-section">
+  <h2>Real Talk From Our Real Customers</h2>
+  <p>Loyal customers, they don’t just come back, they don’t simply recommend you, they insist that their friends do business with you.</p>
+
+  <div class="swiper-container testimonialSwiper">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
+        <div class="testimonial-card">
+          <h4>ANYA</h4>
+          <div class="stars">★★★★★</div>
+          <p>I ordered cake around 2PM, came at 10PM the same day with no extra cost, customised exactly how I wanted and very yummy. Will totally recommend.</p>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="testimonial-card">
+          <h4>SAMIKSHA SAHNI</h4>
+          <div class="stars">★★★★★</div>
+          <p>I would definitely recommend them for cakes. Taste and presentation was perfect. Delivery is seamless and without any spillage.</p>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="testimonial-card">
+          <h4>ROHIT NIHJARA</h4>
+          <div class="stars">★★★★★</div>
+          <p>We had a special occasion to celebrate our parents' 50th wedding anniversary. The cakes were beautiful, delicious, and appreciated by all guests. Highly recommend!</p>
+        </div>
+      </div>
+    
+      <div class="swiper-slide">
+        <div class="testimonial-card">
+          <h4>LEENA GUPTA</h4>
+          <div class="stars">★★★★★</div>
+          <p>It's been 2 years now, I have been a regular customer. I get lots of customization done for my cake. They never fail to surprise me. Thank you so much Cake Plaza team!</p>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="testimonial-card">
+          <h4>VISHU BATRA</h4>
+          <div class="stars">★★★★★</div>
+          <p>Cake was very good… its texture, sweetness, and richness of frosting were perfect. Thank you so much for this wonderful cake 💖</p>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="testimonial-card">
+          <h4>JUNI PRIYA</h4>
+          <div class="stars">★★★★★</div>
+          <p>Amazing cakes… flavors and designs are awesome. I've been ordering for 3–4 years and every time they deliver an amazing and tasty cake!</p>
+        </div>
+      </div>
+    
+    </div>
+
+    <div class="testimonial-button-prev"></div>
+    <div class="testimonial-button-next"></div>
+</div>
+   </div>
+
+
+
+            
+            <div class="section container" style="margin:0 auto!important;padding-top:100px;">
                 <div class="row">
                     <div class="col s12 page-description-content">
                         <h1 style="">Send Flower and Cakes anywhere in India from Cake Plaza</h1>
@@ -1602,10 +2204,12 @@ span.moneyCal {
 }
 
 .faq-section h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 28px;
-  color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #333;
+    font-weight: 600;
+    font-family: 'Poppins';
 }
 
 .faq-item {
@@ -1621,18 +2225,18 @@ span.moneyCal {
 }
 
 .faq-question {
-  width: 100%;
-  padding: 15px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: left;
-  background-color: #f9f9f9;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  color: #111;
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+    background-color: #f9f9f9;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-family: poppins;
+    color: #111;
 }
-
 .faq-answer {
   padding: 0 20px 15px;
   display: none;
@@ -1655,6 +2259,9 @@ span.moneyCal {
                     padding: 0;
                     width: 100%;
                 }
+                a.cal img {
+    width: 42%!important;
+}
             }
 
             .blog-col {
@@ -1888,5 +2495,41 @@ span.moneyCal {
   });
 </script>
 
+<script>
+  $('#queryForm').on('submit', function (e) {
+    e.preventDefault();
+    let formData = new FormData(this);
+    $.ajax({
+      url: "{{ route('querySave') }}",
+      method: "POST",
+      data: formData,
+      contentType: false,
+      processData: false,
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        beforeSend: function () {
+          $('#loader-overlay').fadeIn(); // Show loader
+        },
+        success: function (response) {
+          $('#loader-overlay').fadeOut(); // Hide loader
+          if (response.status === 'success') {
+            Swal.fire({
+              icon: 'success',
+              title: response.message || 'Query submitted successfully!',
+              timer: 2000,
+              showConfirmButton: false
+            });
+            $('#queryForm')[0].reset();
+          } else {
+            Swal.fire('Error', response.message || 'Something went wrong.', 'error');
+          }
+        },
+        error: function (xhr) {
+          Swal.fire('Error', xhr.responseJSON?.message || 'Something went wrong.', 'error');
+        }
+    });
+  });
+</script>
     </main>
 @endsection

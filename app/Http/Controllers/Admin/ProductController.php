@@ -42,6 +42,17 @@ class ProductController extends Controller
         return response()->json(['message' => 'Image deleted successfully.']);
     }
 
+
+public function copy($id)
+    {
+        $categories = Category::all();
+        $subcategories = SubCategory::all();
+        $product = Product::with(['images', 'variants'])->findOrFail($id);
+        $flavours = DB::table('flavours')->get();
+        return view('admin.copy-product', compact('product', 'categories', 'subcategories','flavours'));
+}
+
+
     public function productlist_data()
 {
     $products = Product::with(['category', 'subcategory', 'variants', 'images']);
@@ -55,7 +66,19 @@ class ProductController extends Controller
             return 'N/A';
         })
         ->addColumn('category', fn($p) => $p->category->name ?? 'N/A')
-        ->addColumn('subcategory', fn($p) => $p->subcategory->name ?? 'N/A')
+        // ->addColumn('subcategory', fn($p) => $p->subcategory->name ?? 'N/A')
+        ->addColumn('subcategory', function ($product) {
+            if (!$product->subcategory_id) return 'N/A';
+
+            $ids = explode(',', $product->subcategory_id);
+
+            $names = \DB::table('sub_categories')
+                ->whereIn('id', $ids)
+                ->pluck('name')
+                ->toArray();
+
+            return implode(', ', $names);
+        })
         ->addColumn('price', fn($p) => $p->variants->first()->price ?? 'N/A')
         ->addColumn('stock', fn($p) => $p->variants->sum('stock'))
         ->addColumn('status', fn($p) => $p->status ? 'ACTIVE' : 'INACTIVE')
@@ -63,11 +86,13 @@ class ProductController extends Controller
         ->addColumn('action', function ($p) {
             $edit = route('admin.products.edit', $p->id);
             $detail = route('admin.products.detail', $p->id);
-
+            $copy = route('admin.products.copy', $p->id);
             return <<<HTML
                 <a href="{$edit}" class="btn btn-sm btn-primary">Edit</a>
                 <button class="btn btn-sm btn-danger delete-btn" data-id="{$p->id}">Delete</button>
                 <a href="{$detail}" class="btn btn-sm btn-success">View Details</a>
+              
+                <a href="{$copy}" class="btn btn-sm btn-primary">Copy</a>
             HTML;
         })
         
@@ -98,12 +123,16 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:products,slug',
             'category_id' => 'required|exists:categories,id',
-            'subcategory_id' => 'nullable|exists:sub_categories,id',
+            // 'subcategory_id' => 'nullable|string',
+            'subcategory_id' => 'nullable|array',
+            'subcategory_id.*' => 'exists:sub_categories,id',
+            'product_meta_title'=>'nullable',
             'short_description' => 'nullable|string',
             'long_description' => 'nullable|string',
             'flavours' => 'nullable|array',
             'product_photo.*' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'variants' => 'required|array|min:1',
+            'product_type' => 'nullable|string|max:200',
             'variants.*.size' => 'nullable|string',
             'variants.*.price' => 'required|numeric|min:0',
             'variants.*.stock' => 'required|integer|min:0',
@@ -120,14 +149,33 @@ class ProductController extends Controller
                 'name' => $validated['name'],
                 'slug' => Str::slug($validated['slug']),
                 'category_id' => $validated['category_id'],
+                'product_type' => $validated['product_type'],
+                'product_meta_title'=>$validated['product_meta_title'],
                 'short_description' => $validated['short_description'] ?? null,
                 'long_description' => $validated['long_description'] ?? null,
                 'flavours' => is_array($flavours) ? implode(',', $flavours) : null,
             ];
                
+            // if (!empty($validated['subcategory_id'])) {
+            //     $productData['subcategory_id'] = $validated['subcategory_id'];
+            // }
+            
+           
             if (!empty($validated['subcategory_id'])) {
-                $productData['subcategory_id'] = $validated['subcategory_id'];
+                $ids = array_filter($validated['subcategory_id']);
+
+                // Validate that subcategory IDs actually exist in the database
+                $validIds = \DB::table('sub_categories')
+                    ->whereIn('id', $ids)
+                    ->pluck('id')
+                    ->toArray();
+    
+                 $productData['subcategory_id'] = implode(',', $validIds);
             }
+
+
+
+
 
             
             // // Attach categories (required)
@@ -205,12 +253,14 @@ class ProductController extends Controller
         'name' => 'required|string|max:255',
         'slug' => 'required|string|max:255|unique:products,slug,' . $product->id,
         'category_id' => 'required|exists:categories,id',
-        'subcategory_id' => 'nullable|exists:sub_categories,id',
+        'subcategory_id' => 'nullable|array',
+        'product_meta_title'=>'nullable',
         'short_description' => 'nullable|string',
         'long_description' => 'nullable|string',
         'flavours' => 'nullable|array',
         'product_photo.*' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         'variants' => 'required|array|min:1',
+        'product_type' => 'nullable|string|max:200',
         'variants.*.size' => 'nullable|string',
         'variants.*.price' => 'required|numeric|min:0',
         'variants.*.stock' => 'required|integer|min:0',
@@ -221,12 +271,17 @@ class ProductController extends Controller
 
     try {
         $flavours = $request->input('flavours');
+        $subcategory_idss = $request->input('subcategory_id');
+          $subcategory_ids=is_array($subcategory_idss) ? implode(',', $subcategory_idss) : null;
+
         // Update product basic info
         $product->update([
             'name' => $validated['name'],
             'slug' => Str::slug($validated['slug']),
             'category_id' => $validated['category_id'],
-            'subcategory_id' => $validated['subcategory_id'],
+            'subcategory_id' => $subcategory_ids,
+            'product_type' => $validated['product_type'],
+             'product_meta_title'=>$validated['product_meta_title'],
             'short_description' => $validated['short_description'] ?? null,
             'long_description' => $validated['long_description'] ?? null,
             'flavours' => is_array($flavours) ? implode(',', $flavours) : null,

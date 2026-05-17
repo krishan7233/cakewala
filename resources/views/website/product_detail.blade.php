@@ -1,4 +1,8 @@
 @extends('website.website_app')
+
+@section('title', $product->product_meta_title)
+@section('meta_description', $product->short_description ?? $product->name)
+
 @section('content')
 <main>
       <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
@@ -15,6 +19,19 @@
     min-width: 100%!important;
     bottom: 0;
 }
+figcaption, figure, main {
+    display: block;
+    background: #f4f7f8;
+}
+.clearfix {
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+div#wrapper-recommended-cat {
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
 .pdp-input__div [type=radio]:checked+span {
     background-color: #FF4E84;
     color: #000 !important;
@@ -126,11 +143,7 @@ input#deliveryInfo {
     border: 1px solid #000000;
     border-radius: 10px;
 }
-span.eggless {
-    BORDER: 1PX SOLID #000;
-    PADDING: 6PX 10PX;
-    BORDER-RADIUS: 50PX;
-}
+
 input#modalTime {
     padding-left: 0!important;
 }
@@ -275,7 +288,9 @@ a#saveDeliveryInfo {
       textarea:focus-visible {
       outline: none !important;
       }
+  
       @media only screen and (max-height:600px) {
+
       .product-image-part {
       width: 82% !important;
       }
@@ -478,19 +493,7 @@ a#saveDeliveryInfo {
       transform: none !important;
     
       }
-      [type=checkbox]+span.eggless:not(.lever):before {
-      border: none;
-      background-size: 20px !important;
-      top: -2px !important;
-      left: 0 !important;
-      width: 23px !important;
-      height: 22px !important;
-     
-      }
-      [type=checkbox]:checked+span.eggless:not(.lever):before {
-      transform: none !important;
-    
-      }
+      
       .offer_dashbox {
       border: 1px solid #CFCFCF;
       border-radius: 10px;
@@ -1231,7 +1234,57 @@ a#saveDeliveryInfo {
 div#mobilebread {
     display: none;
 }
+.eggStatusContainer {
+    display: flex;
+}
+.detail-wrapper .eggStatusContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1%;
+    margin-top: 0;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    margin-left: 0;
+    position: relative;
+}
+.sqContainer.eggless {
+    border: 2px solid #22AA00;
+}
+.sqContainer {
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+.withoutEggCircle {
+    width: 0;
+    height: 0;
+    border: 3.5px solid #22AA00;
+    border-radius: 50%;
+}
+.eggLabelTxt.eggless {
+    color: #22AA00;
+}
+.eggLabelTxt {
+    font-size: 10px;
+    font-weight: 600;
+    margin-left: 4px;
+    letter-spacing: 0.16px;
+}
       @media only screen and (max-width: 600px) {
+  
+.eggStatusContainer {
+    display: flex;
+    margin-bottom: 10px;
+}
+figcaption, figure, main {
+    display: block;
+    background: #fff;
+}
+  
       .container3 {
     margin-top: 115px!important;
     }
@@ -1248,6 +1301,8 @@ div#add {
     width: 100%;
     background: #fff;
     margin: 0;
+    z-index: 9999;
+    left: 0;
 }
 .mobile-footer {
     display: none!important;
@@ -1295,6 +1350,7 @@ width: 88%;
 input#product_messages {
     width: 88%!important;
     padding: 0 10px!important;
+    margin-bottom: 20px;
 }
 .product-image-part {
     width: 100% !important;
@@ -1381,6 +1437,7 @@ div#wrapper-recommended-cat {
     height: 30px;
     width: 30px;
     border-radius: 20px;
+    display: none;
 }
 .swiper-button-next:after, .swiper-button-prev:after {
     font-family: swiper-icons;
@@ -1396,16 +1453,30 @@ div#wrapper-recommended-cat {
          <div class="row m-0" id="desktopbread">
             <div class="col s12 breadcrumb-wrapper" style="padding-top: 34px;padding-bottom: 9px;">
                <input type="hidden" id="currentCityId" value="1">
-               <a href="/" class="breadcrumb">Home</a>
+               <a href="{{URL('/')}}" class="breadcrumb">Home</a>
                <svg width="16" height="27" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg"
                   class="breadcrumb-delim">
                   <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"></path>
                </svg>
-               <a class="breadcrumb" href="/cake">Cakes</a>
+               <a class="breadcrumb" href="{{route('product.by.category', $product->category->cat_slug) }}">{{$product->category->name}}</a>
                <svg width="16" height="27" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg"
                   class="breadcrumb-delim">
                   <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"></path>
                </svg>
+               
+                 @if($product->subcategory)
+                         
+                        <a href="{{ route('product.by.category', ['cat_slug' => $product->category->cat_slug, 'subcat_slug' => $product->subcategory->subcat_slug]) }}" class="breadcrumb" itemtype="https://schema.org/WebPage" itemprop="item">
+                            <span itemprop="name">{{$product->subcategory->name}}</span>
+                        </a>
+                        <svg width="16" height="27" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg"
+                              class="breadcrumb-delim">
+                              <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"></path>
+                           </svg>
+               
+                 @endif
+                         
+                         
                <a class="breadcrumb" href="javascript:;">{{ $product->name }}</a>
             </div>
          </div>
@@ -1537,7 +1608,7 @@ div#wrapper-recommended-cat {
                                  <div class="row">
                                     <div class="col s12 m4 l12" style="padding:0 7px 0">
                                        <img class=" responsive-img "
-                                          src="https://azure-bee-177357.hostingersite.com/public/assets/website/img/Fssai-1-1.png"
+                                          src="https://cakeplaza.in/assets/website/img/Fssai-1-1.png"
                                           style="width:100%;height:100%">
                                     </div>
                                    
@@ -1553,7 +1624,7 @@ div#wrapper-recommended-cat {
                    
                    @foreach ($product->images as $image)
                    <div class="swiper-slide">
-                          <a class="center-align" href="best-selling-plants86b7.html?showMain=true">
+                          <a class="center-align" href="{{ asset($image->image) }}">
                               <img alt="dynamic" height="auto" style="width:100%" loading="lazy"
                                src="{{ asset($image->image) }}" title="Plant Delivery In India">
                           </a>
@@ -1573,6 +1644,10 @@ div#wrapper-recommended-cat {
                         <div class="col product-description-part" style="padding-left: 100px;">
                            <div class="row" style="margin:0 auto;">
                               <div class="col l12" style="padding:0">
+                                  @if($product->category->eggless_option != 0)
+                                  <div class="eggStatusContainer"><span class="sqContainer eggless"><span class="withoutEggCircle"></span></span>
+                                  <span class="eggLabelTxt eggless" >Eggless</span></div>
+                                  @endif
                                  <h1
                                     style="font-size: 24px;line-height: normal;font-weight:600;color: #323232; margin:11px auto 6px; margin-top:11px;text-transform:capitalize;display:contents">
                                     {{ $product->name }}
@@ -1600,11 +1675,11 @@ div#wrapper-recommended-cat {
                                           "></div>
                                        <div style="padding-right: 0;">
                                           <span
-                                             style="vertical-align:super;font-size:31px; padding-right:5px;"
+                                             style="vertical-align:bottom;font-size:28px; padding-right:5px;"
                                              class="moneySymbol">₹</span>
                                           <span class="product-price moneyCal"
                                              data-inr="{{$discountedPrice}}"
-                                             style="color: #222; font-size:48px; font-weight: 600;"
+                                             style="color: #222; font-size:28px; font-weight: 600;"
                                              id="productPrice">{{$discountedPrice}}</span>
                                        </div>
                                     </div>
@@ -1775,10 +1850,12 @@ div#wrapper-recommended-cat {
                                                     @endforeach
                                                  </div>
                                             @endif
-                                             
+                                            
+                                            @if(count($flavours) > 0)
+
                                              <div class="col s6 l6"
                                                 style="padding-left: 0;clear : both;">
-                                                <div class="" style="margin-top:10px;{{ $product->category->cat_slug == 'plants' ? 'display:none;' : '' }}"  >
+                                                <div class="" style="margin-top:10px;"  >
                                                     <label>Select Flavour</label>
                                                    <select
                                                       style="border: 1px solid #737373; margin-bottom: 0; height: 39px; border-radius: 7px; padding-left: 10px !important; width: 97%;"
@@ -1787,15 +1864,24 @@ div#wrapper-recommended-cat {
                                                       required
                                                       data-id="3"
                                                       data-priority="15">
-                                                        @foreach($flavours as $flavour)
-                                                            <option value="{{ $flavour }}">{{ $flavour }}</option>
-                                                        @endforeach
+                                                       
+                                                        @foreach($flavours as $id => $name)
+                                                        <option value="{{ $id }}">{{ $name }}</option>
+                                                    @endforeach
                                                     </select>
 
                                                    
                                                 </div>
                                              </div>
-                                             <a href="#" id="openServingModal" style="{{ $product->category->cat_slug == 'plants' ? 'display:none;' : '' }}">Serving Info</a>
+                                             @endif
+                                             
+                                             @php
+                                             $hide_data=['plants','flowers'];
+                                             @endphp
+                                            @if(!in_array($product->category->cat_slug, $hide_data))
+                                                 <a href="#" id="openServingModal">Serving Info</a>
+                                             @endif
+                                             
                                              <div id="servingModal" class="serving-modal">
                                              <div class="serving-modal-content">
                                              <span class="close-serving">&times;</span>
@@ -1817,11 +1903,13 @@ div#wrapper-recommended-cat {
                                           </div>
                               <!-- User must click this field to select options -->
                                     
-    <input type="text" id="deliveryInfo" placeholder="Select Delivery Date/Time & Shipping Type" readonly class="modal-trigger" data-target="cartOptionsModal">
+    <input type="text" id="deliveryInfo" placeholder="Select Delivery Date/Time & Shipping Type" readonly class="modal-trigger" data-target="cartOptionsModal" style="display:none">
     
     <input type="hidden" id="selectedDate" name="selectedDate">
     <input type="hidden" id="selectedDeliveryType" name="selectedDeliveryType">
+     <input type="hidden" id="selectdeliveryTypeLabel" name="selectdeliveryTypeLabel">
     <input type="hidden" id="selectedTimeSlot" name="selectedTimeSlot">
+    
     
     
 
@@ -1899,7 +1987,7 @@ div#wrapper-recommended-cat {
                               </div>
                              
                               </div>
-                            <span class="eggless" style="{{ $product->category->cat_slug == 'plants' ? 'display:none;' : '' }}">Eggless</span>
+                            
                               </div>
                               
                              
@@ -2588,6 +2676,9 @@ div#wrapper-recommended-cat {
         </div>
 </div>
 
+
+
+
 <!-- MagicZoom CSS -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -2812,6 +2903,12 @@ $(document).ready(function() {
       $('input[name="deliveryType"]').prop('checked', false);
       $('input[name="timeSlot"]').prop('checked', false);
       $('.time-slots').hide();
+    },
+    onOpen: function() {
+    // Show delivery type only when input has value already
+     if ($('#modalDate').val() !== '') {
+        $('#step2').fadeIn();
+      }
     }
   });
 
@@ -2855,6 +2952,7 @@ $(document).ready(function() {
     console.log("Time Slot:", timeSlot);
 
     // Populate hidden fields (if any)
+    $('#selectdeliveryTypeLabel').val(deliveryTypeLabel);
     $('#selectedDate').val(date);
     $('#selectedDeliveryType').val(deliveryType);
     $('#selectedTimeSlot').val(timeSlot);
@@ -2912,8 +3010,10 @@ $(document).ready(function() {
         let date = $('#selectedDate').val();
         let time = $('#selectedTimeSlot').val();
         let shipping = $('#selectedDeliveryType').val();
+        let shipping_type_message = $('#selectdeliveryTypeLabel').val();
+        
         let product_messages=$('#product_messages').val();
-    
+        let cake_flavour = $('#cakeFlavourAtt').val() || '';
         let basePrice =  $('#productPrice').text();  // Ensure this attribute exists
         $('#basePrice').text(basePrice);
         $('#total-addon-product-price').text(basePrice);
@@ -2928,8 +3028,9 @@ $(document).ready(function() {
             formData.append('delivery_date', date);
             formData.append('delivery_time', time);
             formData.append('shipping_type', shipping);
+            formData.append('shipping_type_message', shipping_type_message);
             formData.append('product_message', product_messages);
-        
+         formData.append('cake_flavour', cake_flavour); 
             // Handle image file upload
             let orderImageInput = $('#order_image')[0];
             if (orderImageInput && orderImageInput.files && orderImageInput.files.length > 0) {
@@ -2984,14 +3085,17 @@ $(document).ready(function() {
         let date = $('#selectedDate').val();
         let time = $('#selectedTimeSlot').val();
         let shipping = $('#selectedDeliveryType').val();
+        let shipping_type_message = $('#selectdeliveryTypeLabel').val();
         let product_messages=$('#product_messages').val();
-    
+        let cake_flavour = $('#cakeFlavourAtt').val() || '';
+
         let basePrice =  $('#productPrice').text();  // Ensure this attribute exists
         $('#basePrice').text(basePrice);
         $('#total-addon-product-price').text(basePrice);
        let product_id = $(this).attr('data-product-id');  
         let variant_id = $(this).attr('data-variant-id');  
         let quantity = $(this).attr('data-quantity') || 1; 
+       
        
            let formData = new FormData();
             formData.append('product_id', product_id);
@@ -3000,7 +3104,9 @@ $(document).ready(function() {
             formData.append('delivery_date', date);
             formData.append('delivery_time', time);
             formData.append('shipping_type', shipping);
+            formData.append('shipping_type_message', shipping_type_message);
             formData.append('product_message', product_messages);
+            formData.append('cake_flavour', cake_flavour);        
         
             // Handle image file upload
             let orderImageInput = $('#order_image')[0];

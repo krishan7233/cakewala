@@ -22,7 +22,9 @@
                             <th>Sr.No.</th>
                             <th>User Name</th>
                             <th>Email</th>
+                            <th>Phone</th>
                             <th>Payment ID</th>
+                            <th>Payment Type</th>
                             <th>Payment Status</th>
                             <th>Amount</th>
                             <th>Order Status</th>
@@ -49,9 +51,11 @@
             ajax: '{{ route('admin.orders') }}',
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
-                { data: 'name', name: 'user.name' },
-                { data: 'email', name: 'user.email' },
+                { data: 'name', name: 'user.name',searchable: false, orderable:false },
+                { data: 'email', name: 'user.email' ,searchable: false, orderable:false},
+               { data: 'delivery_mobile_number', name: 'deliveryAddress.delivery_mobile_number', searchable: false, orderable:false},
                 { data: 'payment_id', name: 'payment_id' },
+                 { data: 'payment_type', name: 'payment_type' },
                 { data: 'payment_status', name: 'payment_status' },
                 { data: 'payment_amount', name: 'payment_amount' },
                 { data: 'order_status', name: 'order_status' },

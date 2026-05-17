@@ -5,16 +5,17 @@
         <link rel="dns-prefetch" href="http://d3s16h6oq3j5fb.cloudfront.net/">
         <link rel="dns-prefetch" href="http://dr56butoyblab.cloudfront.net/">
         <link rel="dns-prefetch" href="http://d3s16h6oq3j5fb.cloudfront.net/">
-         <link rel="icon" href="https://cakeplaza.in/wp-content/uploads/2020/10/Favicon.png" sizes="32x32" />
+         <link rel="icon" href="https://cakewala.in/assets/website/img/Favicon.png" sizes="32x32" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title>Online Best Cakes, Flowers, Plants &amp; Gifts in India, Doorstep Delivery - Cake Plaza</title>
-        <meta name="description" content="Winni delivers the best cakes, flowers and gifts online covering 750+ cities in india & 40 countries around the globe. Order now to get best discounts on fresh cakes, gifts and flowers with same day, midnight & fixed time delivery options.">
-       
+        <title>@yield('title', 'Online Best Cakes, Flowers, Plants &amp; Gifts in India, Doorstep Delivery - Cake wala')</title>
+        <meta name="description" content="@yield('meta_description', 'Default description')">
+        @yield('google_analytics', '')
+
         <meta name="currentCityId" content="">
         <meta name="theme-color" content="#ffffff">
         <link rel="manifest" href="https://externalassets/coreast/constant/manifest/08022021-3CA8E/manifest.json">
          <meta property="og:type" content="website">
-        <meta property="og:site_name" content="Cakeplaza">
+        <meta property="og:site_name" content="Cakewala">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <link rel="canonical" href="index.html" />
@@ -22,10 +23,48 @@
         <link rel="preload"  href="{{asset('assets/website/css/vnd/swiper-8.1.0.min.css')}}" as="style" onload="this.rel = 'stylesheet'"/>
         <link rel="stylesheet" href="{{asset('assets/website/css/vnd/materialize-1.0.0.min.css')}}" type="text/css"/>
         <link rel="stylesheet" href="{{asset('assets/website/css/thor/common-f0e58be5cac621b14d13d1da9a00d9f4.css')}}" type="text/css"/>
-                  <link rel="stylesheet" href="{{asset('assets/website/css/thor/deliveryIn-common-2975420ce29dba92d753d73530d59335.css')}}" type="text/css"/>
-             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>      
+        <link rel="stylesheet" href="{{asset('assets/website/css/thor/deliveryIn-common-2975420ce29dba92d753d73530d59335.css')}}" type="text/css"/>
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>     
+       <meta name="google-site-verification" content="dWLAjHvfrFNvk6H1z4NFLIvT4phgCrXfIWXTLtcntbI" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DQF77M26BB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
  
+  gtag('config', 'G-DQF77M26BB');
+</script>
+ <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-768832938"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-768832938'); </script>
+ @if (request()->is('offline-confiramtion'))
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-768832938"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-768832938');
+    </script>
+
+    <!-- Event snippet for Order Received conversion page -->
+    <script>
+      gtag('event', 'conversion', {
+          'send_to': 'AW-768832938/ZcsgCIjYtdoaEKrrze4C',
+          'value': 1.0,
+          'currency': 'INR',
+          'transaction_id': ''
+      });
+    </script>
+@endif
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "sfwqybczr9");
+</script>
 </head>
 <body class="city-home">
     <a name="top" id="top"></a>
@@ -87,20 +126,116 @@
   color: #333333;
   font-weight:700
   }
+ .whatsapp-icon {
+    position: fixed;
+    bottom: 10%;
+    right: 35px; /* adjust distance from right edge */
+    width: 5%;
+    z-index: 99;
+     animation: pulse 2s infinite;
+  border-radius: 50%;
+  padding: 10px;
 
+}
+a.whatsapp-icon img {
+    width: 100%;
+}
+a#whatsappLink {
+    display: block;
+    background: #fff;
+    border-radius: 50px;
+}
+@keyframes pulse {
+  0% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.1);
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+}
+a#callorder {
+    position: fixed;
+    right: 31px;
+    width: 5%;
+    bottom: 200px;
+}
+a#callorder img {
+    width: 74%;
+}
 @media only screen and (max-width: 600px) {
+    details summary {
+    position: relative;
+    cursor: pointer;
+    list-style: none;
+    padding-left: 20px;
+}
+p.mn {
+    display: block;
+    position: absolute!important;
+    left: 15px!important;
+    margin-top: 112px!important;
+    margin-bottom: 10px!important;
+    color: #000;
+}
+.mn2 {
+    margin-top: 20px!important;
+}
+details summary::before {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-weight: bold;
+    color: #000; /* Same as your text color */
+    font-size: 16px;
+}
+
+/* When <details> is open → show minus */
+details[open] summary::before {
+    content: "−";
+}
+
 ul {
     border: 0!important;
+}
+a#callorder img {
+    width: 100%;
+}
+a#callorder {
+    position: fixed;
+    right: 60px;
+    width: 14%;
+    bottom: 200px;
 }
 .foo.container {
     margin-left: 10px;
  
 }
+a#whatsappLink {
+    display: block;
+    background: #fff;
+    border-radius: 50px;
+}
+.mob {
+    width: 100%;
+}
+          .whatsapp-icon {
+    position: fixed;
+    bottom: 50px;
+    width: 18%;
+    z-index: 99;
+}
+        a.whatsapp-icon img {
+    width: 100%;
+}
 }
 
 </style>
 
-<div class="footer-image-for-corporate-desktop backgroundDesktop">
+<!--<div class="footer-image-for-corporate-desktop backgroundDesktop">
     <div class="row footer-highlights margin-top-n-20 backgroundDesktop" style="max-width: 1600px; margin: 0 auto">
         <div class="col s12 m12 l4 highlight valign-wrapper">
             <div class="iconContainer left">
@@ -130,7 +265,7 @@ ul {
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 
 <footer class="desktop" style="background: #FAFAFA 0% 0% no-repeat">
@@ -140,9 +275,10 @@ ul {
             <div class="col l3 s12">
                 <ul style="border-right: 2px solid #dfdcdc;width:70%">
                  <li style="color: #000000;font-size:16px;font-weight:600;padding-bottom: 10px;">Our Company</li>
-                     <li><a class="footerTextColor" href="#"><strong>Address</strong>: D-142 2nd Floor, Main, Dwarka Rd, Patel Garden, Delhi, 110059</a></li>
-                    <li><a class="footerTextColor" href="#"><strong>Telephone:</strong> +91 9873739058</a></li>
-                    <li><a class="footerTextColor" href="#"><strong>Email:</strong> info@cakeplaza.in</a></li>
+                     <li><a class="footerTextColor" href="#"><strong>Address</strong>:Office No:- 2 DDC Arcade Sector 48
+Shona Road Gurgaon 122018</a></li>
+                    <li><a class="footerTextColor" href="#"><strong>Telephone:</strong> +917233958662</a></li>
+                    <li><a class="footerTextColor" href="#"><strong>Email:</strong> info@cakewala.in</a></li>
                     
                 </ul>
             </div>
@@ -150,105 +286,97 @@ ul {
                 <ul style="border-right: 2px solid #dfdcdc;width:70%">
 
                  <li style="color: #000000;font-size:16px;font-weight:600;padding-bottom: 10px;">Quick Links</li>
-                <li><a class="footerTextColor" href="https://azure-bee-177357.hostingersite.com/website/about-us">About us</a></li>
-                <li><a class="footerTextColor" href="https://azure-bee-177357.hostingersite.com/website/blog">Blog</a></li>
-                     <li><a class="footerTextColor" href="https://azure-bee-177357.hostingersite.com/website/contact-us">Contact Us</a></li>
-                     <li><a class="footerTextColor" href="https://azure-bee-177357.hostingersite.com/website/coupon">Coupons & Deals</a></li>
-                   <li><a class="footerTextColor" href="https://azure-bee-177357.hostingersite.com/website/manual-order-form">Manual Order Form</a></li>
-                      <li><a class="footerTextColor" href="https://azure-bee-177357.hostingersite.com/website/Affiliate-Program">Affiliate Program</a></li> 
+                <li><a class="footerTextColor" href="{{route('about-us')}}">About us</a></li>
+                <li><a class="footerTextColor" href="{{route('blog')}}">Blog</a></li>
+                     <li><a class="footerTextColor" href="{{route('contact_us')}}">Contact Us</a></li>
+                     <li><a class="footerTextColor" href="{{route('coupon')}}">Coupons & Deals</a></li>
+                   <li><a class="footerTextColor" href="{{route('manual_order_form')}}">Manual Order Form</a></li>
+                      <li><a class="footerTextColor" href="{{route('Affiliate_Program')}}">Affiliate Program</a></li> 
 
                 </ul>
             </div>
             <div class="col l3 s12">
                 <ul>
                  <li style="color: #000000;font-size:16px;font-weight:600;padding-bottom: 10px;">Policy & Security</li>
-                  <li><a class="footerTextColor" href="https://azure-bee-177357.hostingersite.com/faq">FAQ</a></li>
-                   <li><a class="footerTextColor" href="https://azure-bee-177357.hostingersite.com/website/refund-policy">Refund Policy</a></li>
-                   <li><a class="footerTextColor" href="https://azure-bee-177357.hostingersite.com/website/privacy-policy">Privacy Policy</a></li>
-                      <li><a class="footerTextColor" href="https://azure-bee-177357.hostingersite.com/website/terms-and-conditions">Terms and Conditions</a></li>
+                  <li><a class="footerTextColor" href="#">FAQ</a></li>
+                   <li><a class="footerTextColor" href="https://cakewala.in/cancellation-returns">Refund Policy</a></li>
+                   <li><a class="footerTextColor" href="https://cakewala.in/privacy-policy">Privacy Policy</a></li>
+                      <li><a class="footerTextColor" href="https://cakewala.in/terms-conditions">Terms and Conditions</a></li>
                 </ul>
             </div>
             <div class="col l3 s12">
                 <ul>
                  <li style="color: #000000;font-size:16px;font-weight:600;padding-bottom: 10px;">Helpful Links</li>
-                  <li><a class="footerTextColor" href="#">Shop</a></li>
-                  <li><a class="footerTextColor" href="https://azure-bee-177357.hostingersite.com/public/customize-cake">Customise Cake</a></li>
-                  <li><a class="footerTextColor" href="https://razorpay.me/@cakeplaza">Pay Online</a></li>
+                  <li><a class="footerTextColor" href="{{ route('allproduct') }}">Shop</a></li>
+                  <li><a class="footerTextColor" href="{{route('queryForm')}}">Customise Cake</a></li>
+                  <li><a class="footerTextColor" href="https://razorpay.me/@cakewala">Pay Online</a></li>
                   <li><a class="footerTextColor" href="#">Sitemap</a></li>
                 </ul>
             </div>
         </div>
     </div>
-<div style="background: #F5F5F5 0% 0% no-repeat padding-box;float:left;width:100%">
-    <div class="container foo" >
-    <div class="row" style="margin-bottom:0px;margin-top: 20px;">
-   <div class="col m6 l6">
-                   <div class="row">
-                    <div class="col m2 contactWithUS" style="margin-top: 20px;">
-                         <span style="color: #0D0D0D;font-weight:600;font-size: 15px;">Connect with Us</span>
-                      </div>
-                       <div class="col m2 imageWidth" style="margin-top: 20px;width: 6%;">
-                           <a  target="_BLANK" rel="nofollow" href="https://www.facebook.com/cakeplazaofficial/">
-                               <div>
-                                <img class="responsive-img lazyload logoImageWidth"  alt="facebook" src="{{asset('assets/website/img/facebook.webp')}}">
-                               </div>
-                           </a>
-                       </div>
-                        <div class="col m2 imageWidth" style="  margin-left: -25px!important;width: 6%;important">
-                          <a   target="_BLANK" rel="nofollow" href="https://www.instagram.com/cakeplazaofficial/">
-                              <div class="">
-                                  <img class="responsive-img lazyload logoImageWidth"  alt="instagram" src="{{asset('assets/website/img/instagram.webp')}}">
-                              </div>
-                          </a>
-                      </div>
-                       <div class="col m2 imageWidth" style=" margin-left: -25px!important;width: 6%;important">
-                           <a target="_BLANK" rel="nofollow" href="https://www.youtube.com/@officialcakeplaza">
-                               <div>
-                                 <img class="responsive-img lazyload logoImageWidth" alt="youtube" src="{{asset('assets/website/img/youtube.webp')}}" style="height: 24px;">
-                               </div>
-                           </a>
-                       </div>
-                       
-                       <div class="col m2 imageWidth" style=" margin-left: -25px!important;width: 6%;!important">
-                           <a  target="_BLANK" rel="nofollow" href="https://twitter.com/cakeplaza">
-                               <div>
-                                 <img class="responsive-img lazyload logoImageWidth" alt="twiter" src="{{asset('assets/website/img/twiter.webp')}}">
-                               </div>
 
-                           </a>
-                       </div>
-                       <div class="col m2 imageWidth" style="margin-left: -25px;width: 6%;">
-                          <a  target="_BLANK" rel="noopener"  href="https://www.youtube.com/@officialcakeplaza">
-                                <img class="responsive-img lazyload logoImageWidth" alt="whatsapp" src="{{asset('assets/website/img/black-whatsapp-icon.webp')}}">
-                          </a>
-                       </div>
-                   </div>
+<div style="background: #F5F5F5; width: 100%; padding: 20px 0;">
+  <div class="container">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;">
 
-   </div>
-   <div class="col m6 l6" style="margin-top: 10px;padding-left: 8%;">
-   <div style="color: #333333;font-size:19px">Payement</div>
-   <div class="col m6 l6" style="padding-right: 0px;">
-         
-           <img class="responsive-img lazyload" alt="google-play" src="{{asset('assets/website/img/payment.e08b4d57.jpg')}}" style="width: 100%;">
-         
-          </div>
-   </div>
-    </div>
-    
+      <!-- Connect with Us -->
+      <div style="flex: 1 1 300px; display: flex; align-items: center; gap: 25px; flex-wrap: wrap;">
+        <div class="mob" style="font-weight: 600; font-size: 16px; color: #0D0D0D;">
+          Connect with Us
+        </div>
+
+        <a href="https://www.facebook.com/cakewalaofficial/" target="_blank" rel="nofollow">
+          <img src="{{ asset('assets/website/img/Artboard-1.webp') }}" alt="Facebook" style="height: 20px;">
+        </a>
+
+        <a href="https://www.instagram.com/cakewalaofficial/" target="_blank" rel="nofollow">
+          <img src="{{ asset('assets/website/img/Artboard-5.webp') }}" alt="Instagram" style="height: 20px;">
+        </a>
+
+        <a href="https://www.youtube.com/@officialcakewala" target="_blank" rel="nofollow">
+          <img src="{{ asset('assets/website/img/Artboard-3.webp') }}" alt="YouTube" style="height: 20px;">
+        </a>
+
+        <a href="https://twitter.com/cakewala" target="_blank" rel="nofollow">
+          <img src="{{ asset('assets/website/img/Artboard-2.webp') }}" alt="Twitter" style="height: 20px;">
+        </a>
+
+        <a href="https://www.youtube.com/@officialcakewala" target="_blank" rel="noopener">
+          <img src="{{ asset('assets/website/img/black-whatsapp-icon.webp') }}" alt="WhatsApp" style="height: 20px;">
+        </a>
+        <p class="mn" style="display: block;position: absolute;left: 180px;margin-top: 80px;color:#000">Spread the Love & Connect with us!</p>
+      </div>
+
+      <!-- Payment -->
+      <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 10px;">
+        <div class="mn2" style="color: #333333; font-size: 18px; font-weight: 600;">Payment</div>
+        <img class="responsive-img lazyload" alt="payment-methods" src="{{ asset('assets/website/img/payment.e08b4d57.jpg') }}" style="max-width: 300px; width: 100%;">
+      </div>
 
     </div>
-    </div>
+  </div>
+</div>
 
 
-        <div style="color: #333333;text-align:center;background: #F5F5F5 0% 0% no-repeat padding-box;padding-top:25px;padding-bottom:25px">Copyright © 2025 Cakeplaza. All rights reserved.</div>
+
+
+        <div style="color: #333333;text-align:center;background: #F5F5F5 0% 0% no-repeat padding-box;padding-top:25px;padding-bottom:25px">Copyright © 2025 Cakewala. All rights reserved.</div>
 <!-- Mobile Footer Navigation -->
 
 
 
+
 <div class="mobile-footer">
-  <a href="https://azure-bee-177357.hostingersite.com/website" class="active">
+      <a href="https://cakewala.in/" class="active">
     <span>🏠</span>
     <small>Home</small>
+  </a>
+
+
+  <a href="{{ auth()->check() ? route('user-profile') : route('login') }}">
+    <span>👤</span>
+    <small >Profile</small>
   </a>
 <a href="javascript:void(0);" id="openFilterBtn">
     <span>🔲</span>
@@ -256,15 +384,15 @@ ul {
 </a>
 
   
- <a href="https://wa.me/919873731736" target="_blank" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: inherit;">
-  <img src="https://img.icons8.com/ios-filled/24/25D366/whatsapp.png" alt="WhatsApp" style="width: 24px; height: 24px; margin-bottom: 12px;">
-  <small style="color:#706b66">WhatsApp</small>
+
+  <a href="tel:7233958662" id="" target="_blank" class="cal">
+  <img src="https://cakewala.in/assets/website/img/callorder.png" alt="HomeWhatsapp">
 </a>
-  <a href="{{ auth()->check() ? route('user-profile') : route('login') }}">
-    <span>👤</span>
-    <small >Profile</small>
-  </a>
+  
+  
 </div>
+
+
 
 <style>
 /* Mobile Footer Nav */
@@ -273,6 +401,12 @@ ul {
 }
 
 @media (max-width: 768px) {
+ .container {
+    margin-top: 10px!important;
+}
+a.cal img {
+    width: 58%;
+}
   .mobile-footer {
     position: fixed;
     bottom: 0;
@@ -322,6 +456,7 @@ ul {
   .mobile-footer a.active span {
     color: #d9006c;
   }
+  
 }
 </style>
 
@@ -398,6 +533,24 @@ $(document).ready(function () {
 </script>
 
 </body>
+
+
+<a href="#" id="whatsappLink" target="_blank" class="whatsapp-icon">
+  <img src="https://cakewala.in/assets/website/img/orderwhatsapp.png" alt="HomeWhatsapp">
+</a>
+
+<script>
+  document.getElementById('whatsappLink').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const phoneNumber = '917233958662';
+    const pageURL = window.location.href;
+    const message = `Hello! I am interested in this page: ${pageURL}`;
+    const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, '_blank');
+  });
+</script>
 </footer>
 
 
@@ -444,6 +597,28 @@ $(document).ready(function () {
     }
 }
 
+</script>
+<!-- Existing Swiper JS Library -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+  var testimonialSwiper = new Swiper('.testimonialSwiper', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true, // important for autoplay to work properly
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: '.testimonial-button-next',
+      prevEl: '.testimonial-button-prev',
+    },
+    breakpoints: {
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
+    },
+  });
 </script>
 
 

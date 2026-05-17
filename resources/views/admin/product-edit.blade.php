@@ -43,8 +43,16 @@
                                                         @if($product->images->count())
                                                             {{-- Show first image as big --}}
                                                             <img class="ec-image-preview mb-2" src="{{ asset($product->images[0]->image) }}" alt="Main Product Image" style="width:100%; max-height:200px; object-fit:contain;" />
+                                                                <button 
+                                                                    class="btn btn-danger delete-thumb-btn  rounded" 
+                                                                    data-id="{{ $product->images[0]->id }}" 
+                                                                    data-type="product"
+                                                                    type="button"
+                                                                    >
+                                                                    Delete
+                                                              </button>
                                                         @else
-                                                            <img class="ec-image-preview" src="{{ asset('assets/img/products/vender-upload-preview.jpg') }}" alt="preview" />
+                                                            <img class="image-thumb-preview ec-image-preview" src="{{ asset('assets/img/products/vender-upload-preview.jpg') }}" alt="preview" />
                                                         @endif
                                                     </div>
                                                 </div>
@@ -129,18 +137,26 @@
 
                                             <div class="col-md-6">
                                                 <label for="subcategory_id" class="form-label">Select SubCategory</label>
-                                                <select name="subcategory_id" id="subcategory_id" class="form-select" >
+                                                <select name="subcategory_id[]" id="subcategory_id" class="form-select select2" multiple>
                                                     <option value="">Select Subcategory</option>
+                                                    
                                                     @foreach($subcategories as $subcategory)
-                                                        <option value="{{ $subcategory->id }}" {{ old('subcategory_id', $product->subcategory_id) == $subcategory->id ? 'selected' : '' }}>
+                                                        <option value="{{ $subcategory->id }}"  @if(in_array($subcategory->id, explode(',', $product->subcategory_id ?? '')))
+                                                            selected
+                                                        @endif>
                                                             {{ $subcategory->name }}
                                                         </option>
                                                     @endforeach
                                                 </select>
                                             </div>
+                                            
+                                              <div class="col-md-12">
+                                                <label for="product_meta_title" class="form-label">Meta Title</label>
+                                                <input type="text" class="form-control" name="product_meta_title" id="product_meta_title" value="{{ old('product_meta_title', $product->product_meta_title) }}" >
+                                            </div>
 
                                             <div class="col-md-12">
-                                                <label for="short_description" class="form-label">Short Description</label>
+                                                <label for="short_description" class="form-label">Meta Description</label>
                                                 <textarea class="form-control" name="short_description" id="short_description" rows="2">{{ old('short_description', $product->short_description) }}</textarea>
                                             </div>
 
@@ -192,7 +208,16 @@
                                                 
                                                 </select>
                                             </div>
-    
+                                            <div class="col-md-12">
+                                            <label for="product_type" class="form-label">Product Type</label>
+                                            <select name="product_type" id="product_type" class="form-control">
+                                                
+                                                <option value="" >Selec One</option>
+                                                <option value="Best Seller" {{($product->product_type == 'Best Seller') ? 'selected' : '' }}>Best Seller</option>
+                                                <option value="Same Day" {{($product->product_type == 'Same Day') ? 'selected' : '' }}>Same Day</option>
+                                                <option value="Latest" {{($product->product_type == 'Latest') ? 'selected' : '' }}>Latest</option>
+                                            </select>
+                                        </div>
 
                                             <div class="col-12 mt-3">
                                                 <button type="submit" class="btn btn-primary">Update Product</button>
@@ -227,11 +252,43 @@
 
 
 <script>
+    
+    $(document).ready(function() {
+        
+    // This sets the category id on load
+        var catId = "{{ $product->category_id }}";
+        var selectedSubcategoryId = "{{ $product->subcategory_id ?? '' }}"; // If you want to pre-select subcategory
+
+            let url = '{{ url("/admin/products/subcategories-by-category") }}/' + catId;
+            if (catId) {
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                         success: function(data) {
+                        var html = '<option value="">Select Subcategory</option>';
+                        $.each(data, function(key, subcategory) {
+                            var selected = (subcategory.id == selectedSubcategoryId) ? 'selected' : '';
+                            html += `<option value="${subcategory.id}" ${selected}>${subcategory.name}</option>`;
+                        });
+                        $('#subcategory_id').html(html);
+                    }
+                });
+            } else {
+                $('#subcategory_id').html('<option value="">Select Subcategory</option>');
+            }
+
+    });
+
   
         $('#flavours').select2({
             placeholder: "Select Flavours",
             allowClear: true
         });
+         $('#subcategory_id').select2({
+            placeholder: "Select Subcategory",
+            allowClear: true
+        });
+        
     // Dynamic slug generation on product name keyup
     $('.slug-title').on('keyup', function() {
         var val = $(this).val();
@@ -260,7 +317,7 @@
         }
     });
 
-
+    
     
 
     // Add Variant Row

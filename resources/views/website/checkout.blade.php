@@ -12,6 +12,10 @@
     padding: 80px 0;
     margin-top: 120px;
 }
+label {
+    font-size: .8rem;
+    color: #000;
+}
 
     .checkout-page .container {
       max-width: 1200px;
@@ -166,6 +170,118 @@
       cursor: pointer;
       font-weight: bold;
     }
+    input#product_messages {
+    width: 45%!important;
+    padding: 0 10px!important;
+}
+
+
+input#modalTime {
+    padding-left: 0!important;
+}
+input#modalDate {
+    padding-left: 0!important;
+}
+div#cartOptionsModal {
+    height: 500px;
+    width: 40%;
+}
+.modal input {
+    width: 100%!important;
+}
+a#saveDeliveryInfo {
+    background: #000;
+    color: #fff;
+    margin-right: 40px;
+    width: 11%;
+}
+[type=radio]+span:after, [type=radio]+span:before {
+    opacity: 1!important;
+}
+      @media only screen and (min-width: 601px) {
+      .datepicker-date-display {
+      display: none !important;
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 1 270px;
+      -ms-flex: 0 1 270px;
+      flex: 0 1 270px;
+      }
+      a.breadcrumb {
+    font-size: 12px;
+}
+.datepicker-date-display {
+    padding: 10px!important;
+}
+.breadcrumb:last-child {
+    color: #000000;
+    font-size: 12px;
+}
+
+.datepicker-modal {
+    max-width: 2px !important;
+    left: 0% !important;
+    top: 0% !important;
+    min-width: 100%!important;
+    bottom: 0;
+}
+.modal .modal-content {
+    padding: 0px 0px 0px 0px !important;
+}
+#cartOptionsModal span {
+    width: 93%;
+    margin-bottom: 0px!important;
+}
+      }
+      .datepicker-clear {
+      display: none !important;
+      }
+      .datepicker-done {
+      right: 4%;
+      background: #5DA434 !important;
+      position: absolute;
+      padding: 0px 25px;
+      color: white;
+      }
+      .datepicker-cancel {
+      background: red !important;
+      padding: 0px 15px;
+      color: white;
+      }
+      .datepicker-calendar-container {
+      margin-bottom: 0px !important;
+      }
+      ::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #333333;
+      opacity: 1;
+      /* Firefox */
+      }
+      :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: #333333;
+      }
+      ::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: #333333;
+      }
+      
+      .dateFilter {
+      margin-left: 14%;
+      }
+      #cartOptionsModal p label {
+    border: 1px solid #000;
+    padding: 8px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+}
+#cartOptionsModal span {
+    width: 93%;
+    margin-bottom: 10px;
+}
+div#cartOptionsModal {
+    padding: 10px;
+}
     @media (max-width: 768px) {
       .checkout-page .container {
         flex-direction: column;
@@ -177,7 +293,7 @@
     .checkout-page {
     background-color: #f9f9f9;
     padding: 50px 0;
-    margin-top: 0px!important;
+    margin-top: 60px!important;
 }
 .checkout-page .container {
   margin: auto;
@@ -189,7 +305,85 @@
         flex-direction: column;
       }
     }
+    
+        @media only screen and (max-width: 600px) {
+        
+              div#cartOptionsModal {
+    height: 500px;
+    width: 99%;
+}
+a#saveDeliveryInfo {
+    background: #000;
+    color: #fff;
+    margin-right: 40px;
+    width: 20%;
+}
+    input#deliveryInfo {
+width: 88%;
+  }
+       
+       .modal .modal-content {
+    padding: 0px;
+}     
+        }
+        
+        
   </style>
+
+<style>
+  .address-type-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .address-type-label {
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    color: #333;
+  }
+
+  .address-type-label i {
+    margin-right: 8px;
+  }
+
+  .address-type-input {
+    display: none;
+  }
+
+  .address-type-input:checked + .address-type-label {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  label {
+    width: 32%;
+}
+</style>
+
 </head>
 <body>
 
@@ -230,11 +424,14 @@
     </div>
   </div>
 
+
   <div class="row">
-    <div class="form-group">
-      <label for="mobile">Recipient Mobile Number *</label>
-      <input type="tel" id="mobile" name="mobile" placeholder="+91" required>
-    </div>
+  <div class="form-group">
+  <label for="mobile">Recipient Mobile Number *</label>
+  <input type="tel" id="mobile" name="mobile" placeholder="Enter your number" pattern="[6-9]{1}[0-9]{9}" required>
+  <small style="color: red; display: none;" id="mobile-error">Please enter a valid 10-digit mobile number starting with 6-9.</small>
+</div>
+
 
     <div class="form-group">
       <label for="altMobile">Alternate Mobile Number (optional)</label>
@@ -242,10 +439,41 @@
     </div>
   </div>
 
+
+  <!-- Address Type Selection -->
+<div class="form-group">
+  <label class="block mb-2 font-semibold">Address Type *</label>
+  <div class="address-type-group">
+    <label>
+      <input type="radio" name="address_type" value="HOME" class="address-type-input" checked>
+      <div class="address-type-label">
+        <i class="fas fa-home"></i> HOME
+      </div>
+    </label>
+
+    <label>
+      <input type="radio" name="address_type" value="OFFICE" class="address-type-input">
+      <div class="address-type-label">
+        <i class="fas fa-briefcase"></i> OFFICE
+      </div>
+    </label>
+
+    <label>
+      <input type="radio" name="address_type" value="OTHER" class="address-type-input">
+      <div class="address-type-label">
+        <i class="fas fa-map-marker-alt"></i> OTHER
+      </div>
+    </label>
+  </div>
+</div>
+
+
   <div class="action-buttons">
     <button type="button" class="cancel-btn">CANCEL</button>
     <button type="submit" class="save-btn">SAVE</button>
   </div>
+
+
 </form>
     </div>
 
@@ -256,62 +484,339 @@
      
       <p><span>MRP Total</span> <span>₹{{ number_format($mrpTotal, 2) }}</span></p>
       <p><span>MRP Discount</span> <span style="color: green;">- ₹{{ number_format($discount, 2) }}</span></p>
-      <p><span>Delivery Charge</span> <span style="color: green;">{{ $deliveryCharge ?? 0 }}</span></p>
+      <p><span>Delivery Charge</span> <span style="color: green;" id="dlv_charge">{{ $deliveryCharge ?? 0 }}</span></p>
       <p><span>Convenience Charge</span> <span>₹{{ number_format($convenienceCharge, 2) }}</span></p>
       <p class="total"><span>Total Amount</span> <span class="total-amount-text">₹{{ number_format($totalAmount, 2) }}</span></p>
-      <form action="{{ route('payment.initiate') }}" method="POST" id="paymentForm">
-        @csrf
-        
-          <div class="small">Note for Cake: 
-            <span class="add-message-btn" style="color: #f65555; cursor: pointer;">+Add</span>
-          </div>
-        <div class="cake-message-input" id="cake-message-input" style="display: none; margin-top: 10px;">
-          <input type="text" name="order_messages" placeholder="Enter your cake message" style="padding: 8px; width: 100%; border: 1px solid #ccc; border-radius: 5px;">
-        </div>
-        <div id="couponprocess">
-               <div class="small"> 
-                    <span class="add-coupon-btn" style="color: #f65555; cursor: pointer;">Apply Coupon</span>
-                  </div>
-                <div class="coupon_code_input" id="coupon_code_input" style="display: none; margin-top: 10px;">
-                  <input type="text" name="coupon_code_value" placeholder="Enter your code" style="padding: 8px; width: 100%; border: 1px solid #ccc; border-radius: 5px;">
-                  <span id="apply_coupn_btn">apply</span>
-                </div>
-        </div>
+
         
 
-  <!-- Payment Method -->
-  <div class="input-field">
-    <p>
-      <label>
-        <input name="payment_mode" type="radio" value="online" checked />
-        <span>Online Payment</span>
-      </label>
-    </p>
-    <p>
-      <label>
-        <input name="payment_mode" type="radio" value="offline" />
-        <span>Offline Payment</span>
-      </label>
-    </p>
-  </div>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul style="margin: 0; padding-left: 20px;">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
-  <input type="hidden" name="paymentvia" id="paymentvia" value="online">
-        <input type="hidden" name="coupon_code" id="coupon_code" value="">
-        <input type="hidden" name="address_id" id="address_id" value="{{ @$latestAddress->id }}">
-        <input type="hidden" name="total_amount" id="total_amount" value="{{ $totalAmount}}">
-        <button type="submit" class="proceed-btn">Proceed to Payment</button>
-      </form>
+ <br>
+        <a  href="{{route('product.final.checkout')}}" class="proceed-btn " style="text-align:center">Proceed to Next</a>
+   
     </div>
     
   </div>
 </div>
 
 
+<!--- modal -->
+
+  <div id="cartOptionsModal" class="modal">
+   <div class="modal-content">
+     <h5>Select Delivery Options</h5>
+ 
+         
+         <!-- Step 1: Date Selection -->
+            <div class="input-field" id="step1">
+              <input type="text" id="modalDate" class="datepicker" required>
+              <label for="modalDate">Select Delivery Date</label>
+            </div>
+
+            <!-- Step 2: Delivery Type (hidden initially) -->
+            <div id="step2" style="display: none; margin-top: 20px;">
+              <h6>Select Delivery Type</h6>
+              
+              <p>
+                <label>
+                  <input name="deliveryType" type="radio" value="99" data-type="fixed" />
+                  <span>Fixed Time Delivery (₹99)</span>
+                </label>
+              </p>
+              <div class="time-slots" id="timeSlotsFixed" style="display: none; margin-left: 20px;">
+                <p>Select a time slot for Fixed Time Delivery:</p>
+                <p>
+                  <label>
+                    <input name="timeSlot" type="radio" value="10:00 AM - 11:00 AM" />
+                    <span>10:00 AM - 11:00 AM</span>
+                    </label>
+                </p>
+                <p>
+                  <label>
+                    <input name="timeSlot" type="radio" value="11:00 AM - 12:00 PM" />
+                     <span>11:00 AM - 12:00 PM</span>
+                  </label>
+                </p>
+                 <p>
+                  <label>
+                    <input name="timeSlot" type="radio" value="12:00 PM - 01:00 PM" />
+                    <span>12:00 PM - 01:00 PM</span>
+                  </label>
+                </p>
+                 <p>
+                  <label>
+                    <input name="timeSlot" type="radio" value="01:00 PM - 02:00 PM" />
+                     <span>01:00 PM - 02:00 PM</span>
+                  </label>
+                </p>
+                 <p>
+                  <label>
+                    <input name="timeSlot" type="radio" value="02:00 PM - 03:00 PM" />
+                     <span>02:00 PM - 03:00 PM</span>
+                  </label>
+                </p>
+                 <p>
+                  <label>
+                    <input name="timeSlot" type="radio" value="03:00 PM - 04:00 PM" />
+                <span>03:00 PM - 04:00 PM</span>
+                  </label>
+                </p>
+                  <p>
+                  <label>
+                    <input name="timeSlot" type="radio" value="04:00 PM - 05:00 PM" />
+               <span>04:00 PM - 05:00 PM</span>
+                  </label>
+                </p>
+                 <p>
+                  <label>
+                    <input name="timeSlot" type="radio" value="05:00 PM - 06:00 PM" />
+                    <span>05:00 PM - 06:00 PM</span>
+                  </label>
+                </p>
+                 <p>
+                  <label>
+                    <input name="timeSlot" type="radio" value="06:00 PM - 07:00 PM" />
+                     <span>06:00 PM - 07:00 PM</span>
+                  </label>
+                </p>
+                  <p>
+                  <label>
+                    <input name="timeSlot" type="radio" value="07:00 PM - 08:00 PM" />
+                      <span>07:00 PM - 08:00 PM</span>
+                  </label>
+                </p>
+                   <p>
+                  <label>
+                    <input name="timeSlot" type="radio" value="08:00 PM - 09:00 PM" />
+                         <span>08:00 PM - 09:00 PM</span>
+                  </label>
+                </p>
+                  <p>
+                  <label>
+                    <input name="timeSlot" type="radio" value="09:00 PM - 10:00 PM" />
+                       
+                    <span>09:00 PM - 10:00 PM</span>
+                  </label>
+                </p>
+              </div>
+              
+              <p>
+                <label>
+                  <input name="deliveryType" type="radio" value="249" data-type="pre-midnight" />
+                  <span>Pre Mid-Night Delivery (₹249)</span>
+                </label>
+              </p>
+              <div class="time-slots" id="timeSlotsPreMidnight" style="display: none; margin-left: 20px;">
+                <p>Select a time slot for Pre Mid-Night Delivery:</p>
+                <p>
+                  <label>
+                    <input name="timeSlot" type="radio" value="11:00 PM - 11:59 PM" />
+                    <span>11:00 PM - 11:59 PM</span>
+                  </label>
+                </p>
+              </div>
+              
+                  <p>
+                    <label>
+                      <input name="deliveryType" type="radio" value="19" data-type="standard" />
+                      <span>Standard Delivery (₹19)</span>
+                    </label>
+                  </p>
+                  <div class="time-slots" id="timeSlotsStandard" style="display: none; margin-left: 20px;">
+                    <p>Select a time slot for Standard Delivery:</p>
+                    <p>
+                      <label>
+                        <input name="timeSlot" type="radio" value="09:00 AM - 01:00 PM" />
+                        <span>09:00 AM - 01:00 PM</span>
+                      </label>
+                    </p>
+                     <p>
+                      <label>
+                        <input name="timeSlot" type="radio" value="01:00 PM - 05:00 PM" />
+                        <span>01:00 PM - 05:00 PM</span>
+                      </label>
+                    </p>
+                     <p>
+                      <label>
+                        <input name="timeSlot" type="radio" value="05:00 PM - 09:00 PM" />
+                        <span>05:00 PM - 09:00 PM</span>
+                      </label>
+                    </p>
+                     <p>
+                      <label>
+                        <input name="timeSlot" type="radio" value="07:00 PM - 11:00 PM" />
+                        <span>07:00 PM - 11:00 PM</span>
+                      </label>
+                    </p>
+                  </div>
+                  
+                  
+                     <p>
+                    <label>
+                      <input name="deliveryType" type="radio" value="49" data-type="eariest" />
+                      <span>Eariest Delivery (₹49)</span>
+                    </label>
+                  </p>
+                  <div class="time-slots" id="timeSlotsEeariest" style="display: none; margin-left: 20px;">
+                    <p>Select a time slot for Standard Delivery:</p>
+                    <p>
+                      <label>
+                        <input name="timeSlot" type="radio" value="3:00 PM - 5:00 PM" />
+                        <span>3:00 PM - 5:00 PM</span>
+                      </label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="timeSlot" type="radio" value="7:00 PM - 9:00 PM" />
+                        <span>7:00 PM - 9:00 PM</span>
+                      </label>
+                    </p>
+                  </div>
+                  
+                  
+            </div>
+
+         
+
+
+   </div>
+ 
+   <div class="modal-footer">
+     <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="saveDeliveryInfo">Save</a>
+   </div>
+ </div>
+
+
+<script>
+document.getElementById('mobile').addEventListener('input', function () {
+  const mobile = this.value;
+  const error = document.getElementById('mobile-error');
+
+  const isValid = /^[6-9]\d{9}$/.test(mobile);
+  if (!isValid) {
+    this.setCustomValidity("Invalid mobile number");
+    error.style.display = 'inline';
+  } else {
+    this.setCustomValidity("");
+    error.style.display = 'none';
+  }
+});
+</script>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     
     $(document).ready(function() {
         
+        
+        
+        
+    $('.modal').modal({
+        onOpenEnd: function () {
+          const $input = $('#modalDate');
+          const instance = M.Datepicker.getInstance($input[0]);
+          setTimeout(function () {
+            $input.focus();
+            instance.open();
+          }, 100); 
+        }
+    });
+  
+  // Initialize Datepicker
+  $('.datepicker').datepicker({
+    format: 'yyyy-mm-dd',
+    minDate: new Date(),
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: false,
+    onSelect: function() {
+      $('#step2').fadeIn(); // Show delivery type options after date selected
+      // Reset selections if user changes date
+      $('input[name="deliveryType"]').prop('checked', false);
+      $('input[name="timeSlot"]').prop('checked', false);
+      $('.time-slots').hide();
+    },
+    onOpen: function() {
+    // Show delivery type only when input has value already
+     if ($('#modalDate').val() !== '') {
+        $('#step2').fadeIn();
+      }
+    }
+  });
+
+  // Show time slots based on delivery type selection
+  $('input[name="deliveryType"]').change(function() {
+    // Hide all time slot sections first
+    $('.time-slots').hide();
+    $('input[name="timeSlot"]').prop('checked', false);
+
+    let selectedType = $(this).data('type');
+
+    if (selectedType === 'fixed') {
+      $('#timeSlotsFixed').fadeIn();
+    } else if (selectedType === 'pre-midnight') {
+      $('#timeSlotsPreMidnight').fadeIn();
+    } else if (selectedType === 'standard') {
+      $('#timeSlotsStandard').fadeIn();
+    } else if (selectedType === 'eariest') {
+      $('#timeSlotsEeariest').fadeIn();
+    }
+    
+  });
+  
+    
+    // Handle Save Button
+  $('#saveDeliveryInfo').click(function() {
+    let date = $('#modalDate').val();
+    let deliveryType = $('input[name="deliveryType"]:checked').val();
+    let deliveryTypeLabel = $('input[name="deliveryType"]:checked').next('span').text();
+    let timeSlot = $('input[name="timeSlot"]:checked').val() || '';
+
+    // Validation
+    if (!date || !deliveryType || ($('input[name="deliveryType"]:checked').data('type') === 'fixed' && !timeSlot)) {
+      M.toast({ html: 'Please complete all steps!' });
+      return;
+    }
+
+    console.log("Date:", date);
+    console.log("Delivery Type:", deliveryTypeLabel);
+    console.log("Time Slot:", timeSlot);
+
+    // Populate hidden fields (if any)
+    $('#selectdeliveryTypeLabel').val(deliveryTypeLabel);
+    $('#selectedDate').val(date);
+    $('#selectedDeliveryType').val(deliveryType);
+    $('#selectedTimeSlot').val(timeSlot);
+
+    // You can also update a combined field if needed
+    $('#deliveryInfo').val(`${date} - ${deliveryTypeLabel} ${timeSlot ? '(' + timeSlot + ')' : ''}`);
+    M.updateTextFields();
+        $('#dlv_charge').text(deliveryType);
+
+        let deliveryCharge = parseFloat($('#dlv_charge').text()) || 0;
+
+     let originalTotal = parseFloat($('#total_amount').val()) || 0;
+    
+        let grandTotal = originalTotal + deliveryCharge;
+        console.log(deliveryCharge,originalTotal,grandTotal);
+        // Update display
+        $('.total-amount-text').text('₹' + grandTotal.toFixed(2));
+        $('#total_amount').val(grandTotal);
+        
+    M.toast({ html: 'Delivery options saved!' });
+  });
+  
+  
+  
     const onlineRoute = "{{ route('payment.initiate') }}";
     const offlineRoute = "{{ route('offlinePayment') }}";
 
@@ -387,7 +892,7 @@
      
     $('#deliveryAddressForm').on('submit', function(e) {
     e.preventDefault();
-
+    
     var formData = {
       _token: $('input[name="_token"]').val(),
       name: $('#name').val(),
@@ -396,7 +901,8 @@
       pincode: $('#pincode').val(),
       city: $('#city').val(),
       mobile: $('#mobile').val(),
-      altMobile: $('#altMobile').val()
+      altMobile: $('#altMobile').val(),
+      address_type: $('input[name="address_type"]:checked').val() 
     };
 
     $.ajax({
@@ -460,8 +966,18 @@
             
           let addressId = $('#address_id').val();
           let totalAmount = $('#total_amount').val(); // Remove commas
-                let paymentVia = $('#paymentvia').val();
-
+          let paymentVia = $('#paymentvia').val();
+          
+        let date = $('#selectedDate').val();
+        let time = $('#selectedTimeSlot').val();
+        let shipping = $('#selectedDeliveryType').val();
+        let shipping_type_message = $('#selectdeliveryTypeLabel').val();
+        
+        if (!date || !time || !shipping || !shipping_type_message) {
+            alert('Please select all required fields: Date, Time Slot, Delivery Type, and Delivery Message.');
+            return false; // Prevent form submission or further actions
+        }
+        
           if (!addressId || addressId.trim() === '') {
               alert('Please select a valid delivery address before proceeding.');
               return false;
@@ -475,10 +991,7 @@
             alert('Please select a payment method (Online or Offline) before proceeding.');
             return false;
         }
-        console.log($('#paymentForm').attr('action'));
-
-          
-          console.log('sssssss');
+       
   
           // All validations passed, submit the form
         //   this.submit();

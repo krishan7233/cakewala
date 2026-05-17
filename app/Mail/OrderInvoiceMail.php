@@ -19,7 +19,8 @@ class OrderInvoiceMail extends Mailable
 
     public function build()
     {
-        return $this->subject('Your Order Invoice - ' . $this->order->payment_id)
+        
+        return $this->subject('CakePlaza Order Number - ' . $this->order->payment_id)
                     ->view('website.invoice')
                     ->with(['order' => $this->order]);
     }
