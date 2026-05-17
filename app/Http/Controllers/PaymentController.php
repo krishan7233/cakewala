@@ -49,27 +49,7 @@ class PaymentController extends Controller
 
     public function initiatePayment(Request $request)
     {
-     $request->validate([
-            'selectedDate' => 'required|date|after_or_equal:today',
-            'selectedDeliveryType' => 'required|in:19,49,99,249',
-            'selectdeliveryTypeLabel' => 'required|string',
-            'selectedTimeSlot' => 'required|string',
-             'sender_name' => 'required|string|max:255',
-            'sender_phone' => 'required|digits:10|regex:/^[6-9]\d{9}$/',
-            'occasion' => 'required|string|max:255',
-        ]);
-        
-        
-        $shipping_type=$request->selectedDeliveryType;
-        $shipping_type_message=$request->selectdeliveryTypeLabel;
-        $delivery_date = $request->selectedDate; // e.g., 2025-06-01
-        $delivery_time = $request->selectedTimeSlot; // e.g., 14:30
-        
-        $sender_name = $request->sender_name;
-        $sender_phone = $request->sender_phone;
-        
-        $occasion = $request->occasion;
-        
+
         $addressId = $request->address_id;
         $totalamount=$request->total_amount;
         $order_messages=$request->order_messages;
@@ -124,8 +104,8 @@ class PaymentController extends Controller
        
         $couponId=$coupon->id??0;
         $coupon_discount=$coupon->discount_value??0;
-        $total_amount=$totalamount;
-        // $total_amount=1;
+        // $total_amount=$totalamount;
+        $total_amount=1;
           // Get logged-in user ID
 
         // Example: Use address details in payment fields (optional)
@@ -135,7 +115,7 @@ class PaymentController extends Controller
         $billing_address = $address->address ?? 'Default Address';
 
         // $order_id = 'ORD' . rand(1000, 9999);
-        $order_id = 'ORD' . Carbon::now()->format('YmdHis') . rand(10, 99);
+        $order_id = 'ORD' . Carbon::now()->format('YmdHis') . rand(1000, 9999);
 
         $merchant_data = 'merchant_id=' . env('CCAVENUE_MERCHANT_ID') . '&';
         $merchant_data .= 'order_id=' . $order_id . '&';
@@ -150,15 +130,7 @@ class PaymentController extends Controller
         $merchant_data .= 'merchant_param2=' . $couponId . '&';
         $merchant_data .= 'merchant_param3=' . $address->id . '&';
         $merchant_data .= 'merchant_param4=' . $order_messages . '&';
-        $merchant_data .= 'merchant_param5=' . $shipping_type . '&';
-        $merchant_data .= 'merchant_param6=' . $shipping_type_message . '&';
-        $merchant_data .= 'merchant_param7=' . $delivery_date . '&';
-        $merchant_data .= 'merchant_param8=' . $delivery_time . '&';
-         $merchant_data .= 'merchant_param9=' . $sender_name . '&';
-          $merchant_data .= 'merchant_param10=' . $sender_phone . '&';
-        $occasion .= 'merchant_param11=' . $occasion . '&';
         $merchant_data .= 'billing_email=' . $billing_email;
-        
 
 
 
@@ -188,16 +160,7 @@ class PaymentController extends Controller
         $userId = $responseData['merchant_param1'] ?? auth()->id(); 
         $couponId = $responseData['merchant_param2'] ?? null;  
         $address_id=$responseData['merchant_param3'] ?? null; 
-        $order_messages=$responseData['merchant_param4'] ?? null;
-        $shipping_type=$responseData['merchant_param5'] ?? null;
-        $shipping_type_message=$responseData['merchant_param6'] ?? null;
-        $delivery_date=$responseData['merchant_param7'] ?? null;
-        $delivery_time=$responseData['merchant_param8'] ?? null;
-        $sender_name=$responseData['merchant_param9'] ?? null;
-        $sender_phone=$responseData['merchant_param10'] ?? null;
-        $occasion=$responseData['merchant_param11'] ?? null;
-        
-        
+        $order_messages=$responseData['merchant_param4'] ?? null; 
         
         try {
             
@@ -208,8 +171,6 @@ class PaymentController extends Controller
             Auth::login($user);
         }
 
-   
-        
 
         $order = DB::table('orders')->insertGetId([
             'user_id' => $userId,
@@ -221,13 +182,6 @@ class PaymentController extends Controller
             'payment_amount' => $responseData['amount'] ?? 0,
             'coupon_id' => $couponId,
             'order_messages'=>$order_messages,
-            'sender_name'=>$sender_name,
-            'sender_phone'=>$sender_phone,
-            'occasion'=>$occasion,
-            'shipping_charge'=>$shipping_type,
-            'shipping_type_message'=>$shipping_type_message,
-            'delivery_date'=>$delivery_date,
-            'time_slot'=>$delivery_time,
             'payment_json' => json_encode($responseData),
             'created_at' => now(),
             'updated_at' => now(),
@@ -255,13 +209,11 @@ class PaymentController extends Controller
                 'quantity' => $item->quantity,
                 'price_per_unit' => $item->price,
                 'subtotal' => $item->quantity * $item->price,
-                // 'shipping_charge'=>$item->shipping_charge,
-                // 'shipping_type_message'=>$item->shipping_type_message,
-                // 'delivery_date'=>$item->delivery_date,
-                // 'time_slot'=>$item->time_slot,
+                'shipping_charge'=>$item->shipping_charge,
+                'delivery_date'=>$item->delivery_date,
+                'time_slot'=>$item->time_slot,
                 'product_message'=>$item->product_message,
                 'order_image'=>$item->order_image,
-                'cake_flavour'=>$item->cake_flavour,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -294,32 +246,12 @@ class PaymentController extends Controller
     
         public function offlinePayment(Request $request)
     {
-        
-          $request->validate([
-            'selectedDate' => 'required|date|after_or_equal:today',
-            'selectedDeliveryType' => 'required|in:19,49,99,249',
-            'selectdeliveryTypeLabel' => 'required|string',
-            'selectedTimeSlot' => 'required|string',
-             'sender_name' => 'required|string|max:255',
-            'sender_phone' => 'required|digits:10|regex:/^[6-9]\d{9}$/',
-            'occasion' => 'required|string|max:255',
-        ]);
-        
-        $sender_name = $request->sender_name;
-        $sender_phone = $request->sender_phone;
-        $occasion=$request->occasion;
-        $shipping_type=$request->selectedDeliveryType;
-        $shipping_type_message=$request->selectdeliveryTypeLabel;
-        $delivery_date = $request->selectedDate; // e.g., 2025-06-01
-        $delivery_time = $request->selectedTimeSlot; // e.g., 14:30
-        
-        
-        
+
         $addressId = $request->address_id;
         $totalamount=$request->total_amount;
         $order_messages=$request->order_messages;
         $coupon_code=$request->coupon_code;
-  
+        
         // You can retrieve address details if needed
         $address = DeliveryAddress::find($addressId);
         
@@ -337,7 +269,7 @@ class PaymentController extends Controller
                     ->where('code', $coupon_code)
                     ->where('status','active')
                     ->first();
- 
+
             if (!$coupon) {
                 return response()->json([
                     'status' => 'error',
@@ -366,13 +298,13 @@ class PaymentController extends Controller
 
             
         }
-
+       
         $couponId=$coupon->id??0;
         $coupon_discount=$coupon->discount_value??0;
-        $total_amount=$totalamount;
-        // $total_amount=1;
+        // $total_amount=$totalamount;
+        $total_amount=1;
 
-        $order_id = substr(Carbon::now()->format('u'), -4) . rand(10, 99);
+        $order_id = 'ORD' . Carbon::now()->format('YmdHis') . rand(1000, 9999);
         
         try {
             
@@ -385,23 +317,15 @@ class PaymentController extends Controller
                     'tracking_id'=>$order_id,
                     'address_id'=>$addressId,
                     'payment_status' => 'Success',
-                    'payment_type' => 'COD',
+                    'payment_type' => 'Offline',
                     'payment_amount' => $total_amount ?? 0,
                     'coupon_id' => $couponId,
                     'order_messages'=>$order_messages,
-                    'sender_name'=>$sender_name,
-                    'sender_phone'=>$sender_phone,
-                    'occasion'=>$occasion,
-                    'shipping_charge'=>$shipping_type,
-                    'shipping_type_message'=>$shipping_type_message,
-                    'delivery_date'=>$delivery_date,
-                    'time_slot'=>$delivery_time,
                     'payment_json' => json_encode($request->all()),
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);
 
-                
             $responseData=(array)DB::table('orders')->where('id',$order)->first();
                 $session_id = session()->getId();
         
@@ -425,13 +349,11 @@ class PaymentController extends Controller
                         'quantity' => $item->quantity,
                         'price_per_unit' => $item->price,
                         'subtotal' => $item->quantity * $item->price,
-                        // 'shipping_charge'=>$item->shipping_charge,
-                        // 'shipping_type_message'=>$item->shipping_type_message,
-                        // 'delivery_date'=>$item->delivery_date,
-                        // 'time_slot'=>$item->time_slot,
+                        'shipping_charge'=>$item->shipping_charge,
+                        'delivery_date'=>$item->delivery_date,
+                        'time_slot'=>$item->time_slot,
                         'product_message'=>$item->product_message,
                         'order_image'=>$item->order_image,
-                        'cake_flavour'=>$item->cake_flavour,
                         'created_at' => now(),
                         'updated_at' => now(),
                     ]);
@@ -463,13 +385,11 @@ class PaymentController extends Controller
     public function sendOrderInvoice($order_id){
         $order = Order::with('items.product', 'user')->findOrFail($order_id);
         Mail::to($order->user->email)->send(new OrderInvoiceMail($order));
-        Mail::to('cakeplaza3@gmail.com')->send(new OrderInvoiceMail($order));
-
         // return true;
     }
 
     public function emailInvoice(){
-            $order_id=104;
+            $order_id=14;
             $order = Order::with('items', 'user')->findOrFail($order_id);
             
         Mail::to($order->user->email)->send(new OrderInvoiceMail($order));

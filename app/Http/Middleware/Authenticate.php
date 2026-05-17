@@ -17,8 +17,7 @@ class Authenticate extends Middleware
         if (!auth()->check()) {
             // Store the current URL in the session before redirecting to login
             session()->put('previous_url', url()->current());
-//      $previousUrl = session()->get('previous_url');
-// dd($previousUrl);
+    
             // Redirect to login page
             return route('login');
         }

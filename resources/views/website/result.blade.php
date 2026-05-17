@@ -1,37 +1,28 @@
 @extends('website.website_app')
 @section('content')
-request()->is('offline-confiramtion')
 <style>
-
-.card.shadow.p-4 {
-    padding: 10px;
-}
-h4 {
-    font-size: 25px;
-  
-}
-.container3 {
+   .container3 {
     margin-top: 190px!important;
     width: 95%;
     margin: auto;
-    padding-bottom: 65px;
+}
+.card.shadow.p-4 {
+    padding: 10px;
 }
     @media only screen and (max-width: 600px) {
  .container3 {
-    margin-top: 120px!important;
+    margin-top: 90px!important;
 }
 }
 </style>
 <div class="container3 mt-5">
-    <div class="shadow p-4" style="text-align:center;align-item:center">
-        <h4 class="mb-3">Order Id: {{ $data['order_id'] ?? $data['tracking_id'] }}</h4>
-        <h4 class="mb-3">Order successfully Placed</h4>
-       <!-- <h4 class="mb-3">Payment Details:</h4>
+    <div class="card shadow p-4">
+        <h4 class="mb-3">Payment Details:</h4>
         <table class="table table-bordered">
             <tbody>
                 <tr>
                     <th>Order ID</th>
-                    <td>{{ $data['order_id'] ?? $data['tracking_id'] }}</td>
+                    <td>{{ $data['order_id'] ?? '-' }}</td>
                 </tr>
                 <tr>
                     <th>Tracking ID</th>
@@ -79,7 +70,7 @@ h4 {
                 </tr>
             </tbody>
         </table>
--->
+
         <a href="{{ url('/') }}" class="btn btn-primary mt-3">Go to Home</a>
     </div>
 </div>

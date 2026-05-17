@@ -1,31 +1,21 @@
 @extends('website.website_app')
 @section('content')
 <style>
-.container3 {
-    width: 100%;
+.container {
+    width: 97%;
     max-width: 1600px;
-    margin: 190px auto 80px auto; /* top: 190px, bottom: 80px, auto for left/right centering */
+    margin-top: 190px;
+    margin-bottom: 80px;
     padding: 0 20px;
-    display: block; /* or remove this line entirely, as block is default for divs */
 }
-
 h1 {
     font-size: 40px;
     line-height: 110%;
     margin: 2.8rem 0 1.68rem 0;
     font-weight: bold;
 }
-
-@media only screen and (max-width: 600px) {
-.container3 {
-    margin-top: 115px;
-
-}
-}
-
-
 </style>
-  <div class="container3">
+  <div class="container">
     <div class="breadcrumb">
       HOME PAGE <span>/ ABOUT US</span>
     </div>
@@ -53,7 +43,7 @@ h1 {
         Order cakes and other celebratory gifts from Cake Plaza to add cherry to the occasions, today!
       </p>
       <div class="download-section">
-        <a href="https://cakeplaza.in/assets/website/img/Company-profile.pdf" class="download-link">Download</a> Company Profile
+        <a href="#" class="download-link">Download</a> Company Profile
       </div>
     </div>
   </div>

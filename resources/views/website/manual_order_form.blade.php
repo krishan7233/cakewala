@@ -82,53 +82,11 @@
     padding: 0px 10px;
 }
     }
-#loader-overlay {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(255, 255, 255, 0.7);
-  z-index: 9999;
-  align-items: center;
-  justify-content: center;
-  display: flex; /* important for centering */
-}
-
-.loader-content {
-  text-align: center;
-}
-
-.spinner {
-  width: 50px;
-  height: 50px;
-  border: 6px solid #eee;
-  border-top: 6px solid #7e57c2;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 0 auto;
-}
-
-.loader-content p {
-  margin-top: 10px;
-  font-weight: bold;
-  color: #333;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-    
   </style>
 
 
-<div id="loader-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.7); z-index:9999; justify-content:center; align-items:center;">
-  <div style="text-align:center;">
-    <div class="spinner" style="border: 5px solid #f3f3f3; border-top: 5px solid #7e57c2; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;"></div>
-    <p style="margin-top:10px; color:#333; font-weight:bold;">Please wait...</p>
-  </div>
-</div>
 <div class="container3">
+   
 <form class="form-container" method="post" enctype="multipart/form-data">
     <h2>Manual Order Form</h2>
 
@@ -156,10 +114,6 @@
     <div class="form-group">
       <label for="alt-phone">Alternate Phone Number</label>
       <input type="text" id="alt-phone" name="alternate_number" />
-    </div>
-    <div class="form-group">
-      <label for="email_id">Email ID</label>
-      <input type="email" class="form-control" id="email_id" name="email_id" placeholder="Enter your email" required>
     </div>
     <div class="form-group">
       <label for="occasion">Occasion</label>
@@ -207,10 +161,9 @@
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         beforeSend: function () {
-          $('#loader-overlay').fadeIn(); // Show loader
+          // You can show a loader here
         },
         success: function (response) {
-          $('#loader-overlay').fadeOut(); // Hide loader
           if (response.status === 'success') {
             Swal.fire({
               icon: 'success',

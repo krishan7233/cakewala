@@ -20,16 +20,13 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Coupon;
 use App\Models\ManualOrder;
-use App\Mail\ManualOrderInvoice;
-use App\Mail\QueryFormInvoice;
-use Illuminate\Support\Facades\Mail;
+
 use Illuminate\Support\Facades\Session;
 class HomeWebController extends Controller
 {
     //
     
     public function queryForm(){
-        
     return view('website.query-form');
 }
 
@@ -52,9 +49,7 @@ public function querySave(Request $request){
             $reference_photo->move('query-document', $reference_photo_name);
             $queryData['reference_photo'] = $reference_photo_name;
         }
-        // Query::create($queryData);
-        $querySaveData = Query::create($queryData);
-        Mail::to('cakeplaza3@gmail.com')->send(new QueryFormInvoice($querySaveData));
+        Query::create($queryData);
 
         return response()->json([
             'status' => 'success',
@@ -65,12 +60,8 @@ public function querySave(Request $request){
     {
         $query = $request->input('q');
             $slug = Str::slug($query);
-        
-        
-        $category = Category::where('name', 'LIKE', '%' . $query . '%')
-            ->orWhere('cat_slug', $slug)
-            ->first();
-        // $category = Category::where('cat_slug', $slug)->first();
+
+        $category = Category::where('cat_slug', $slug)->first();
         if ($category) {
             return redirect()->route('product.by.category', ['cat_slug' => $category->cat_slug]);
         }
@@ -84,7 +75,7 @@ public function querySave(Request $request){
         // return view('website.home',compact('banners'));
         
          $banners = Banner::where('status','1')->get();
-        $categorys = Category::where('home_page_cat',1)->where('status','1')->take(8)->get();
+        $categorys = Category::where('status','1')->take(8)->get();
         $gift_categorys = Category::where('status','1')->take(8)->get();
         $categoryIds = [167, 216];
         $products = Product::with(['category', 'subcategory', 'variants', 'images'])
@@ -143,188 +134,91 @@ public function querySave(Request $request){
     // }
 
 
-    public function product_by_category(Request $request, $cat_slug,$subcatslug='')
+    public function product_by_category(Request $request, $cat_slug)
 {
-    
-    $subcat_slug = $subcatslug;
+    // Find the category based on slug
+    $category = Category::where('cat_slug', $cat_slug)->firstOrFail();
 
-    $cat_static_list = ['eggless-cakes-near-me', 'eggless-online-cakes', 'cake-delivery-in-kalkaji-delhi', 'cake-delivery-sector-28-gurgaon', 'online-cake-delivery-sector-36a-gurgaon', 'online-cake-delivery-sector-10-gurgaon', 'online-cake-delivery-sector-46-gurgaon', 'online-cake-delivery-sector-52-gurgaon', 'online-cake-delivery-dlf-phase-2-gurgaon', 'online-cake-delivery-dlf-phase-4-gurgaon'];
+    // Base query for products with relationships
+    $productsQuery = Product::with(['category', 'subcategory', 'variants', 'images'])
+        ->where('category_id', $category->id);
 
-    if (in_array($cat_slug, $cat_static_list)) {
-       
-                    // Find the category based on slug
-            // $category = Category::all();
-            $category = Category::where('cat_slug', $cat_slug)->firstOrFail();
-        
-            $minPrice = $request->has('minPrice') ? (float)$request->minPrice : 0;
-                $maxPrice = $request->has('maxPrice') ? (float)$request->maxPrice : PHP_INT_MAX;
-                $productsQuery = Product::with(['category', 'subcategory', 'images', 'variants' => function($q) use ($minPrice, $maxPrice) {
-                    $q->whereBetween('price', [$minPrice, $maxPrice]);
-                }])->withMin('variants', 'price')->orderBy('variants_min_price','asc');
-            
-                $productsQuery->whereHas('variants', function($q) use ($minPrice, $maxPrice) {
-                    $q->whereBetween('price', [$minPrice, $maxPrice]);
-            });
-             
-            // Price filter logic (based on variants)
-            if ($request->has('categoryFilter')) {
-                $categoryFilter = $request->input('categoryFilter');
-                $productsQuery->where('category_id', $categoryFilter);
-               
-            }
-        
-        
-        
-        
-        
-        
-            // Final products
-            $products = $productsQuery->paginate(40);
-            
-            if ($request->ajax()) {
-                if ($products->isEmpty()) {
-                    return response()->json([
-                        'html' => '',
-                        'next_page_url' => null
-                    ]);
-                }
-        
-                return response()->json([
-                    'html' => view('website.product-list', compact('products'))->render(),
-                    'next_page_url' => $products->hasMorePages() ? $products->nextPageUrl() : ""
-                ]);
-            }
-            
-           $flavours = DB::table('flavours')
-                        ->where('status','1')
-                        ->pluck('flavour_name', 'id') // id = key, flavour_name = value
-                        ->toArray();
-            return view('website.location-wise-products', compact('products','category','flavours'));
-    } else 
-    {
-            
-        
-        
-        
-        // Find the category based on slug
-        $category = Category::where('cat_slug', $cat_slug)->firstOrFail();
-            $subcategories = SubCategory::where('category_id', $category->id)->where('status', 1)->get();
+    // Price filter logic (based on variants)
+    if ($request->has('minPrice') || $request->has('maxPrice')) {
+        $minPrice = $request->input('minPrice', 0);
+        $maxPrice = $request->input('maxPrice', PHP_INT_MAX);
 
-        $selectedSubcategory = $subcat_slug;
-    
-    $minPrice = $request->has('minPrice') ? (float)$request->minPrice : 0;
-        $maxPrice = $request->has('maxPrice') ? (float)$request->maxPrice : PHP_INT_MAX;
-        $productsQuery = Product::with(['category', 'subcategory', 'images', 'variants' => function($q) use ($minPrice, $maxPrice) {
-            $q->whereBetween('price', [$minPrice, $maxPrice]);
-            
-        }])->withMin('variants', 'price')->orderBy('variants_min_price','asc')->where('category_id', $category->id) ;
-    
-        $productsQuery->whereHas('variants', function($q) use ($minPrice, $maxPrice) {
-            $q->whereBetween('price', [$minPrice, $maxPrice]);
+        $productsQuery->whereHas('variants', function ($query) use ($minPrice, $maxPrice) {
+            $query->whereBetween('price', [$minPrice, $maxPrice]);
         });
-    $subcategory='';
-      if (!empty($subcat_slug)) {
-        $subcategory = SubCategory::where('subcat_slug', $subcat_slug)->first();
-        if (!empty($subcategory)) {
-            $productsQuery->whereRaw("FIND_IN_SET(?, subcategory_id)", [$subcategory->id]);
+    }
 
-            // $productsQuery->where('subcategory_id', $subcategory->id);
-        }
-    }
-        
-       // Flavour filtering
-    if ($request->has('flavour') && !empty($request->input('flavour'))) {
-        $flavour = $request->input('flavour');
-        // Assuming your products table has a 'flavours' column storing IDs like "1,2,3"
-        $productsQuery->whereRaw("FIND_IN_SET(?, flavours)", [$flavour]);
-    }
+    // Sorting logic
+    // if ($request->has('sort')) {
+    //     $sort = $request->input('sort');
+    //     if ($sort == 'priceLowHigh') {
+    //         $productsQuery->withMin('variants', 'price')->orderBy('variants_min_price');
+    //     } elseif ($sort == 'priceHighLow') {
+    //         $productsQuery->withMax('variants', 'price')->orderByDesc('variants_max_price');
+    //     }
+    // }
     
     
-        // Final products
-        $products = $productsQuery->paginate(40);
-        
-         if ($request->ajax()) {
-            if ($products->isEmpty()) {
-                return response()->json([
-                    'html' => '',
-                    'next_page_url' => null
-                ]);
-            }
-    
-            return response()->json([
-                'html' => view('website.product-list', compact('products'))->render(),
-                'next_page_url' => $products->hasMorePages() ? $products->nextPageUrl() : ""
-            ]);
-        }
-        
-       $flavours = DB::table('flavours')
-                    ->where('status','1')
-                    ->pluck('flavour_name', 'id') // id = key, flavour_name = value
-                    ->toArray();
-                $subcategories = SubCategory::where('category_id', $category->id)->latest() // orders by created_at descending
-                            ->take(5)  // limit 5 results
-                            ->get();
+   // Flavour filtering
+if ($request->has('flavour') && !empty($request->input('flavour'))) {
+    $flavour = $request->input('flavour');
+    // Assuming your products table has a 'flavours' column storing IDs like "1,2,3"
+    $productsQuery->whereRaw("FIND_IN_SET(?, flavours)", [$flavour]);
+}
 
-        return view('website.category_to_product_list', compact('products', 'category','subcategory','subcategories','selectedSubcategory','flavours'));
-    }
+
+    // Final products
+    $products = $productsQuery->paginate(40);
+    
+   $flavours = DB::table('flavours')
+                ->where('status','1')
+                ->pluck('flavour_name', 'id') // id = key, flavour_name = value
+                ->toArray();
+    return view('website.category_to_product_list', compact('products', 'category','flavours'));
 }
 
 public function allproductlist(Request $request){
     
-    
-      $cat_static_list = ['plants','flowers','party-accessories','combos','mixed-flower-bouquets','vase-arrangements','basket-arrangements','heart-shaped-bouquets','desserts'];
-
         // Find the category based on slug
-    // $category = Category::all();
-    $category = Category::whereNotIn('cat_slug', $cat_static_list)->get();
-    $category_ids = Category::whereNotIn('cat_slug', $cat_static_list)->pluck('id')->toArray();
+    $category = Category::all();
 
+    // Base query for products with relationships
+    $productsQuery = Product::with(['category', 'subcategory', 'variants', 'images']);
+        // ->where('category_id', $category->id);
 
-    $minPrice = $request->has('minPrice') ? (float)$request->minPrice : 0;
-        $maxPrice = $request->has('maxPrice') ? (float)$request->maxPrice : PHP_INT_MAX;
-        $productsQuery = Product::with(['category', 'subcategory', 'images', 'variants' => function($q) use ($minPrice, $maxPrice) {
-            $q->whereBetween('price', [$minPrice, $maxPrice]);
-        }])->withMin('variants', 'price')->orderBy('variants_min_price','asc')->whereIn('category_id', $category_ids);
-    
-        $productsQuery->whereHas('variants', function($q) use ($minPrice, $maxPrice) {
-            $q->whereBetween('price', [$minPrice, $maxPrice]);
-
-    });
-     
     // Price filter logic (based on variants)
     if ($request->has('categoryFilter')) {
         $categoryFilter = $request->input('categoryFilter');
         $productsQuery->where('category_id', $categoryFilter);
        
     }
-    
-    
+
+    if ($request->has('minPrice') || $request->has('maxPrice')) {
+        // $minPrice = $request->input('minPrice', 0);
+        // $maxPrice = $request->input('maxPrice', PHP_INT_MAX);
+$minPrice = (float) str_replace(',', '', $request->input('minPrice', 0));
+$maxPrice = (float) str_replace(',', '', $request->input('maxPrice', 99999999));
+
+       $productsQuery->whereHas('variants', function ($query) use ($minPrice, $maxPrice) {
+        $query->whereBetween('price', [$minPrice, $maxPrice]);
+    });
+    }
+
+
 
     // Final products
     $products = $productsQuery->paginate(40);
-    
-    if ($request->ajax()) {
-        if ($products->isEmpty()) {
-            return response()->json([
-                'html' => '',
-                'next_page_url' => null
-            ]);
-        }
-
-        return response()->json([
-            'html' => view('website.product-list', compact('products'))->render(),
-            'next_page_url' => $products->hasMorePages() ? $products->nextPageUrl() : ""
-        ]);
-    }
     
    $flavours = DB::table('flavours')
                 ->where('status','1')
                 ->pluck('flavour_name', 'id') // id = key, flavour_name = value
                 ->toArray();
-    
-    $filtercat=['311'=>'Birthday Cakes','307'=>'Anniversary Cakes','216'=>'Kids Cake','167'=>'Designer Cake'];
-    
-    return view('website.allproduct', compact('products','category','filtercat','flavours'));
+    return view('website.allproduct', compact('products','category','flavours'));
 }
     
      public function product_detail($cat_slug, $product_slug)
@@ -346,8 +240,7 @@ public function allproductlist(Request $request){
             $flavours = DB::table('flavours')
                 ->whereIn('id', $flavourIds)
                 ->where('status','1')
-                // ->pluck('flavour_name')
-                 ->pluck('flavour_name', 'id')
+                ->pluck('flavour_name')
                 ->toArray();
         }
         
@@ -393,7 +286,7 @@ public function allproductlist(Request $request){
             $flavours = DB::table('flavours')
                 ->whereIn('id', $flavourIds)
                 ->where('status','1')
-             ->pluck('flavour_name', 'id')
+                ->pluck('flavour_name')
                 ->toArray();
         }
         
@@ -494,45 +387,6 @@ public function allproductlist(Request $request){
 
 
 
-    public function checkout_final()
-{
-
-    
-     $session_id = Session::getId();
-    $query = Cart::with(['product', 'product.images', 'variant']);
-
-    if(auth()->check()) {
-        // logged in user: fetch carts for user OR current session
-        $query->where(function($q) use ($session_id) {
-            $q->where('user_id', auth()->id())
-            ->orWhere('session_id', $session_id);
-        });
-    } else {
-        // guest user: fetch carts only for the session
-        $query->where('session_id', $session_id);
-    }
-
-    $cartItems = $query->get();
-
-    // $cartItems = Cart::with(['product.images', 'variant'])->where('session_id', session()->getId())->get();
-
-    $mrpTotal = $cartItems->sum(fn($item) => $item->price * $item->quantity);
-    $discount = $cartItems->sum(fn($item) => ($item->discount ?? 0) * $item->quantity);
-    $deliveryCharge = $cartItems->sum(fn($item) => $item->shipping_charge ?? 0);
-
-    $convenienceCharge = 0;
-    // $deliveryCharge = 0; // Or set as needed
-
-    $totalAmount = ($mrpTotal - $discount) + $convenienceCharge + $deliveryCharge;
-
-    $latestAddress = DeliveryAddress::where('user_id', auth()->id())
-    ->latest() // This uses created_at to sort by latest
-    ->first();
-    
-
-    return view('website.final-checkout', compact('cartItems', 'mrpTotal', 'discount', 'deliveryCharge', 'convenienceCharge', 'totalAmount','latestAddress'));
-}
-
 
     public function addToCart(Request $request)
     {
@@ -540,12 +394,10 @@ public function allproductlist(Request $request){
        $validationRules = [
             'product_id' => 'required|exists:products,id',
             'variant_id' => 'nullable|exists:product_variants,id',
-            'delivery_date' => 'nullable',
-            'delivery_time' => 'nullable',
-            'shipping_type' => 'nullable',
-            'shipping_type_message'=>'nullable',
+            'delivery_date' => 'required',
+            'delivery_time' => 'required',
+            'shipping_type' => 'required',
             'product_message' => 'nullable',
-            'cake_flavour'=>'nullable',
             'order_image' => 'nullable',  // Default rule: image is not required
             'quantity' => 'nullable|integer|min:1'
         ];
@@ -576,13 +428,10 @@ public function allproductlist(Request $request){
         $deliveryDate = $request->delivery_date; // e.g., 2025-06-01
         $time_slot = $request->delivery_time; // e.g., 14:30
         $product_message=$request->product_message;
-        $cake_flavour=$request->cake_flavour;
-        
         // Combine into single datetime format
         // $deliveryDatetime = date('Y-m-d H:i:s', strtotime("$deliveryDate $deliveryTime"));
 
         $shipping_type=$request->shipping_type;
-        $shipping_type_message=$request->shipping_type_message;
         // Find the product + variant
         // $product = Product::findOrFail($product_id);
         // $product->category_id
@@ -633,12 +482,10 @@ public function allproductlist(Request $request){
                 'price' => $price,
                 'discount' => $variant ? $variant->discount : null,
                 'shipping_charge'=>$shipping_type,
-                'shipping_type_message'=>$shipping_type_message,
                 'delivery_date'=>$deliveryDate,
                 'time_slot'=>$time_slot,
                 'product_message'=>$product_message,
                 'order_image'=>$photoPath,
-                'cake_flavour'=>$cake_flavour,
             ]);
     
             return response()->json([
@@ -791,14 +638,6 @@ public function terms_conditions(){
     return view('website.terms_conditions');    
 }
 
-public function privacy_policy(){
-    
-    return view('website.privacy_policy');    
-}
-public function cancellation_returns(){
-    
-    return view('website.cancellation_returns');    
-}
 
 public function blog(){
     $blogs = Blog::where('status','1')->paginate(12);
@@ -924,7 +763,6 @@ public function order_list(){
             'city' => 'required|string',
             'mobile' => 'required|string',
             'alt_mobile' => 'nullable|string',
-            'address_type'=>'required',
         ]);
 
         $deliveryAddress = DeliveryAddress::create([
@@ -936,7 +774,6 @@ public function order_list(){
             'city' => $request->city,
             'mobile' => $request->mobile,
             'alt_mobile' => $request->altMobile,
-            'address_type'=>$request->address_type,
         ]);
 
         return response()->json([
@@ -957,7 +794,6 @@ public function manualOrderSubmit(Request $request)
         'receiver_name' => 'required|string',
         'contact_number' => 'nullable|string',
         'alternate_number' => 'nullable|string',
-        'email_id' => 'required|email|max:255',
         'occasion' => 'nullable|string',
         'cake_message' => 'nullable|string',
         'flavour' => 'required|string',
@@ -973,17 +809,13 @@ public function manualOrderSubmit(Request $request)
 
 
     // Save to database
-    // ManualOrder::create($validated);
-    $order = ManualOrder::create(attributes: $validated);
+    ManualOrder::create($validated);
 
-    Mail::to('cakeplaza3@gmail.com')->send(new ManualOrderInvoice($order));
-    Mail::to($validated['email_id'])->send(new ManualOrderInvoice($order));
     return response()->json([
         'status' => 'success',
         'message' => 'Manual order saved successfully!'
 
     ]);
-    
 }
 
 public function coupon_check(Request $request)
@@ -1026,8 +858,6 @@ public function coupon_check(Request $request)
             'discount' => $coupon->discount_value ?? 0
         ]);
     }
-
-
 
 
 

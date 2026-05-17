@@ -13,17 +13,8 @@
                 height: 21px;
                 gap: 2px;
             }
-    .container3 {
-    padding-top: 150px;
-    background: #f4f7f8;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom: 30px;
-}
-.white1 {
-    background-color: #fff!important;
-    padding: 20px 0!important;
-    border-radius: 10px;
+            .container3 {
+    margin-top: 204px;
 }
 .pagination li a {
     color: #444;
@@ -56,41 +47,6 @@ li.page-item {
 div#mobilebread {
     display: none;
 }
-h1 {
-    font-size: 22px;
-    font-weight: 600;
-}
-
-.eggStatusContainer {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0;
-    margin-top: -30px;
-    position: absolute;
-    background: #fff;
-    width: fit-content;
-    padding: 2px;
-    border-radius: 4px;
-    margin-left: 15px;
-    cursor: auto;
-}
-.sqContainer.eggless {
-    border: 2px solid #22AA00;
-}
-.sqContainer {
-    width: 15px;
-    height: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-}
-.withoutEggCircle {
-    width: 0;
-    height: 0;
-    border: 3.5px solid #22AA00;
-    border-radius: 50%;
-}
 @media only screen and (max-width: 600px) {
 .row.filt {
     background: #EFEFEF;
@@ -100,14 +56,6 @@ h1 {
 }
 div#desktopfil {
     display: none;
-}
-div#mobileMenu {
-    display: block;
-    background: #fff;
-}
-.overlay.active {
-    display: block;
-    background: #fff;
 }
 .section {
     margin-top: 50px;
@@ -130,17 +78,7 @@ h1 {
     margin-top: 10px;
  }
 .container3 {
-    margin-top: 85px;
-    padding-top: 1px;
-    background: #f4f7f8;
-    padding-left: 0;
-    padding-right: 0;
-    padding-bottom: 30px;
-}
-.white1 {
-    background-color: #fff!important;
-    padding: 5px 0!important;
-    border-radius: 10px;
+    margin-top: 110px;
 }
 .new-slide-card-without-city {
  padding-right: 0px;
@@ -166,8 +104,7 @@ span.crossMoneyFont {
     font-size: 10px!important;
 }
 .briefPageTitle h1 {
- font-size: 22px;
- font-weight: 600px;
+ font-size: 30px;
 }
   right: -132px;
 }
@@ -199,7 +136,7 @@ span.crossMoneyFont {
             <div class="row m-0" id="desktopbread">
                 <div class="col s12 breadcrumb-wrapper paddingTopArea" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="{{URL('/')}}" class="breadcrumb" itemtype="https://schema.org/WebPage" itemprop="item">
+                        <a href="index.html" class="breadcrumb" itemtype="https://schema.org/WebPage" itemprop="item">
                             <span itemprop="name">Home</span>
                         </a>
                         <meta itemprop="position" content="0" />
@@ -210,7 +147,7 @@ span.crossMoneyFont {
                         <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"></path>
                     </svg>
                     <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="{{ route('product.by.category', 'allproduct') }}" class="breadcrumb" itemtype="https://schema.org/WebPage" itemprop="item">
+                        <a href="#!" class="breadcrumb" itemtype="https://schema.org/WebPage" itemprop="item">
                             <span itemprop="name">Cakes</span>
                         </a>
                         <meta itemprop="position" content="1" />
@@ -219,7 +156,7 @@ span.crossMoneyFont {
 
             </div>
 
-            <div class="white1" itemscope itemtype="http://schema.org/ItemList" style="padding:3px;">
+            <div class="white" itemscope itemtype="http://schema.org/ItemList" style="padding:3px;">
                 <div class="section" style="padding: 0 10px;">
                     <div class="row filt" id="desktopfil">
                         <div class="col m5 s5" style="padding-top: 8px;">
@@ -306,99 +243,162 @@ span.crossMoneyFont {
     font-weight: bold;
     cursor: pointer;
 }
-.active{
-    background: #fff;
-    color:#000;
-}
-.btn-group.mb-3 a {
-    background: #fff;
-    color:#000;
-    border:1px solid #9e9e9e;
-    margin: 2px;
-}
-.category-scroll-wrapper {
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
-}
-
-.category-scroll-wrapper .btn-group {
-    display: inline-flex;
-    flex-wrap: nowrap;
-}
-
 </style>
 
-<!-- Filter Modal -->
-<div id="productFilter" class="filter-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); z-index: 9999;">
-    <div style="background: #fff; margin: 50px auto; padding: 10px; width: 90%; max-width: 800px; border-radius: 10px; position: relative;">
-        
-        <!-- Close Icon -->
-        <div style="position: absolute; top: 10px; right: 15px; cursor: pointer;" onclick="closeFilterModal()">
-            <span style="font-size: 24px; font-weight: bold;">&times;</span>
-        </div>
+                    <!-- Filter Modal -->
+<div id="productFilter" class="filter-modal" style="display: none;">
+   <div class="col m5 s5" style="padding-top: 8px;">
+                            <div style="font-weight:600;font-size: 18px;">
+                                Cakes<span style="font-size:14px; padding-left:10px; font-weight: 300;">({{$products->count()}}
+                                    items)</span>
+                            </div>
+                        </div>
+                       
+                        <div class="col m2 s2" style="cursor: pointer;">
+                            <div id="desktopSortEvnt" class='price-filter' style="clear: both;">
+                                <span class="moneySymbol"
+                                    style="font-size: 13px;width: 18px; position: absolute; z-index: 1; margin-left: 7px; margin-top: 13px; pointer-events: none;"></span>
+                                <span
+                                    style=" display: block; font-size: 12px; margin-top: 1px; font-weight: 600; pointer-events: none;">Filter
+                                    By Category</span>
+                           
 
-        <!-- Modal Content -->
-        <div class="row" style="display: flex; flex-wrap: wrap;">
-            <div class="col m5 s5" style="padding-top: 8px;">
-                <div style="font-weight:600;font-size: 18px;">
-                    Cakes <span style="font-size:14px; padding-left:10px; font-weight: 300;">({{ $products->count() }} items)</span>
-                </div>
-            </div>
+                                <select id="categoryFilter" class="form-control">
+                                    <option value="">All Category</option>
+                                     @foreach($category as $ct)
+                                        <option value="{{ $ct->id }}">{{ $ct->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col m2 s2" style="">
+                   
+                         <span
+                                    style=" display: block; font-size: 12px; margin-top: 1px; font-weight: 600; pointer-events: none;">Filter
+                                    By Price</span>
+                           
 
-            <div class="col m2 s2" style="cursor: pointer; margin-left: 0px;">
-                <div id="desktopSortEvnt" class='price-filter' style="clear: both;">
-                    <span style="display: block; font-size: 12px; margin-top: 1px; font-weight: 600;">Filter By Category</span>
-                    <select id="categoryFilter2" class="form-control" style="width: 100%; margin-top: 5px;">
-                        <option value="">All Category</option>
-                        @foreach($category as $ct)
-                            <option value="{{ $ct->id }}">{{ $ct->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-            <div class="col m2 s2" style="margin-left: 0px;">
-                <span style="display: block; font-size: 12px; margin-top: 1px; font-weight: 600;">Filter By Price</span>
-                <select id="priceFilter2" class="form-control" style="width: 100%; margin-top: 5px;">
-                    <option value="">All Products</option>
-                    <option value="0-499">499 and Below</option>
-                    <option value="500-999">500 - 999</option>
-                    <option value="1000-1499">1000 - 1499</option>
-                    <option value="1500-5000">1500 - 5000</option>
-                </select>
-            </div>
-        </div>
-    </div>
+                                <select id="priceFilter" class="form-control">
+                                    <option value="">All Products</option>
+                                    <option value="0-499">499 and Below</option>
+                                    <option value="500-999">500 - 999</option>
+                                    <option value="1000-1499">1000 - 1499</option>
+                                    <option value="1500-5000">1500 - 5000</option>
+                                </select>
+                        </div>
 </div>
-
-
-<div class="category-scroll-wrapper mb-3">
-    <div class="btn-group mb-3" role="group">
-        @foreach($filtercat as $catId => $catName)
-            <a href="{{ route('allproduct', ['categoryFilter' => $catId]) }}"
-               class="btn btn-outline-primary {{ request('categoryFilter') == $catId ? 'active' : '' }}">
-                {{ $catName }}
-            </a>
-        @endforeach
-    </div>
-</div>
-
-
                   
-<div class="section" style="padding:0px">
-    <ul class="row cat-products-wrapper catProductContent" style="display: block; flex-wrap: wrap;">
-        @include('website.product-list', ['products' => $products])
-    </ul>
+                    <div class="section" style="padding:0px">
+                        <ul class="row cat-products-wrapper catProductContent" style="display: block;flex-wrap: wrap;">
+                            <input type="hidden" id="pageCountIndex" value="0" />
+                            <link itemprop="url" href="cake.html" />
+                            <meta itemprop="numberOfItems" content="40" />
+                           
 
-    <div id="product-loader" style="display:none; text-align:center;background: #000;width: 100px;margin: auto;padding: 10px;color:#fff;">Loading...</div>
-    <div id="load-more-end" style="display:none; text-align:center;">No more products</div>
+                            @php
+                                $prdCounter = 1;
+                            @endphp
+                            @foreach ($products as $product)
+                            
+                              @php
+                            
+                                $discountedPrice = $product->variants->first()->price - ($product->variants->first()->price * $product->variants->first()->discount / 100);
+                            @endphp
+                            
+                                <li class="col s6 m3  product odd prd_cnt_mb_{{ $prdCounter }}" itemprop="itemListElement" itemscope
+                                    itemtype="http://schema.org/ListItem"
+                                    style="padding:0 8px 9px !important;margin-left: 0;">
+                                    <meta itemprop="position" content="{{ $prdCounter }}" />
+                                      <a href="{{ route(@$product->subcategory->subcat_slug ? 'product.detail.withsub' : 'product.detail', [
+                                        'cat_slug' => $product->category->cat_slug,
+                                        'subcat_slug' => $product->subcategory?->subcat_slug,
+                                        'product_slug' => $product->slug,
+                                    ]) }}"
+                                        data-adbositionPl="{{ $prdCounter }}" data-primaryCategoryPl="{{ $product->category->name ?? '' }}" data-prodId="{{ $product->id }}"
+                                        data-prodSecond="Chocolate" itemprop="url" target="_BLANK"
+                                        rel="noopener noreferrer">
+                                        <div data-adbositionPl="{{ $prdCounter }}" data-primaryCategoryPl="{{ $product->category->name ?? '' }}" data-prodId="{{ $product->id }}"
+                                            data-prodSecond="Chocolate" itemprop="url" style="cursor: pointer;">
+                                            <div class="new-slide-card-without-city product-card z-depth-0">
+                                                
+                                                <div style="position:relative;">
+                                                    <picture>
+                                                        <source
+                                                            data-srcset="{{ asset($product->images->first()->image) }}"
+                                                            type="image/webp" />
+                                                        <img width="400" height="400"
+                                                            class="center-block responsive-img lazyload product-card-radius"
+                                                            src="{{ asset($product->images->first()->image) }}"
+                                                            data-src="{{ asset($product->images->first()->image) }}"
+                                                            alt="83221_Yummylicious Chocolate cake"
+                                                            title="{{ $product->name }}" />
+                                                    </picture>
+                                                    <div id="wishListDesktopITem" class="wishlistItemDesignForAllDevice"
+                                                        style="position:absolute;">
+                                                        <div id="addToWishlistForm21687" style="display:contents">
+                                                            <label>
+ 
+                                                                <input type="hidden" tabindex="-1" name="wishlistItemId"
+                                                                    id="wItemId_21687">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="new-slide-content-without-city" style="text-align:left;">
+                                                    <div class="truncate"
+                                                        style="color:#666;text-transform: capitalize;font-size: 15px;">
+                                                        {{ $product->name }}</div>
+                                                    <div class="price"
+                                                        style=" text-align:left;font-size:0px; color:#333;/*color:#ec018c;/*color:#222;*/">
+                                                        <span class="moneySymbol moneyFontSize"
+                                                            style="font-size:18px;">₹&nbsp;</span>
+                                                        <span data-inr="{{$product->variants->first()->price}}" class="moneyCal moneyFontSize"
+                                                            style="font-weight:700;font-size: 18px;margin-left:4px;">
+                                                            {{$discountedPrice}}</span>
+                                                        {{-- <div class="ratingDivCat"
+                                                            style="float:right;background: #49a316  0% 0% no-repeat padding-box;padding: 0px 4px 0px 5px;border-radius:4px;margin-top: 0px;">
+                                                            <span
+                                                                style="color: #FFFFFF;font-size:14px;  padding-top:0px; ">4.7</span>
+                                                            <div>
+                                                                <p style="padding:0px;margin:0px;" class="starForProduct">★
+                                                                </p>
+                                                            </div>
+                                                        </div> --}}
+                                                        <!--<span class="crossMoneyFont"-->
+                                                        <!--    style="text-decoration:line-through; font-size:14px; padding-left: 3px; color:#878787;">-->
+                                                        <!--    <span class="moneySymbol discountFontSize">-->
+                                                        <!--        ₹ </span>-->
+                                                        <!--    <span data-inr="799" class="discountRate discountFontSize">-->
+                                                        <!--        {{$product->variants->first()->price}}</span>-->
+                                                        <!--</span>-->
+                                                        <!--<span class="discountOffPrice"-->
+                                                        <!--    style="color: #359B44;font-weight: 700;font-size: 11px;background: #E5F7EE;border-radius: 3px;padding: 5px 5px 4px 5px;margin-left: 2px;">-->
+                                                        <!--    {{$product->variants->first()->discount}}% off-->
+                                                        <!--</span>-->
+                                                    </div>
 
-    <div id="pagination-data" data-next-page="{{ $products->nextPageUrl() }}"></div>
-    <div style="text-align:center;display:none; margin-top:20px;">
-        <button id="load-more-btn" class="btn btn-primary">Load More</button>
-    </div>
-</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            @php
+                                $prdCounter++;
+                            @endphp
+                            @endforeach
+    
+
+                            <div class="pagination-wrapper" style="text-align: center; margin-top: 20px;">
+                                {{ $products->links('pagination::bootstrap-5') }}
+                            </div>
+                            
+                            
+                        </ul>
+                        
+                        
+
+
+                    </div>
                 </div>
 
               
@@ -472,109 +472,8 @@ span.crossMoneyFont {
 
            
     </main>
-    <script>
- function closeFilterModal() {
-        document.getElementById('productFilter').style.display = 'none';
-    }
-</script>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
-    
-let isLoading = false;
-
-$(window).on('scroll', function () {
-    const nextPage = $('#pagination-data').data('next-page');
-    const scrollTop = $(window).scrollTop();
-    const windowHeight = $(window).height();
-    const docHeight = $(document).height();
-
-    if (!nextPage || isLoading) return;
-
-    // Trigger when near bottom (100px threshold)
-    if (scrollTop + windowHeight + 100 >= docHeight) {
-        isLoading = true;
-
-        $('#product-loader').show();
-        $('#load-more-btn').hide(); // Hide the button while loading
-
-        $.ajax({
-            url: nextPage,
-            type: 'GET',
-            dataType: 'json',
-            success: function (res) {
-                const tempDiv = $('<div>').html(res.html);
-
-                const newProducts = tempDiv.find('li');
-                const newPagination = tempDiv.find('#pagination-data');
-
-                $('.catProductContent').append(newProducts);
-                $('#pagination-data').replaceWith(newPagination);
-
-                const nextUrl = newPagination.data('next-page');
-                if (nextUrl) {
-                    $('#load-more-btn').show(); // Show button if more data
-                } else {
-                    $('#load-more-end').show(); // Show 'no more data' message
-                    $('#load-more-btn').hide();
-                }
-            },
-            complete: function () {
-                $('#product-loader').hide();
-                isLoading = false;
-            },
-            error: function () {
-                $('#product-loader').hide();
-                $('#load-more-btn').show();
-                isLoading = false;
-            }
-        });
-    }
-});
-
-
-// $(document).on('click', '#load-more-btn', function () {
-//     let nextPage = $('#pagination-data').data('next-page');
-//     if (!nextPage) return;
-
-//     $('#product-loader').show();
-//     $('#load-more-btn').hide();
-
-//     $.ajax({
-//         url: nextPage,
-//         type: 'GET',
-//         dataType: 'json',
-//         success: function (res) {
-//             console.log(res);
-//             const tempDiv = $('<div>').html(res.html);
-
-//             // Extract new product items and new pagination-data
-//             const newProducts = tempDiv.find('li');
-//             const newPagination = tempDiv.find('#pagination-data');
-
-//             $('.catProductContent').append(newProducts);
-
-//             // Replace old pagination-data div with new one
-//             $('#pagination-data').replaceWith(newPagination);
-
-//             const nextUrl = newPagination.data('next-page');
-//             if (nextUrl) {
-//                 $('#load-more-btn').show();
-//             } else {
-//                 $('#load-more-end').show();
-//             }
-//         },
-//         complete: function () {
-//             $('#product-loader').hide();
-//         },
-//         error: function () {
-//             // alert('Failed to load more products.');
-//             $('#product-loader').hide();
-//             $('#load-more-btn').show();
-//         }
-//     });
-// });
-</script>
 
 <script>
 
@@ -582,45 +481,11 @@ $(window).on('scroll', function () {
 
         $(document).ready(function() {
 
-                $('#categoryFilter2, #priceFilter2').on('change', function() {
-                // $('#priceFilter, #sortFilter').on('change', function() {
-                let url = new URL(window.location.href);
     
-                // Get selected values
-                let categoryFilter2 = $('#categoryFilter2').val();
-             
-                // let flavour = $('#flavourFilter').val(); // get multiple selected values
-               
-                if (categoryFilter2) {
-                    url.searchParams.set('categoryFilter', categoryFilter2);
-                } else {
-                    url.searchParams.delete('categoryFilter');
-                }
-    
-                //   if (flavour) {
-                //     url.searchParams.set('flavour', flavour);
-                // } else {
-                //     url.searchParams.delete('flavour');
-                // }
-              
-    
-                let priceRange2 = $('#priceFilter2').val();
-      
-                if (priceRange2) {
-                    let prices = priceRange2.split('-');
-                    url.searchParams.set('minPrice', prices[0]);
-                    url.searchParams.set('maxPrice', prices[1] || '');
-                } else {
-                    url.searchParams.delete('minPrice');
-                    url.searchParams.delete('maxPrice');
-                }
-                window.location.href = url.href;
-            });
-            
             // Handle filter changes
             // $('#categoryFilter, #flavourFilter').on('change', function() {
-            $('#categoryFilter, #priceFilter').on('change', function() {
-                // $('#priceFilter, #sortFilter').on('change', function() {
+        $('#categoryFilter, #priceFilter').on('change', function() {
+            // $('#priceFilter, #sortFilter').on('change', function() {
                 let url = new URL(window.location.href);
     
                 // Get selected values
@@ -634,14 +499,14 @@ $(window).on('scroll', function () {
                     url.searchParams.delete('categoryFilter');
                 }
     
-                //   if (flavour) {
-                //     url.searchParams.set('flavour', flavour);
-                // } else {
-                //     url.searchParams.delete('flavour');
-                // }
+            //   if (flavour) {
+            //     url.searchParams.set('flavour', flavour);
+            // } else {
+            //     url.searchParams.delete('flavour');
+            // }
               
     
-                let priceRange = $('#priceFilter').val();
+      let priceRange = $('#priceFilter').val();
       
                 if (priceRange) {
                     let prices = priceRange.split('-');
@@ -660,9 +525,9 @@ $(window).on('scroll', function () {
             // let flavour = urlParams.get('flavour');
          
     
-            if (categoryFilter) {
-                $('#categoryFilter').val(categoryFilter);
-            }
+            // if (categoryFilter) {
+            //     $('#categoryFilter').val(categoryFilter);
+            // }
     
             // if (flavour) {
             //     $('#flavourFilter').val(flavour);

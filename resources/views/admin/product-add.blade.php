@@ -162,8 +162,7 @@
 
                                         <div class="col-md-6">
                                             <label for="category_id" class="form-label">Select Category</label>
-                                            
-                                            <select name="category_id" id="category_id" class="form-select " required>
+                                            <select name="category_id" id="category_id" class="form-select" required>
                                                 <option value="">Select Category</option>
                                                 @foreach($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -178,16 +177,11 @@
 
                                         <div class="col-md-6">
                                             <label for="subcategory_id" class="form-label">Select SubCategory</label>
-                                            <select name="subcategory_id[]" id="subcategory_id" class="form-select select2" multiple >
+                                            <select name="subcategory_id" id="subcategory_id" class="form-select" >
                                                 <option value="">Select Subcategory</option>
-                                            
+                                                {{-- Subcategories will be loaded dynamically --}}
                                             </select>
                                         </div>
-                                        
-                                          <div class="col-md-12">
-                                                <label for="product_meta_title" class="form-label">Meta Title</label>
-                                                <input type="text" class="form-control" name="product_meta_title" id="product_meta_title" >
-                                            </div>
 
                                         <div class="col-md-12">
                                             <label for="short_description" class="form-label">Short Description</label>
@@ -239,16 +233,7 @@
                                             
                                             </select>
                                         </div>
-                                        <div class="col-md-12">
-                                            <label for="product_type" class="form-label">Product Type</label>
-                                            <select name="product_type" id="product_type" class="form-control">
-                                                                                                <option value="" >Selec One</option>
 
-                                                <option value="Best Seller">Best Seller</option>
-                                                <option value="Same Day">Same Day</option>
-                                                <option value="New Arrival">New Arrival</option>
-                                            </select>
-                                            </div>
                                         <div class="col-md-12">
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                         </div>
@@ -277,11 +262,6 @@
   
         $('#flavours').select2({
             placeholder: "Select Flavours",
-            allowClear: true
-        });
-        
-         $('#subcategory_id').select2({
-            placeholder: "Select Subcategory",
             allowClear: true
         });
   

@@ -6,13 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
-use App\Models\Cart;
+
 class OrderController extends Controller
 {
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::with('user','deliveryAddress')->latest();
+            $data = Order::with('user')->latest();
 
             return DataTables::of($data)
                 ->addIndexColumn()
@@ -21,9 +21,6 @@ class OrderController extends Controller
                 })
                 ->editColumn('email', function ($row) {
                     return $row->user->email ?? 'N/A';
-                })
-               ->editColumn('delivery_mobile_number', function ($row) {
-                    return $row->deliveryAddress->mobile ?? 'N/A';
                 })
                 ->editColumn('payment_status', function ($row) {
                     return ucfirst($row->payment_status);
@@ -48,45 +45,6 @@ class OrderController extends Controller
         }
 
         return view('admin.orders');
-    }
-    
-    public function cart_order(Request $request)
-    {
-        if ($request->ajax()) {
-            
-            $carts = Cart::with(['user', 'product.images', 'variant'])
-            ->whereHas('user') // Only carts with users (logged-in)
-            ->latest()
-            ->get()
-            ->groupBy('user_id'); // Group by user for one row per user
-
-        $data = [];
-
-        foreach ($carts as $userId => $cartItems) {
-            $user = $cartItems->first()->user;
-
-            $totalAmount = $cartItems->sum(function ($item) {
-                return ($item->price * $item->quantity) + $item->shipping_charge;
-            });
-
-            $data[] = [
-                'DT_RowIndex' => null,
-                'name' => $user->name ?? 'Guest',
-                'email' => $user->email ?? 'N/A',
-                'delivery_mobile_number' => $user->mobile ?? 'N/A',
-                'payment_status' => 'Pending',
-                'payment_amount' => $totalAmount,
-                'created_at' => optional($cartItems->first()->created_at)->format('d M Y, h:i A'),
-            ];
-        }
-
-        return DataTables::of(collect($data))
-            ->addIndexColumn()
-            ->rawColumns(['order_status', 'action'])
-            ->make(true);
-    }
-        return view('admin.cart_order');
-        
     }
     public function updateStatus(Request $request)
     {

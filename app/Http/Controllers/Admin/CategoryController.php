@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use Illuminate\Support\Str;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -23,10 +22,6 @@ class CategoryController extends Controller
             'category_name' => 'required',
             'cat_slug' => 'required|string|max:255|unique:categories,cat_slug',
             'cat_description' => 'nullable',
-            'meta_title' => 'nullable',
-            'eggless_option'=>'nullable',
-            'google_analytics' => 'nullable',
-            'footer_description' => 'nullable',
             'category_photo' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048'
         ]);
 
@@ -53,10 +48,6 @@ class CategoryController extends Controller
             'name' => $request->category_name,
             'cat_slug'=>$request->cat_slug,
             'description' => $request->cat_description,
-            'meta_title'=> $request->meta_title,
-            'google_analytics'=> $request->google_analytics,
-            'footer_description'=> $request->footer_description,
-            'eggless_option'=> $request->eggless_option??0,
             'photo' => $photoPath,
             'status' => 1,
         ]);
@@ -75,12 +66,6 @@ class CategoryController extends Controller
             ->addColumn('status', function ($row) {
                 return $row->status ? 'ACTIVE' : 'INACTIVE';
             })
-            ->addColumn('footer_description', function ($row) {
-                $full = e($row->footer_description);
-                $short = Str::limit($row->footer_description, 20);
-                return '<span>' . e($short) . '</span>' .
-                       (strlen($row->footer_description) > 20 ? ' <a href="#" class="see-more" data-full="'.e($full).'">See More</a>' : '');
-            })
             ->addColumn('action', function ($row) {
                 return '<div class="btn-group">
                     <button class="btn btn-outline-success">Info</button>
@@ -93,7 +78,7 @@ class CategoryController extends Controller
                     </div>
                 </div>';
             })
-            ->rawColumns(['image', 'action','footer_description'])
+            ->rawColumns(['image', 'action'])
             ->make(true);
     }
 
@@ -140,10 +125,6 @@ class CategoryController extends Controller
             'name' => $request->category_name,
              'cat_slug'=>$request->cat_slug,
             'description' => $request->cat_description,
-            'meta_title'=> $request->meta_title,
-            'eggless_option'=>$request->eggless_option??0,
-            'google_analytics'=> $request->google_analytics,
-            'footer_description'=> $request->footer_description,
             'photo' => $path,
         ]);
 

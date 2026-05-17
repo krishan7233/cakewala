@@ -1,11 +1,4 @@
 @extends('website.website_app')
-
-@section('title', $category->meta_title)
-@section('meta_description', $category->description ?? $category->name)
-@section('google_analytics')
-    {!! $category->google_analytics !!}
-@endsection
-
 @section('content')
     <main>
         <style type="text/css">
@@ -20,17 +13,8 @@
                 height: 21px;
                 gap: 2px;
             }
-  .container3 {
-    padding-top: 150px;
-    background: #f4f7f8;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom: 30px;
-}
-.white1 {
-    background-color: #fff!important;
-    padding: 20px 0!important;
-    border-radius: 10px;
+            .container3 {
+    margin-top: 200px;
 }
 .pagination li a {
     color: #444;
@@ -63,53 +47,9 @@ li.page-item {
     color: #787878;
     font-size: 16px;
 }
-h1 {
-    font-size: 22px;
-    font-weight: 600;
-}
-.eggStatusContainer {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0;
-    margin-top: -30px;
-    position: absolute;
-    background: #fff;
-    width: fit-content;
-    padding: 2px;
-    border-radius: 4px;
-    margin-left: 15px;
-    cursor: auto;
-}
-.sqContainer.eggless {
-    border: 2px solid #22AA00;
-}
-.sqContainer {
-    width: 15px;
-    height: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-}
-.withoutEggCircle {
-    width: 0;
-    height: 0;
-    border: 3.5px solid #22AA00;
-    border-radius: 50%;
-}
 @media only screen and (max-width: 600px) {
 .container3 {
-    margin-top: 85px;
-    padding-top: 1px;
-    background: #f4f7f8;
-    padding-left: 0;
-    padding-right: 0;
-    padding-bottom: 30px;
-}
-.white1 {
-    background-color: #fff!important;
-    padding: 5px 0!important;
-    border-radius: 10px;
+    margin-top: 110px;
 }
 .section {
     margin-top: 50px;
@@ -163,7 +103,9 @@ span.moneySymbol.moneyFontSize {
 span.crossMoneyFont {
     font-size: 10px!important;
 }
-
+.briefPageTitle h1 {
+ font-size: 30px;
+}
   right: -132px;
 }
 }
@@ -184,27 +126,17 @@ span.crossMoneyFont {
         border-color: #49a316;
         color: #fff;
     }
-    .active{
-        background: green;
-    }
 </style>
 
       
         <div class="container3" >
             <div class="briefPageTitle" style="margin: 50px 0px -38px 20px;">
-                <h1>
-                    @if(!empty($subcategory))
-                        {{ $subcategory->name }}
-                    @else
-                        {{ $category->name }}
-                    @endif
-                </h1>
-                  
+                <h1>{{ $category->name }}</h1>
             </div>
             <div class="row m-0" id="desktopbread">
                 <div class="col s12 breadcrumb-wrapper paddingTopArea" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="{{ url('/') }}" class="breadcrumb" itemtype="https://schema.org/WebPage" itemprop="item">
+                        <a href="index.html" class="breadcrumb" itemtype="https://schema.org/WebPage" itemprop="item">
                             <span itemprop="name">Home</span>
                         </a>
                         <meta itemprop="position" content="0" />
@@ -215,27 +147,16 @@ span.crossMoneyFont {
                         <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"></path>
                     </svg>
                     <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="{{ route('product.by.category', $category->cat_slug) }}" class="breadcrumb" itemtype="https://schema.org/WebPage" itemprop="item">
-                            <span itemprop="name">{{$category->name}}</span> 
-                           
+                        <a href="#!" class="breadcrumb" itemtype="https://schema.org/WebPage" itemprop="item">
+                            <span itemprop="name">Cakes</span>
                         </a>
-                        @if($subcategory)
-                         
-                            <svg width="16" height="27" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg"
-                        class="breadcrumb-delim">
-                        <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"></path>
-                    </svg>
-                        <a href="{{ route('product.by.category', ['cat_slug' => $category->cat_slug, 'subcat_slug' => $subcategory->subcat_slug]) }}" class="breadcrumb" itemtype="https://schema.org/WebPage" itemprop="item">
-                            <span itemprop="name">{{$subcategory->name}}</span>
-                        </a>
-                         @endif
                         <meta itemprop="position" content="1" />
                     </span>
                 </div>
 
             </div>
 
-            <div class="white1" itemscope itemtype="http://schema.org/ItemList" style="padding:3px;">
+            <div class="white" itemscope itemtype="http://schema.org/ItemList" style="padding:3px;">
                 <div class="section" style="padding: 0 10px;">
                     <div class="row filt" id="desktopfil">
                         <div class="col m5 s5" style="padding-top: 8px;">
@@ -310,17 +231,6 @@ span.crossMoneyFont {
     font-weight: bold;
     cursor: pointer;
 }
-.subcategory-scroll-wrapper {
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-}
-
-.subcategory-scroll-wrapper .btn-group {
-    display: inline-flex;
-    flex-wrap: nowrap;
-}
-
 </style>
 
                     <!-- Filter Modal -->
@@ -336,7 +246,7 @@ span.crossMoneyFont {
             </div>
             <div class="col m2 s2">
                 <span style="font-size: 12px; font-weight: 600;">Filter By Price</span>
-                <select id="priceFilter2" class="form-control">
+                <select id="priceFilter" class="form-control">
                     <option value="">All Products</option>
                     <option value="0-499">499 and Below</option>
                     <option value="500-999">500 - 999</option>
@@ -346,7 +256,7 @@ span.crossMoneyFont {
             </div>
             <div class="col m2 s2">
                 <span style="font-size: 12px; font-weight: 600;">Sort By Flavour</span>
-                <select id="flavourFilter2" class="form-control">
+                <select id="flavourFilter" class="form-control">
                     <option value="">Default</option>
                     @foreach($flavours as $id => $flavour)
                         <option value="{{ $id }}">{{ $flavour }}</option>
@@ -356,44 +266,112 @@ span.crossMoneyFont {
         </div>
     </div>
 </div>
-<div class="subcategory-scroll-wrapper mb-3">
-    <div class="btn-group mb-3" role="group">
-        <a class="btn btn-outline-primary {{ !$selectedSubcategory ? 'active' : '' }}" 
-            href="{{ route('product.by.category', ['cat_slug' => $category->cat_slug]) }}">
-            All
-        </a>
 
-        @foreach($subcategories as $subcat)
-            <a class="btn btn-outline-primary {{ $selectedSubcategory && $selectedSubcategory == $subcat->subcat_slug ? 'active' : '' }}"
-               href="{{ route('product.by.category', ['cat_slug' => $category->cat_slug, 'subcat_slug' => $subcat->subcat_slug]) }}">
-                {{ $subcat->name }}
-            </a>
-        @endforeach
-    </div>
-</div>
-
-                    
-                    
 
 
 
                     
                     <div class="section" style="padding:0px">
                         <ul class="row cat-products-wrapper catProductContent" style="display: block;flex-wrap: wrap;">
-                        @include('website.product-list', ['products' => $products])
+                            <input type="hidden" id="pageCountIndex" value="0" />
+                            <link itemprop="url" href="cake.html" />
+                            <meta itemprop="numberOfItems" content="40" />
+                            @php
+                                $prdCounter = 1;
+                            @endphp
+                            @foreach ($products as $product)
+                            @php
+                            
+                                $discountedPrice = $product->variants->first()->price - ($product->variants->first()->price * $product->variants->first()->discount / 100);
+                            @endphp
+                                <li class="col s6 m3  product odd prd_cnt_mb_{{ $prdCounter }}" itemprop="itemListElement" itemscope
+                                    itemtype="http://schema.org/ListItem"
+                                    style="padding:0 8px 9px !important;margin-left: 0;">
+                                    <meta itemprop="position" content="{{ $prdCounter }}" />
+                                      <a href="{{ route(@$product->subcategory->subcat_slug ? 'product.detail.withsub' : 'product.detail', [
+                                        'cat_slug' => $product->category->cat_slug,
+                                        'subcat_slug' => $product->subcategory?->subcat_slug,
+                                        'product_slug' => $product->slug,
+                                    ]) }}"
+                                        data-adbositionPl="{{ $prdCounter }}" data-primaryCategoryPl="{{ $product->category->name ?? '' }}" data-prodId="{{ $product->id }}"
+                                        data-prodSecond="Chocolate" itemprop="url" target="_BLANK"
+                                        rel="noopener noreferrer">
+                                        <div data-adbositionPl="{{ $prdCounter }}" data-primaryCategoryPl="{{ $product->category->name ?? '' }}" data-prodId="{{ $product->id }}"
+                                            data-prodSecond="Chocolate" itemprop="url" style="cursor: pointer;">
+                                            <div class="new-slide-card-without-city product-card z-depth-0">
+                                                
+                                                <div style="position:relative;">
+                                                    <picture>
+                                                        <source
+                                                            data-srcset="{{ asset($product->images->first()->image) }}"
+                                                            type="image/webp" />
+                                                        <img width="400" height="400"
+                                                            class="center-block responsive-img lazyload product-card-radius"
+                                                            src="{{ asset($product->images->first()->image) }}"
+                                                            data-src="{{ asset($product->images->first()->image) }}"
+                                                            alt="83221_Yummylicious Chocolate cake"
+                                                            title="{{ $product->name }}" />
+                                                    </picture>
+                                                    <div id="wishListDesktopITem" class="wishlistItemDesignForAllDevice"
+                                                        style="position:absolute;">
+                                                        <div id="addToWishlistForm21687" style="display:contents">
+                                                            <label>
+ 
+                                                                <input type="hidden" tabindex="-1" name="wishlistItemId"
+                                                                    id="wItemId_21687">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="new-slide-content-without-city" style="text-align:left;">
+                                                    <div class="truncate"
+                                                        style="color:#666;text-transform: capitalize;font-size: 15px;">
+                                                        {{ $product->name }}</div>
+                                                    <div class="price"
+                                                        style=" text-align:left;font-size:0px; color:#333;/*color:#ec018c;/*color:#222;*/">
+                                                        <span class="moneySymbol moneyFontSize"
+                                                            style="font-size:18px;">₹&nbsp;</span>
+                                                        <span data-inr="{{$product->variants->first()->price}}" class="moneyCal moneyFontSize"
+                                                            style="font-weight:700;font-size: 18px;margin-left:4px;">
+                                                            {{$discountedPrice}}</span>
+                                                        {{-- <div class="ratingDivCat"
+                                                            style="float:right;background: #49a316  0% 0% no-repeat padding-box;padding: 0px 4px 0px 5px;border-radius:4px;margin-top: 0px;">
+                                                            <span
+                                                                style="color: #FFFFFF;font-size:14px;  padding-top:0px; ">4.7</span>
+                                                            <div>
+                                                                <p style="padding:0px;margin:0px;" class="starForProduct">★
+                                                                </p>
+                                                            </div>
+                                                        </div> --}}
+                                                        <!--<span class="crossMoneyFont"-->
+                                                        <!--    style="text-decoration:line-through; font-size:14px; padding-left: 3px; color:#878787;">-->
+                                                        <!--    <span class="moneySymbol discountFontSize">-->
+                                                        <!--        ₹ </span>-->
+                                                        <!--    <span data-inr="799" class="discountRate discountFontSize">-->
+                                                                
+                                                        <!--        {{$product->variants->first()->price}}</span>-->
+                                                        <!--</span>-->
+                                                        <!--<span class="discountOffPrice"-->
+                                                        <!--    style="color: #359B44;font-weight: 700;font-size: 11px;background: #E5F7EE;border-radius: 3px;padding: 5px 5px 4px 5px;margin-left: 2px;">-->
+                                                        <!--    {{$product->variants->first()->discount}}% off-->
+                                                        <!--</span>-->
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            @php
+                                $prdCounter++;
+                            @endphp
+                            @endforeach
+                            <div class="pagination-wrapper" style="text-align: center; margin-top: 20px;">
+                                {{ $products->links('pagination::bootstrap-5') }}
+                            </div>
                             
                             
                         </ul>
-                        
-                          <div id="product-loader" style="display:none; text-align:center;background: #000;width: 100px;margin: auto;padding: 10px;color:#fff;">Loading...</div>
-                            <div id="load-more-end" style="display:none; text-align:center;">No more products</div>
-                        
-                            <div id="pagination-data" data-next-page="{{ $products->nextPageUrl() }}"></div>
-                            <div style="text-align:center;display:none; margin-top:20px;">
-                                <button id="load-more-btn" class="btn btn-primary">Load More</button>
-                            </div>
-                        
-                        {!! $category->footer_description ?? '' !!}
                     </div>
                 </div>
 
@@ -470,100 +448,11 @@ span.crossMoneyFont {
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-    <script>
-    
-let isLoading = false;
-
-$(window).on('scroll', function () {
-    const nextPage = $('#pagination-data').data('next-page');
-    const scrollTop = $(window).scrollTop();
-    const windowHeight = $(window).height();
-    const docHeight = $(document).height();
-
-    if (!nextPage || isLoading) return;
-
-    // Trigger when near bottom (100px threshold)
-    if (scrollTop + windowHeight + 100 >= docHeight) {
-        isLoading = true;
-
-        $('#product-loader').show();
-        $('#load-more-btn').hide(); // Hide the button while loading
-
-        $.ajax({
-            url: nextPage,
-            type: 'GET',
-            dataType: 'json',
-            success: function (res) {
-                const tempDiv = $('<div>').html(res.html);
-
-                const newProducts = tempDiv.find('li');
-                const newPagination = tempDiv.find('#pagination-data');
-
-                $('.catProductContent').append(newProducts);
-                $('#pagination-data').replaceWith(newPagination);
-
-                const nextUrl = newPagination.data('next-page');
-                if (nextUrl) {
-                    $('#load-more-btn').show(); // Show button if more data
-                } else {
-                    $('#load-more-end').show(); // Show 'no more data' message
-                    $('#load-more-btn').hide();
-                }
-            },
-            complete: function () {
-                $('#product-loader').hide();
-                isLoading = false;
-            },
-            error: function () {
-                $('#product-loader').hide();
-                $('#load-more-btn').show();
-                isLoading = false;
-            }
-        });
-    }
-});
-</script>
     <script>
      
 
         $(document).ready(function() {
             // Handle filter changes
-            
-             $('#priceFilter2, #flavourFilter2').on('change', function() {
-
-            // $('#priceFilter, #sortFilter').on('change', function() {
-                let url = new URL(window.location.href);
-    
-                // Get selected values
-                let priceRange2 = $('#priceFilter2').val();
-                // let sort = $('#sortFilter').val();
-                let flavours2 = $('#flavourFilter2').val(); // get multiple selected values
-
-                if (priceRange2) {
-                    let prices = priceRange2.split('-');
-                    url.searchParams.set('minPrice', prices[0]);
-                    url.searchParams.set('maxPrice', prices[1] || '');
-                } else {
-                    url.searchParams.delete('minPrice');
-                    url.searchParams.delete('maxPrice');
-                }
-    
-               if (flavours2) {
-                    url.searchParams.set('flavour', flavours2);
-                } else {
-                    url.searchParams.delete('flavour');
-                }
-                // if (sort) {
-                //     url.searchParams.set('sort', sort);
-                // } else {
-                //     url.searchParams.delete('sort');
-                // }
-    
-                window.location.href = url.href;
-            });
-    
-            
             $('#priceFilter, #flavourFilter').on('change', function() {
 
             // $('#priceFilter, #sortFilter').on('change', function() {
@@ -584,10 +473,10 @@ $(window).on('scroll', function () {
                 }
     
                if (flavours) {
-                    url.searchParams.set('flavour', flavours);
-                } else {
-                    url.searchParams.delete('flavour');
-                }
+        url.searchParams.set('flavour', flavours);
+    } else {
+        url.searchParams.delete('flavour');
+    }
                 // if (sort) {
                 //     url.searchParams.set('sort', sort);
                 // } else {

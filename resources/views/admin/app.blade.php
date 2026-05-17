@@ -159,8 +159,6 @@
                         'success'
                     );
                     $('.delete-thumb-btn[data-id="' + imageId + '"]').closest('.image-thumb-preview').remove();
-                    location.reload();
-
                 },
                 error: function() {
                     Swal.fire(

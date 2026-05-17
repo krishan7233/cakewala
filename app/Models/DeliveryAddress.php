@@ -22,7 +22,6 @@ class DeliveryAddress extends Model
         'city',
         'mobile',
         'alt_mobile',
-        'address_type',
     ];
     
 

@@ -53,7 +53,7 @@ h4.text-center.text-dark.mb-4 {
                     <button type="submit" class="btn btn-primary btn-lg">Sign In</button>
                 </div>
                 <div class="d-grid mb-3">
-                   <a href="{{ url('authorized/google')  }}" class="btn btn-light border d-flex align-items-center justify-content-center gap-2 shadow-sm" style="height: 45px;">
+                   <a href="{{ route('google_login') }}" class="btn btn-light border d-flex align-items-center justify-content-center gap-2 shadow-sm" style="height: 45px;">
                    <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" style="width: 20px; height: 20px;">
                   <span class="text-dark">Sign in with Google</span>
                 </a>

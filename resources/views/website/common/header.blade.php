@@ -17,40 +17,6 @@ h1 {
     font-size: 3.2rem;
   
 }
-.header-secondary {
-   display: flex;
-    justify-content: center;
-}
-.header-secondary .nav-wrapper a {
-    color: #333;
-    font-size: 16px;
-}
-.dropdown-content li > a {
-    font-size: 14px!important;
-}
-.header-secondary .dropdown-content {
-    min-width: 180px;
-    border-radius: 0px 0 10px 10px;
-}
-div#mobileMenu {
-    display: block;
-    background: #fff;
-}
-.overlay.active {
-    display: block;
-    background: #fff!important;
-}
-.active{
-    background: #fff!important;
-    color:#000;
-}
-.btn-group.mb-3 a {
-    background: #fff;
-    color:#000;
-    border:1px solid #9e9e9e;
-    margin: 2px;
-}
-
 img.responsive-img, video.responsive-video {
     max-width: 100%;
     height: auto!important;
@@ -225,77 +191,11 @@ img.responsive-img.imageRadius {
   .desktophed {
     display: none;
 }
-.multi-level-menu summary {
-  position: relative;
-  cursor: pointer;
-  padding-left: 20px;
-  font-weight: 500;
-  list-style: none;
-}
-
-.multi-level-menu summary::before {
-  content: "+";
-  position: absolute;
-  right: 0;
-  font-weight: bold;
-}
-.cut summary {
-  position: relative;
-  padding-left: 24px; /* space for the icon */
-  cursor: pointer;
-}
-
-/* DOWN arrow when details is closed */
-.cut details summary::before {
-  content: ""!important;
-  position: absolute;
-  right: 0;
-  top: 6px;
-  width: 16px;
-  height: 16px;
-  background: url('https://cakeplaza.in/assets/website/img/icons8-dropdown-50.png') no-repeat center;
-  background-size: contain;
-}
-
-/* UP arrow when details is open */
-.cut details[open] > summary::before {
-  background-image: url('https://cakeplaza.in/assets/website/img/icons8-dropdown-50.png');
-}
-
-.multi-level-menu details[open] > summary::before {
-  content: "-";
-}
-
-.multi-level-menu ul {
-  margin-left: 15px;
-  padding-left: 10px;
-  border-left: 1px dashed #ccc;
-}
-
-.multi-level-menu li {
-  margin: 5px 0;
-}
-
-.multi-level-menu a {
-  text-decoration: none;
-  color: #333;
-}
-
-details summary {
-    position: relative;
-    cursor: pointer;
-    list-style: none;
-    padding-left: 0px!important;
-}
 .container {
     margin-top: 70px!important;
 }
 .container1 {
     margin: 110px 10px!important;
-}
-div#mobileMenu {
-    display: block;
-    background: #fff!important;
 }
 
 }
@@ -306,15 +206,15 @@ div#mobileMenu {
             <nav class="white main-nav header-primary" style="margin:0 auto;margin-bottom:24px;max-width:1600px!important;">
                 <div class="nav-wrapper">
                     <div class="sup-nav" style="padding-right:9px; margin-bottom: 12px;">
-                    <a class="adbHeaderLink" href="tel:9873739058" style="border-right:2px solid #d7d7d7;font-size: 14px;"> 24/7 Support Center +91-7233958662</a>
+                    <a class="adbHeaderLink" href="tel:7233958662" style="border-right:2px solid #d7d7d7;font-size: 14px;"> 24/7 Support Center +91-7233958662</a>
                   
                   
                 </div>
                 <div class="nav-center" style="height: max-content;">
                     <div class="row">
                         <div class="col l2" style="padding-left: 0;margin-top: 10px">
-                            <a id="adbHeaderLogo" style="margin-top: -10px" href="{{route('web.index')}}" class="adbHeaderLink brand-logo bg-logo_home">
-                                                         <img class="search-icon-image"  id="searchIconImg" src="{{asset('assets/website/img/Logo.png')}}" alt="desktopheadersearch" style="width: 100px!important; margin-top: -31px!important;"/>
+                            <a id="adbHeaderLogo" style="margin-top: -10px" href="https://azure-bee-177357.hostingersite.com/website/" class="adbHeaderLink brand-logo bg-logo_home">
+                                                         <img class="search-icon-image"  id="searchIconImg" src="{{asset('assets/website/img/logos.png')}}" alt="desktopheadersearch" style="width: 100px!important; margin-top: -31px!important;"/>
                                                         </a>
                         </div>
                         <div class="hide" id="searchIconTemplate">
@@ -325,9 +225,9 @@ div#mobileMenu {
                             </span>
                       </div>
                         <div class="col l4" style="padding-left: 30px;">
-                            <form  id="adbsearchEvent" class="category-search" action="{{route('web.index')}}/search" method="GET" autocomplete="off" style="height :0">
+                            <form  id="adbsearchEvent" class="category-search" action="{{URL('website')}}/search" method="GET" autocomplete="off" style="height :0">
                                 <div class="input-field">
-                                    <input id="search-input-in-desktop" class="search-input-desktop validate browser-default search-field adbSearch" placeholder="Search for cakes..." maxlength="50" type="text" name="q" value="" style="border:2px solid transparent;background: none 0% 0% / auto repeat scroll padding-box border-box rgba(234, 233, 233, 0.75);width: 100%;height: 40px;color: #8f9196;font-weight:700;border-radius: 6px;vertical-align: top;" required>
+                                    <input id="search-input-in-desktop" class="search-input-desktop validate browser-default search-field adbSearch" placeholder="Search 5000+ flowers, cakes, gifts etc" maxlength="50" type="text" name="q" value="" style="border:2px solid transparent;background: none 0% 0% / auto repeat scroll padding-box border-box rgba(234, 233, 233, 0.75);width: 100%;height: 40px;color: #8f9196;font-weight:700;border-radius: 6px;vertical-align: top;" required>
                                      <img class="search-icon-image" onclick="document.getElementById('adbsearchEvent').submit();"  id="searchIconImg" src="{{asset('assets/website/img/desktopheadersearch.webp')}}" alt="desktopheadersearch" style="width: 22px!important; margin-top: -31px!important;"/>
                                       <div class="search-dropdown-by-category adbSearchSugg ">
                                         <div class="trending-shortcut" style="padding: 12px 12px 0px 12px;">
@@ -623,7 +523,7 @@ div#mobileMenu {
                 }
                 .header-secondary .nav-wrapper ul li a {
                     border-bottom: 2px solid transparent;
-                    padding-left: 10px;
+                    padding-left: 16px;
                     padding-right: 5px;
                 }
                 .design-same-day-delivery{
@@ -665,202 +565,102 @@ div#mobileMenu {
                                     .position-relative{
                                       position:relative!important;
                                     }
-                                    h2 {
-    font-size: 25px;
-   
-}
 </style>        
              
                            
 <nav class="header-secondary hide-on-med-and-down" style="background: #F7F7F7 0% 0% no-repeat padding-box!important;max-width:1600px!important;margin:0 auto!important">
         <div class="nav-wrapper" style="max-width:1600px!important;margin:0auto!important">
                 <ul class="hide-on-med-and-down">
-               <li>
-  <a href=
-  "https://cakeplaza.in/allcake" class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropdown1" data-constrainWidth="false">
-   Cakes
-  </a>
-  <ul id='dropdown1' class='dropdown-content multi-column-drop-menu' style="min-width:700px!important;background-repeat: no-repeat;background-attachment: relative;background-position: right bottom;background:#fff;">
-    <div class="row m-0 multi-column-menu">
-
-      <!-- Trending Cakes -->
-      <div class="col s4" style="margin-left:18px!important;">
-        <div class="menu-column-title">Trending Cakes</div>
-        <ul style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
-          <li><a href="https://cakeplaza.in/mango-cakes">Mango Cakes</a></li>
-          <li><a href="#">Gourmet Cakes</a></li>
-          <li><a href="https://cakeplaza.in/theme-cake/cricket-theme">Cricket Cakes</a></li>
-          <li><a href="https://cakeplaza.in/pinata-cakes">Pinata Cakes</a></li>
-          <li><a href="#">Drip Cakes</a></li>
-          <li><a href="https://cakeplaza.in/bomb-cakes">Bomb Cakes</a></li>
-          <li><a href="https://cakeplaza.in/pull-me-up-cakes">Pull Me Up Cakes</a></li>
-        </ul>
-      </div>
-
-      <!-- By Type -->
-      <div class="col s4" style="background:#fff;width:35%;">
-        <div class="menu-column-title">By Type</div>
-        <ul style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
-          <li><a href="#">Bestsellers</a></li>
-          <li><a href="#">Eggless Cakes</a></li>
-          <li><a href="https://cakeplaza.in/photo-cakes">Photo Cakes</a></li>
-          <li><a href="https://cakeplaza.in/desserts/cheesecake">Cheese Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/half-cakes">Half Cakes</a></li>
-          <li><a href="https://cakeplaza.in/heart-shaped-cakes">Heart Shaped Cakes</a></li>
-          <li><a href="#">Rose Cakes</a></li>
-          <li><a href="https://cakeplaza.in/allcake">All Cakes</a></li>
-        </ul>
-      </div>
-
-      <!-- By Flavour -->
-      <div class="col s4" style="width:36%;background:#fff!important;padding-left:0px;padding-right:0px!important;">
-        <div class="menu-column-title">By Flavour</div>
-        <ul style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
-          <li><a href="https://cakeplaza.in/chocolate-cakes">Chocolate Cakes</a></li>
-          <li><a href="https://cakeplaza.in/butterscotch-cakes">Butterscotch Cakes</a></li>
-          <li><a href="https://cakeplaza.in/mango-cakes">Mango Cakes</a></li>
-          <li><a href="https://cakeplaza.in/pineapple-cakes">Pineapple Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kitkat-cakes">Kit Kat Cakes</a></li>
-          <li><a href="https://cakeplaza.in/black-forest-cakes">Black Forest Cakes</a></li>
-          <li><a href="https://cakeplaza.in/red-velvet-cakes">Red Velvet Cakes</a></li>
-          <li><a href="https://cakeplaza.in/vanilla-cakes">Vanilla Cakes</a></li>
-          <li><a href="https://cakeplaza.in/fruit-cakes">Fruit Cakes</a></li>
-          <li><a href="https://cakeplaza.in/blueberry-cakes">Blueberry Cakes</a></li>
-        </ul>
-      </div>
-
-    </div>
-  </ul>
-</li>
-
-           <li>
-  <a class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropdown2" data-constrainWidth="false">
-  Theme Cakes
-  </a>
-  <ul id='dropdown2' class='dropdown-content multi-column-drop-menu' style="min-width:1000px!important;background-repeat: no-repeat;background-attachment: relative;background-position: right bottom;background:#fff;">
-    <div class="row m-0 multi-column-menu">
-
-      <!-- Kids Cakes -->
-      <div class="col s4" style="margin-left:18px!important;">
-        <div class="menu-column-title">Kids Cakes</div>
-        <ul style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
-          <li><a href="https://www.cakeplaza.in/kids-cake">All Kids Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/birthday-cakes/1st-birthday-cakes">1st Birthday Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/kids-cake/princess-cakes">Princess Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/kids-cake/animal-cakes">Animal Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/masha-and-bear-cake">Masha & The Bear Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/cake-for-boys">Cakes For Boys</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/cake-for-girls">Cakes For Girls</a></li>
-          <li><a href="https://cakeplaza.in/designer-cakes/number-cakes">Number Cakes</a></li>
-          <li><a href="https://cakeplaza.in/designer-cakes/alphabet-cakes">Alphabet Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/kids-cake/car-cakes">Car and Vehicle Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/baby-shark-cake">Baby Shark Cakes</a></li>
-        </ul>
-      </div>
-
-      <!-- Character Cakes -->
-      <div class="col s4" style="background:#fff;width:35%;">
-        <div class="menu-column-title">Character Cakes</div>
-        <ul style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
-          <li><a href="https://www.cakeplaza.in/character-cakes">All Character Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/spiderman-theme-cake">Spiderman Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/unicorn-theme-cake">Unicorn Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/doll-cake">Barbie Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/avengers-theme-cake">Avenger Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/doraemon-theme-cake">Doraemon Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/cocomelon-theme-cake">Cocomelon Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/cartoon-cakes">Cartoon Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/superhero-cakes">Super Hero Cakes</a></li>
-        </ul>
-      </div>
-
-      <!-- Grown Up Cakes -->
-      <div class="col s4">
-        <div class="menu-column-title">Grown Up Cakes</div>
-        <ul style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
-          <li><a href="https://www.cakeplaza.in/kids-cake/bride-to-be-cake">Bride To Be Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/kids-cake/wedding-cake">Wedding Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/kids-cake/gym-cake">Gym Cakes</a></li>
-          <li><a href="#">Party Cakes</a></li>
-        </ul>
-      </div>
-
-      <!-- More Cakes -->
-      <div class="col s4" style="width:36%;background:#fff!important;padding-left:0px;padding-right:0px!important;">
-        <div class="menu-column-title">More Cakes</div>
-        <ul style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
-          <li><a href="https://cakeplaza.in/kids-cake/jungle-theme-cake">Jungle Theme Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/cricket-theme">Cricket Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/kids-cake/football-cakes">Football Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/basketball-theme-cake">Basketball Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/rainbow-cake">Rainbow Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/butterfly-cakes">Butterfly Cakes</a></li>
-          <li><a href="https://cakeplaza.in/kids-cake/dinosaur-cake">Dinosaur Cakes</a></li>
-          <li><a href="https://cakeplaza.in/designer-cakes">All Designer Cakes</a></li>
-        </ul>
-      </div>
-
-    </div>
-  </ul>
-</li>
-
-
-
-
-<li>
-  <a class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropdown3" data-constrainWidth="false">
-    By Relationship
-  </a>
-  <ul id='dropdown3' class='dropdown-content multi-column-drop-menu' style="min-width:400px!important;background-repeat: no-repeat;background-attachment: relative;background-position: right bottom;">
-    <div class="row m-0 multi-column-menu">
-
-      <!-- For Him -->
-      <div class="col s6" style="margin-left:0px!important;background:#fff">
-        <div class="menu-column-title">For Him</div>
-        <ul style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
-          <li><a href="https://www.cakeplaza.in/cakes-for-him">All Cakes For Him</a></li>
-          <li><a href="https://cakeplaza.in/cake-for-friends">Cakes For Friend</a></li>
-          <li><a href="https://cakeplaza.in/cakes-for-father">Cakes For Father</a></li>
-          <li><a href="https://cakeplaza.in/cakes-for-husband">Cakes For Husband</a></li>
-          <li><a href="https://cakeplaza.in/cakes-for-brother">Cakes For Brother</a></li>
-          <li><a href="https://cakeplaza.in/cakes-for-boyfriend">Cakes For Boyfriend</a></li>
-        </ul>
-      </div>
-
-      <!-- For Her -->
-      <div class="col s6" style="background:#fff;">
-        <div class="menu-column-title">For Her</div>
-        <ul style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
-          <li><a href="https://www.cakeplaza.in/cakes-for-her">All Cakes For Her</a></li>
-          <li><a href="https://cakeplaza.in/cake-for-friends">Cakes For Friend</a></li>
-          <li><a href="https://cakeplaza.in/cakes-for-mother">Cakes For Mother</a></li>
-          <li><a href="https://cakeplaza.in/cakes-for-wife">Cakes For Wife</a></li>
-          <li><a href="https://cakeplaza.in/cakes-for-girlfriend">Cakes For Girlfriend</a></li>
-          <li><a href="https://cakeplaza.in/cakes-for-sister">Cakes For Sister</a></li>
-        </ul>
-      </div>
-
-    </div>
-  </ul>
-</li>
-
+                 <li>
+                   <a class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropdownMothersDay" data-constrainWidth="false">
+                           <span style="font-weight: 700; font-size: 14px; color: #C91E39!important; font-weight: bold; text-transform: uppercase;">Anniversary Cakes</span>
+                   </a>
+                   <ul id='dropdownMothersDay' class='dropdown-content' style="width:250px" >
+                        <div class="row m-0 multi-column-menu">
+                           <div class="col s3" style="width:100%;margin:0;background:white!important;margin-left:26px!important;">
+                               <div class="menu-column-title">By Type </div>
+                               <ul class="showAllItem" style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
+                                    <li class="position-relative"><a href="{{ route('product.by.category','anniversary-cakes', '1st-anniversary-cakes') }}">1st Anniversary Cakes</a></li>
+                                    <li ><a href="{{ route('product.by.category','anniversary-cakes', '5th-anniversary-cakes') }}">5th Anniversary Cakes</a></li>
+                                    <li><a href="{{ route('product.by.category','anniversary-cakes', '10th-anniversary-cakes') }}">10th Anniversary Cakes</a></li>
+                                    <li class="position-relative"><a href="{{ route('product.by.category','anniversary-cakes', '25th-anniversary-cakes') }}">25th Anniversary Cakes</a></li>
+                                    <li class="ListPositionRelative"><a href="{{ route('product.by.category','anniversary-cakes', '50th-anniversary-cakes') }}">50th Anniversary Cakes</a></li>
+                                    <li><a href="{{ route('product.by.category','anniversary-cakes', 'anniversary-cakes-for-parents') }}">Anniversary Cakes for Parents</a></li>
+                                    <li><a href="{{ route('product.by.category','anniversary-cakes', 'anniversary-photo-cakes') }}">Anniversary Photo Cakes</a></li>
+                                  
+                               </ul>
+                           </div>
+                          
+                           
+                          
+                       </div>
+                  </ul>
+              </li>
+              <li><a href="{{ route('allproduct') }}">All Cake</a></li>
+            <li>
+                <a class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropdownfsd" data-constrainWidth="false" >
+                    By Occasion
+                </a>
+                <ul id='dropdownfsd' class='dropdown-content '  style="margin-bottom:0px;padding-bottom:0px;height:300px!important; background-repeat: no-repeat;background-attachment: relative;background-position: right bottom;">
+                    <div class="row m-0 multi-column-menu">
+                        <div class="col s2 margin-bottom-for-cake" style="width:100%;margin-left:8px;">
+                            <div class="menu-column-title columnTopTitle" style="font-weight:700;padding-left:13px;font-size:13px;">Cakes By Type</div>
+                            <ul class="showAllItem" style="padding-left:15px;padding-top:0px;margin-top:-10px!important">
+                                  <li class="ListPositionRelative"><a class="FontItem marginPaddingBottom" href="{{ route('product.by.category', 'eggless-cakes') }}">Eggless Cakes</a>
+                                 </li><a href="{{ route('product.by.category', 'baby-shower-cakes') }}">Baby Shower Cakes</a></li>
+                                    <li class="ListPositionRelative"><a class="FontItem marginPaddingBottomForOtherCategory" href="{{ route('product.by.category', 'retirement-cakes') }}">Retirement Cakes</a></li>
+                                    <li><a class="FontItem marginPaddingBottomForOtherCategory" href="{{ route('product.by.category', 'farewell-cakes') }}">Farewell Cakes</a></li>
+                                    <li><a class="FontItem marginPaddingBottomForOtherCategory" href="{{ route('product.by.category', 'congratulations-cakes') }}">Congratulations Cakes</a></li>
+                                      <li><a class="FontItem marginPaddingBottomForOtherCategory" href="{{ route('product.by.category', 'get-well-soon-cakes') }}">Get Well Soon Cakes</a></li>
+                                      <li><a class="FontItem marginPaddingBottomForOtherCategory" href="{{ route('product.by.category', 'engagement-cakes') }}">Engagement Cakes</a></li>
+                                       <li><a class="FontItem marginPaddingBottomForOtherCategory" href="{{ route('product.by.category', 'wedding-cakes') }}">Wedding Cakes</a></li>
+                                      <li><a class="FontItem marginPaddingBottomForOtherCategory" href="{{ route('product.by.category', 'bride-to-be-cakes') }}">Bride-to-Be Cakes</a></li>
+                                     
+                            </ul>
+                        </div>
+                      
+                      
+                      
+                    </div>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropdownflw" data-constrainWidth="true">
+                    Birthday Cakes
+                </a>
+                <ul id='dropdownflw' class='dropdown-content ' style='margin-bottom:0px;padding-bottom:0px;height:300px!important' >
+                    <div class="row m-0 multi-column-menu" >
+                        <div class="col s2" style="width:100%;margin-left:8px;">
+                            <div class="menu-column-title columnTopTitle" style="font-weight:700;padding-left:12px;font-size:13px;">By Type</div>
+                            <ul class="showAllItem" style="padding-left:12px;padding-top:0px;margin-top:-10px!important">
+                                  <li>
+                                      <a class="FontItem" href="{{ route('product.by.category', 'birthday-cakes') }}">1st Birthday Cakes</a>
+                                   </li>
+                                  <li class="ListPositionRelative"><a class="FontItem" href="{{ route('product.by.category', 'anniversary-cakes') }}">Birthday Photo Cakes</a></li>
+                                  <li><a class="FontItem" href="{{ route('product.by.category', 'anniversary-cakes') }}">Six Month Birthday Cakes </a></li>
+                                
+                            </ul>
+                        </div>
+                      
+                    
+                    </div>
+                </ul>
+            </li>
                        <li>
                            <a class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropplants" data-constrainWidth="false">
-                             All Desserts
+                               Festive & Seasonal Cakes
                            </a>
                                        <ul id='dropplants' class='dropdown-content' >
-                                           <div class="row m-0 multi-column-menu" style="margin-left:0px!important;">
-                                               <div class="col s3" style="background-color:#fff!important;width:100%">
-                                                   <div style="padding-left:0px;" class="menu-column-title"></div>
+                                           <div class="row m-0 multi-column-menu" style="margin-left:10px!important;">
+                                               <div class="col s3" style="background-color:white!important;width:100%">
+                                                   <div style="padding-left:15px;" class="menu-column-title">By Type</div>
                                                    <ul class="showAllItem" style="padding-left:15px;padding-top:0px;margin-top:-10px!important">
-                                                      <li><a href="https://www.cakeplaza.in/jar-cakes">Jar Cakes</a></li>
-<li><a href="https://cakeplaza.in/desserts/pastry">Pastries</a></li>
-<li><a href="https://www.cakeplaza.in/cheesecakes">Cheese Cakes</a></li>
-<li><a href="https://cakeplaza.in/desserts/cup-cakes">Cup Cakes</a></li>
-<li><a href="https://www.cakeplaza.in/brownies">Brownies</a></li>
-<li><a href="https://www.cakeplaza.in/cookies">Cookies</a></li>
-<li><a href="https://www.cakeplaza.in/tea-cakes">Tea Cakes</a></li>
-
+                                                       <li class="ListPositionRelative"><a href="{{ route('product.by.category', 'valentine-s-day-cakes') }}">Valentine’s Day Cakes</a></li>
+                                                       <li><a href="{{ route('product.by.category', 'raksha-bandhan-cakes') }}">Raksha Bandhan Cakes</a></li>
+                                                        <li><a href="{{ route('product.by.category', 'christmas-cakes') }}">Christmas Cakes</a></li>
+                                                        <li><a href="{{ route('product.by.category', 'new-year-cakes') }}">New Year Cakes</a></li>
+                                                         <li><a href="{{ route('product.by.category', 'diwali-cakes') }}">Diwali Cakes</a></li>
+                                                        
                                                    </ul>
                                                </div>
                                              
@@ -869,140 +669,196 @@ div#mobileMenu {
                                        </ul>
                                    </li>
                                    
-                              <li>
-   <a href="" class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropplants1" data-constrainWidth="false">
-                 Birthday
+                                   
+                                   
+                                   <li>
+                <a class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropdown1" data-constrainWidth="false">
+              By Cake Type
                 </a>
-  <ul id='dropplants1' class='dropdown-content'>
-    <div class="row m-0 multi-column-menu" style="margin-left:0px!important;">
-      <div class="col s3" style="background-color:#fff!important;width:100%">
-       
-        <ul class="showAllItem" style="padding-left:15px;padding-top:0px;margin-top:0px!important">
-          <li><a href="https://www.cakeplaza.in/birthday-cakes">Birthday Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/birthday-cakes/1st-birthday-cakes">1st Birthday Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/birthday-cakes/birthday-photo-cakes">Birthday Photo Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/birthday-cakes/six-month-birthday-cakes">Half Birthday Cakes</a></li>
-        </ul>
-      </div>
-    </div>
-  </ul>
-</li>
-<li>
-  <a href="https://www.cakeplaza.in/combos" class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropplants3" data-constrainWidth="false">
-    Combos
-  </a>
-  <ul id='dropplants3' class='dropdown-content'>
-    <div class="row m-0 multi-column-menu" style="margin-left:0px!important;">
-      <div class="col s3" style="background-color:#fff!important;width:100%">
-        <ul class="showAllItem" style="padding-left:15px;padding-top:0px;margin-top:0px!important">
+                <ul id='dropdown1' class='dropdown-content multi-column-drop-menu'  style="min-width:1200px!important;background-repeat: no-repeat;background-attachment: relative;background-position: right bottom;">
+                    <div class="row m-0 multi-column-menu">
+                        <div class="col s4" style="margin-left:18px!important;">
+                            <div class="menu-column-title"> By Cake Type</div>
+                            <ul style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
+                                <li><a href="{{ route('product.by.category', 'regular-cakes') }}">Regular Cakes</a></li>
+                                <li ><a href="{{ route('product.by.category', 'designer-cakes') }}">Designer Cakes</a></li>
+                                <li><a href="{{ route('product.by.category', 'fondant-cakes') }}">Fondant Cakes</a></li>
+                                <li><a href="{{ route('product.by.category', 'multi-tier-cakes') }}">Multi Tier Cakes</a></li>
+                                
+                            </ul>
+                        </div>
+                        <div class="col s4" style="background:white;width:35%;">
+                            <div class="menu-column-title"></div>
+                            <ul style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
+                                <li class="ListPositionRelative"><a href="{{ route('product.by.category', 'character-cakes') }}">Character Cakes </a></li>
+                                <li><a href="{{ route('product.by.category', 'themed-cakes') }}">Themed Cakes</a></li>
+                                <li><a href="{{ route('product.by.category', 'photo-cakes') }}">Photo Cakes</a></li>
+                                <li><a href="{{ route('product.by.category', 'heart-shaped-cakes') }}">Heart-Shaped Cakes</a></li>
+                                <li><a href="{{ route('product.by.category', 'pull-me-up-cakes') }}">Pull Me Up Cakes</a></li>
+                                <li><a href="{{ route('product.by.category', 'pinata-cakes') }}">Pinata Cakes</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="col s4" >
+                            <div class="menu-column-title"></div>
+                            <ul style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
+                              <li class="ListPositionRelative"><a class="FontItem marginPaddingBottomForOtherCategory" href="{{ route('product.by.category', 'bomb-cakes') }}">Bomb Cakes</a></li>
+                                 <li><a class="FontItem" href="{{ route('product.by.category', 'half-cakes') }}">Half Cakes</a></li>
+                                   <li><a class="FontItem" href="{{ route('product.by.category', 'bento-cakes') }}"> Bento Cakes</a></li>
+                                   <li><a class="FontItem" href="{{ route('product.by.category', 'jar-cakes') }}">Jar Cakes</a></li>
+                                   <li><a class="FontItem" href="{{ route('product.by.category', 'cheesecakes') }}">Cheesecakes</a></li>
+                                   <li><a class="FontItem" href="{{ route('product.by.category', 'dry-cakes') }}">Dry Cakes</a></li>
+                                   <li><a class="FontItem" href="{{ route('product.by.category', 'tea-cakes') }}">Tea Cakes</a></li
+                                   <li><a class="FontItem" href="{{ route('product.by.category', 'brownies') }}">Brownies</a></li>
+                                  <li><a class="FontItem" href="{{ route('product.by.category', 'cookies') }}">Cookies</a></li>
+                            </ul>
+                              
+                               
+                        </div>
+                           <div class="col s4" style="width:36%;background:white!important;padding-left:0px;padding-right:0px!important;">
+                                  <div class="menu-column-title">By Flavor</div>
+                            <ul style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
+                              <li class="ListPositionRelative"><a class="FontItem marginPaddingBottomForOtherCategory" href="{{ route('product.by.category', 'chocolate-cakes') }}">Chocolate Cakes</a></li>
+                                 <li><a class="FontItem" href="{{ route('product.by.category', 'butterscotch-cakes') }}">Butterscotch Cakes</a></li>
+                                   <li><a class="FontItem" href="{{ route('product.by.category', 'vanilla-cakes') }}">Vanilla Cakes</a></li>
+                                   <li><a class="FontItem" href="{{ route('product.by.category', 'black-forest-cakes') }}">Black Forest Cakes</a></li>
+                                   <li><a class="FontItem" href="{{ route('product.by.category', 'red-velvet-cakes') }}">Red Velvet Cakes</a></li>
+                                   <li><a class="FontItem" href="{{ route('product.by.category', 'pineapple-cakes') }}">Pineapple Cakes</a></li>
+                                   <li><a class="FontItem" href="{{ route('product.by.category', 'mango-cakes') }}">Mango Cakes</a></li>
+                                  <li><a class="FontItem" href="{{ route('product.by.category', 'strawberry-cakes') }}">Strawberry Cakes</a></li>
+                                             
+                            </ul>
+                                </div>
+                                <div class="col s4" style="margin-top:35px;width:36%;background:white!important;padding-left:0px!important;margin-left:0px!important">
+                                 <div class="menu-column-title"></div>
+                            <ul style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
+                              <li class="ListPositionRelative"><a class="FontItem marginPaddingBottomForOtherCategory" href="{{ route('product.by.category', 'blueberry-cakes') }}">Blueberry Cakes</a></li>
+                                 <li><a class="FontItem" href="{{ route('product.by.category', 'coffee-cakes') }}">Coffee Cakes</a></li>
+                                   <li><a class="FontItem" href="{{ route('product.by.category', 'fruit-cakes') }}"> Fruit Cakes</a></li>
+                                   <li><a class="FontItem" href="{{ route('product.by.category', 'ferrero-rocher-cakes') }}">Ferrero Rocher Cakes</a></li>
+                                   <li><a class="FontItem" href="{{ route('product.by.category', 'kitkat-cakes') }}">KitKat Cakes</a></li>
+                                   <li><a class="FontItem" href="{{ route('product.by.category', 'truffle-cakes') }}">Truffle Cakes</a></li>
+                                   <li><a class="FontItem" href="{{ route('product.by.category', 'walnut-cakes') }}">Walnut Cakes</a></li>
+                                          <li><a class="FontItem" href="{{ route('product.by.category', 'caramel-cakes') }}">Caramel Cakes</a></li>
+                                               
+                            </ul>
+                        </div>
+                    </div>
+                </ul>
+            </li>
+                                   
+             <li>
+                <a class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropgifts" data-constrainWidth="false">
+                    Kids Cake
+                </a>
+                <ul id='dropgifts' class='dropdown-content '>
+                    <div class="row m-0 multi-column-menu">
+                         <div class="col s2" style="background:white!important;margin-left:22px!important;">
+                            <div class="menu-column-title" ></div>
+                            <ul class="showAllItem" style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
+                                  <li><a href="{{ route('product.by.category', 'cartoon-cakes') }}">Cartoon Cakes</a></li>
+                                    <li><a href="{{ route('product.by.category', 'superhero-cakes') }}">Superhero Cakes</a></li>
+                                   <li><a href="{{ route('product.by.category', 'animal-cakes') }}">Animal Cakes</a></li>
+                                  <li><a href="{{ route('product.by.category', 'car-cakes') }}">Car Cakes</a></li>
+                                  <li><a href="{{ route('product.by.category', 'girls-cake') }}">Girls Cake </a></li>
+                               
+                                <li><a href="{{ route('product.by.category', 'princess-cakes') }}">Princess Cakes</a></li>
+                                <li class="ListPositionRelative"><a href="{{ route('product.by.category', 'doll-cake') }}">Doll Cake  </a></li>
+                               
+                            </ul>
+                        </div>
+
+                     
+
+                      
+                    </div>
+                </ul>
+            </li>
+            <li>
+                        <a class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropPersonalised" data-constrainWidth="false">
+                           Theme Cake
+                        </a>
+                            <ul id='dropPersonalised' class='dropdown-content'>
+                                <div class="row m-0 multi-column-menu">
+
+                                    <div class="col s2" style="width:100%;margin:0;background:white!important;margin-left:22px!important;">
+                                        <div class="menu-column-title"> Theme Cake </div>
+                                        <ul class="showAllItem" style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
+                                            <li><a href="{{ route('product.by.category', 'adult-themes') }}">Adult Themes</a></li>
+                                            <li><a href="{{ route('product.by.category', 'gym-cakes') }}">Gym Cakes</a></li>
+                                             <li class="ListPositionRelative"><a href="{{ route('product.by.category', 'alcohol-themed-cakes') }}">Alcohol-Themed Cakes</a></li>
+                                            <li><a href="{{ route('product.by.category', 'naughty-cakes') }}">Naughty Cakes</a></li>
+                                            <li><a href="{{ route('product.by.category', 'seasonal-themes') }}">Seasonal Themes</a></li>
+                                            <li><a href="{{ route('product.by.category', 'summer-special-cakes') }}">Summer Special Cakes</a></li>
+                                              <li><a href="{{ route('product.by.category', 'winter-delight-cakes') }}">Winter Delight Cakes</a></li>
+                                              
+                                        </ul>
+                                    </div>
+                                 
+                                </div>
+                            </ul>
+                        </li>
+                   <li>
+                     <a class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropdownchocolate" data-constrainWidth="false">
+                         By Relationship
+                     </a>
+                     <ul id='dropdownchocolate' class='dropdown-content multi-column-drop-menu' style="min-width:500px!important">
+                          <div class="row m-0 multi-column-menu">
+
+                                                             <div class="col s2" style="width:50%;margin:0;background:white!important;margin-left:26px!important;">
+                                                                 <div class="menu-column-title">By Type </div>
+                                                                 <ul class="showAllItem" style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
+                                                                      <li class="ListPositionRelative"><a href="{{ route('product.by.category', 'cakes-for-him') }}">Cakes for Him</a></li>
+                                                                      <li class="ListPositionRelative"><a href="{{ route('product.by.category', 'cakes-for-father') }}">Cakes for Father</a></li>
+                                                                      <li><a href="{{ route('product.by.category', 'cakes-for-husband') }}">Cakes for Husband</a></li>
+                                                                        <li><a href="{{ route('product.by.category', 'cakes-for-brother') }}">Cakes for Brother</a></li>
+                                                                         <li class="ListPositionRelative"><a href="{{ route('product.by.category', 'cakes-for-boyfriend') }}">Cakes for Boyfriend</a></li>
+                                                                        
+                                                                 </ul>
+                                                             </div>
+                                                               <div class="col s2" style="width:20%;margin:0;background:white!important;margin-left:26px!important;">
+                                                                 <div class="menu-column-title">By Type </div>
+                                                                 <ul class="showAllItem" style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
+                                                                     <li><a href="{{ route('product.by.category', 'cakes-for-her') }}">Cakes for Her</a></li>
+                                                                           <li><a href="{{ route('product.by.category', 'cakes-for-mother') }}">Cakes for Mother</a></li>
+                                                                             <li><a href="{{ route('product.by.category', 'cakes-for-wife') }}">Cakes for Wife</a></li>
+                                                                             <li><a href="{{ route('product.by.category', 'cakes-for-sister') }}">Cakes for Sister</a></li>
+                                                                              <li><a href="{{ route('product.by.category', 'cakes-for-girlfriend') }}">Cakes for Girlfriend</a></li>
+                                                                 </ul>
+                                                             </div>
+                                                          
+                                                         </div>
+                     </ul>
+                 </li>
           
-          <li><a href="https://www.cakeplaza.in/combos/flowers-cake">Flowers and Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/combos/flowers-chocolate">Flowers and Chocolates</a></li>
-          <li><a href="https://www.cakeplaza.in/combos/flowers-teddy">Flowers and Teddy</a></li>
-          <li><a href="https://www.cakeplaza.in/combos/flowers-personalized-gift">Flowers and Sweets</a></li>
-          <li><a href="https://cakeplaza.in/combos/flowers-and-dry-fruits">Flowers and Dry Fruits</a></li>
-          <li><a href="https://cakeplaza.in/combos/flowers-and-fresh-fruits">Flowers and Fresh Fruits</a></li>
-          <li><a href="https://www.cakeplaza.in/combos/flowers-greeting-card">Flowers and Greeting Card</a></li>
-        </ul>
-      </div>
-    </div>
-  </ul>
-</li>
-<li>
-  <a href="" class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropanniversary" data-constrainWidth="false">
-    Anniversary
-  </a>
-  <ul id='dropanniversary' class='dropdown-content'>
-    <div class="row m-0 multi-column-menu" style="margin-left:0px!important;">
-      <div class="col s3" style="background-color:#fff!important;width:100%">
-        <ul class="showAllItem" style="padding-left:15px;padding-top:0px;margin-top:0px!important">
-          <li><a href="https://www.cakeplaza.in/anniversary-cakes">All Anniversary Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/anniversary-cakes/1st-anniversary-cakes">1st Anniversary Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/anniversary-cakes/25th-anniversary-cakes">25th Anniversary Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/anniversary-cakes/anniversary-cakes-for-parents">Anniversary Cakes for Parents</a></li>
-          <li><a href="https://www.cakeplaza.in/anniversary-cakes/5th-anniversary-cakes">5th Anniversary Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/anniversary-cakes/anniversary-photo-cakes">Anniversary Photo Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/anniversary-cakes/10th-anniversary-cakes">10th Anniversary Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/anniversary-cakes/50th-anniversary-cakes">50th Anniversary Cakes</a></li>
-        </ul>
-      </div>
-    </div>
-  </ul>
-</li>
-<li>
-  <a href="" class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropplants2" data-constrainWidth="false">
-    Plants
-  </a>
-  <ul id='dropplants2' class='dropdown-content'>
-    <div class="row m-0 multi-column-menu" style="margin-left:0px!important;">
-      <div class="col s3" style="background-color:#fff!important;width:100%">
-        <ul class="showAllItem" style="padding-left:15px;padding-top:0px;margin-top:0px!important">
-          <li><a href="https://www.cakeplaza.in/plants">Plants</a></li>
-          <li><a href="https://cakeplaza.in/plants/bonsai-plants">Bansal Plants</a></li>
-          <li><a href="https://cakeplaza.in/plants/indoor-plants">Indoor Plants</a></li>
-          <li><a href="https://cakeplaza.in/plants/outdoor-plants">Outdoor Plants</a></li>
-          <li><a href="https://cakeplaza.in/plants/lucky-bamboo">Luck Bamboo</a></li>
-        </ul>
-      </div>
-    </div>
-  </ul>
-</li>
-<li>
-  <a class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropoccasion" data-constrainWidth="false">
-    Occasion
-  </a>
-  <ul id='dropoccasion' class='dropdown-content multi-column-drop-menu' style="min-width:500px!important;">
-    <div class="row m-0 multi-column-menu" style="margin-left:0px!important;">
-      
-      <!-- Festive Celebration Column -->
-      <div class="col s6" style="background-color:#fff!important;">
-        <div style="padding-left:15px;" class="menu-column-title">Festive Celebration</div>
-        <ul class="showAllItem" style="padding-left:15px;padding-top:0px;margin-top:0px!important">
-          <li><a href="https://cakeplaza.in/festive-seasonal-cakes/friendship-day-cakes">Friendship Day Cakes</a></li>
-          <li><a href="https://cakeplaza.in/festive-seasonal-cakes/independence-day-cakes">Independence Day Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/raksha-bandhan-cakes">Rakhi Cakes</a></li>
-          <li><a href="https://cakeplaza.in/festive-seasonal-cakes/janmashatmi-cakes">Janmashtami Cakes</a></li>
-          <li><a href="https://cakeplaza.in/festive-seasonal-cakes/teachers-day-cakes">Teachers Day Cakes</a></li>
-        </ul>
-      </div>
 
-      <!-- Special Milestones Column -->
-      <div class="col s6" style="background:#fff!important;">
-        <div style="padding-left:15px;" class="menu-column-title">Special Milestones</div>
-        <ul class="showAllItem" style="padding-left:15px;padding-top:0px;margin-top:0px!important">
-          <li><a href="https://www.cakeplaza.in/baby-shower-cakes">Baby Shower Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/congratulations-cakes">Congratulations Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/retirement-cakes">Retirements Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/farewell-cakes">Farewell Cakes</a></li>
-          <li><a href="https://www.cakeplaza.in/wedding-cakes">Wedding Cakes</a></li>
-        </ul>
-      </div>
-
-    </div>
-  </ul>
-</li>
-<li>
-  <a class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropflowers" data-constrainWidth="false">
-    Flowers
-  </a>
-  <ul id='dropflowers' class='dropdown-content'>
-    <div class="row m-0 multi-column-menu" style="margin-left:0px!important;">
-      <div class="col s3" style="background-color:#fff!important;width:100%">
-        <ul class="showAllItem" style="padding-left:15px;padding-top:0px;margin-top:0px!important">
-          <li><a href="https://www.cakeplaza.in/flowers/rose-flowers">Roses</a></li>
-          <li><a href="https://www.cakeplaza.in/flowers/gerbera-flowers">Gerberas</a></li>
-          <li><a href="https://www.cakeplaza.in/flowers/lily-flowers">Lillies</a></li>
-          <li><a href="https://www.cakeplaza.in/flowers/orchid-flowers">Orchids</a></li>
-          <li><a href="https://www.cakeplaza.in/flowers/carnation-flowers">Carnations</a></li>
-          <li><a href="https://www.cakeplaza.in/flowers/mixed-flower-bouquets">Mixed Flowers</a></li>
-          <li><a href="https://www.cakeplaza.in/flowers">All Flowers</a></li>
-        </ul>
-      </div>
-    </div>
-  </ul>
-</li>
- <li><a href="https://cakeplaza.in/designer-cakes">Designer Cakes</a></li>
- <li> <a href="https://cakeplaza.in/queryForm">Customized Cakes</a></li>
+             <li>
+               
+             <li>
+                <a class="dropdown-trigger borderBottomForCategories" data-hover="true" data-belowOrigin="true" data-target="dropdownchocolate1" data-constrainWidth="false">
+                    By Dietary Preference
+                </a>
+                <ul id='dropdownchocolate1' class='dropdown-content'>
+                    <div class="row m-0 multi-column-menu">
+                        <div class="col s4 drop" style="margin-left:18px!important;width:100%">
+                            <div class="menu-column-title">By Dietary Preference</div>
+                            <ul style="margin-bottom:0px;padding-bottom:0px;margin-top:-10px!important">
+                                <li><a href="{{ route('product.by.category', 'eggless-cakes') }}">Eggless Cakes</a></li>
+                                <li ><a href="{{ route('product.by.category', 'sugar-free-cakes') }}">Sugar Free Cakes</a></li>
+                                <li><a href="{{ route('product.by.category', 'vegan-cakes') }}">Vegan Cakes</a></li>
+                                <li><a href="{{ route('product.by.category', 'gluten-free-cakes') }}">Gluten-Free Cakes</a></li>
+                                
+                            </ul>
+                        </div>
+                      
+                      
+                    </div>
+                </ul>
+            </li>
+            </li>
+              <li>
+              <li><a href="{{ route('product.by.category', 'plants') }}">Plants</a></li>
+            </li>
         </ul>
     </div>
 </nav>
@@ -1101,7 +957,7 @@ div#mobileMenu {
 
       .mobile-menu ul {
         list-style: none;
-        margin-top: 10px;
+        margin-top: 40px;
       }
 
       .mobile-menu ul li {
@@ -1127,38 +983,6 @@ div#mobileMenu {
       #mobileMenu a{
           color:#000;
       }
-  .mobile-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-  
-    height: 100vh; /* Full viewport height */
-    background-color: #fff;
-    z-index: 9999;
-    padding: 20px;
-    overflow-y: auto; /* Enables vertical scroll */
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Optional: hide scrollbar in Webkit-based browsers but allow scroll */
-.mobile-menu::-webkit-scrollbar {
-    width: 4px;
-}
-.mobile-menu::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    border-radius: 10px;
-}
-
-
-/* Optional: hide scrollbar in Webkit-based browsers but allow scroll */
-.mobile-menu::-webkit-scrollbar {
-    width: 4px;
-}
-.mobile-menu::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    border-radius: 10px;
-}
-
     }
   </style>
   <!-- Mobile Header -->
@@ -1170,7 +994,7 @@ div#mobileMenu {
     </div>
 
     <div class="mobile-header-logo">
-      <a href="{{route('web.index')}}"><img src="https://cakeplaza.in/assets/website/img/logos.png" alt="Logo"></a>
+      <a href="https://azure-bee-177357.hostingersite.com/website"><img src="https://azure-bee-177357.hostingersite.com/assets/website/img/logos.png" alt="Logo"></a>
     </div>
 
     <div class="mobile-header-icons">
@@ -1186,9 +1010,9 @@ div#mobileMenu {
     </div>
    
   <div class="col l4 mobile" style="padding-left: 0px;margin-top:55px">
-                            <form  id="adbsearchEvent2" class="category-search" action="{{route('web.index')}}/search" method="GET" autocomplete="off" style="height :0">
+                            <form  id="adbsearchEvent2" class="category-search" action="{{URL('website')}}/search" method="GET" autocomplete="off" style="height :0">
                                 <div class="input-field">
-                                    <input id="search-input-in-mobile" class="search-input-desktop validate browser-default search-field adbSearch" placeholder="Search for cakes" maxlength="50" type="text" name="q" value="" style="border: 1px solid #ccc; width: 100%;height: 40px;color: #8f9196;font-weight:700;border-radius: 0px;vertical-align: top;" required>
+                                    <input id="search-input-in-desktop" class="search-input-desktop validate browser-default search-field adbSearch" placeholder="Search 5000+ flowers, cakes, gifts etc" maxlength="50" type="text" name="q" value="" style="border: 1px solid #ccc; width: 100%;height: 40px;color: #8f9196;font-weight:700;border-radius: 0px;vertical-align: top;" required>
                                      <img class="search-icon-image"  onclick="document.getElementById('adbsearchEvent2').submit();"  id="searchIconImg" src="{{asset('assets/website/img/desktopheadersearch.webp')}}" alt="desktopheadersearch" style="width: 22px!important; margin-top: -31px!important;"/>
                                       <div class="search-dropdown-by-category adbSearchSugg ">
                                         <div class="trending-shortcut" style="padding: 12px 12px 0px 12px;">
@@ -1207,365 +1031,107 @@ div#mobileMenu {
  <div class="mobile-menu" id="mobileMenu">
      <button id="menuCloseBtn">✖</button>
   <ul class="">
-    <li><a href="{{route('web.index')}}">Home</a></li>
-    
+    <li><a href="https://azure-bee-177357.hostingersite.com/website">Home</a></li>
+     <li><a href="{{ route('allproduct') }}">All Cake</a></li>
     <!-- Cake Category Menus -->
- <ul class="multi-level-menu">
-  <li>
-    <details>
-      <summary><span style="font-weight: 700; font-size: 14px; color: #C91E39;">Cakes</span></summary>
-      <ul class="cut">
-        <li><a href="https://cakeplaza.in/mango-cakes">Mango Cakes</a></li>
-        <li><a href="#">Gourmet Cakes</a></li>
-        <li><a href="https://cakeplaza.in/theme-cake/cricket-theme">Cricket Cakes</a></li>
-        <li><a href="https://cakeplaza.in/pinata-cakes">Pinata Cakes</a></li>
-        <li><a href="#">Drip Cakes</a></li>
-        <li><a href="https://cakeplaza.in/bomb-cakes">Bomb Cakes</a></li>
-        <li><a href="https://cakeplaza.in/pull-me-up-cakes">Pull Me Up Cakes</a></li>
-
-        <li>
-          <details>
-            <summary><strong>By Type</strong></summary>
-            <ul>
-              <li><a href="#">Bestsellers</a></li>
-              <li><a href="#">Eggless Cakes</a></li>
-              <li><a href="https://cakeplaza.in/photo-cakes">Photo Cakes</a></li>
-              <li><a href="https://cakeplaza.in/desserts/cheesecake">Cheese Cakes</a></li>
-              <li><a href="https://cakeplaza.in/kids-cake/half-cakes">Half Cakes</a></li>
-              <li><a href="https://cakeplaza.in/heart-shaped-cakes">Heart Shaped Cakes</a></li>
-              <li><a href="#">Rose Cakes</a></li>
-              <li><a href="https://cakeplaza.in/allcake">All Cakes</a></li>
-            </ul>
-          </details>
-        </li>
-
-        <li>
-          <details>
-            <summary><strong>By Flavour</strong></summary>
-            <ul>
-              <li><a href="https://cakeplaza.in/chocolate-cakes">Chocolate Cakes</a></li>
-              <li><a href="https://cakeplaza.in/butterscotch-cakes">Butterscotch Cakes</a></li>
-              <li><a href="https://cakeplaza.in/mango-cakes">Mango Cakes</a></li>
-              <li><a href="https://cakeplaza.in/pineapple-cakes">Pineapple Cakes</a></li>
-              <li><a href="https://cakeplaza.in/kitkat-cakes">Kit Kat Cakes</a></li>
-              <li><a href="https://cakeplaza.in/black-forest-cakes">Black Forest Cakes</a></li>
-              <li><a href="https://cakeplaza.in/red-velvet-cakes">Red Velvet Cakes</a></li>
-              <li><a href="https://cakeplaza.in/vanilla-cakes">Vanilla Cakes</a></li>
-              <li><a href="https://cakeplaza.in/fruit-cakes">Fruit Cakes</a></li>
-              <li><a href="https://cakeplaza.in/blueberry-cakes">Blueberry Cakes</a></li>
-            </ul>
-          </details>
-        </li>
-
-      </ul>
-    </details>
-  </li>
-</ul>
-
-
-<ul class="multi-level-menu">
-  <li>
-    <details>
-      <summary>Theme Cakes</summary>
-      <ul class="cut">
-            <li>
-          <details>
-            <summary>Kids Cakes</summary>
-            <ul>
-          
-        <li><a href="https://www.cakeplaza.in/kids-cake">All Kids Cakes</a></li>
-        <li><a href="https://www.cakeplaza.in/birthday-cakes/1st-birthday-cakes">1st Birthday Cakes</a></li>
-        <li><a href="https://www.cakeplaza.in/kids-cake/princess-cakes">Princess Cakes</a></li>
-        <li><a href="https://www.cakeplaza.in/kids-cake/animal-cakes">Animal Cakes</a></li>
-        <li><a href="https://cakeplaza.in/kids-cake/masha-and-bear-cake">Masha & The Bear Cakes</a></li>
-        <li><a href="https://cakeplaza.in/kids-cake/cake-for-boys">Cakes For Boys</a></li>
-        <li><a href="https://cakeplaza.in/kids-cake/cake-for-girls">Cakes For Girls</a></li>
-        <li><a href="https://cakeplaza.in/designer-cakes/number-cakes">Number Cakes</a></li>
-        <li><a href="https://cakeplaza.in/designer-cakes/alphabet-cakes">Alphabet Cakes</a></li>
-        <li><a href="https://www.cakeplaza.in/kids-cake/car-cakes">Car and Vehicle Cakes</a></li>
-        <li><a href="https://cakeplaza.in/kids-cake/baby-shark-cake">Baby Shark Cakes</a></li>
-  </ul>
-          </details>
-        </li>
-        <li>
-          <details>
-            <summary>Character Cakes</summary>
-            <ul>
-              <li><a href="https://www.cakeplaza.in/character-cakes">All Character Cakes</a></li>
-              <li><a href="https://cakeplaza.in/kids-cake/spiderman-theme-cake">Spiderman Cakes</a></li>
-              <li><a href="https://cakeplaza.in/kids-cake/unicorn-theme-cake">Unicorn Cakes</a></li>
-              <li><a href="https://cakeplaza.in/kids-cake/doll-cake">Barbie Cakes</a></li>
-              <li><a href="https://cakeplaza.in/kids-cake/avengers-theme-cake">Avenger Cakes</a></li>
-              <li><a href="https://cakeplaza.in/kids-cake/doraemon-theme-cake">Doraemon Cakes</a></li>
-              <li><a href="https://cakeplaza.in/kids-cake/cocomelon-cakes">Cocomelon Cakes</a></li>
-              <li><a href="https://cakeplaza.in/kids-cake/cartoon-cakes">Cartoon Cakes</a></li>
-              <li><a href="https://cakeplaza.in/kids-cake/superhero-cakes">Super Hero Cakes</a></li>
-            </ul>
-          </details>
-        </li>
-
-        <li>
-          <details>
-            <summary>Grown Up Cakes</summary>
-            <ul>
-              <li><a href="https://www.cakeplaza.in/kids-cake/bride-to-be-cake">Bride To Be Cakes</a></li>
-              <li><a href="https://www.cakeplaza.in/kids-cake/wedding-cake">Wedding Cakes</a></li>
-              <li><a href="https://www.cakeplaza.in/kids-cake/gym-cake">Gym Cakes</a></li>
-              <li><a href="#">Party Cakes</a></li>
-            </ul>
-          </details>
-        </li>
-
-        <li>
-          <details>
-            <summary>More Cakes</summary>
-            <ul>
-              <li><a href="https://cakeplaza.in/kids-cake/jungle-theme-cake">Jungle Theme Cakes</a></li>
-              <li><a href="https://cakeplaza.in/kids-cake/cricket-theme">Cricket Cakes</a></li>
-              <li><a href="https://www.cakeplaza.in/kids-cake/football-cakes">Football Cakes</a></li>
-              <li><a href="https://cakeplaza.in/kids-cake/basketball-theme-cake">Basketball Cakes</a></li>
-              <li><a href="https://cakeplaza.in/kids-cake/rainbow-cake">Rainbow Cakes</a></li>
-              <li><a href="https://cakeplaza.in/kids-cake/butterfly-cakes">Butterfly Cakes</a></li>
-              <li><a href="https://cakeplaza.in/kids-cake/dinosaur-cake">Dinosaur Cakes</a></li>
-              <li><a href="https://cakeplaza.in/designer-cakes">All Designer Cakes</a></li>
-            </ul>
-          </details>
-        </li>
-
-      </ul>
-</ul>
-
-   <ul class="multi-level-menu">
-  <li>
-    <details>
-      <summary>By Relationship</summary>
-      <ul class="cut">
-
-        <li>
-          <details>
-            <summary><strong>For Him</strong></summary>
-            <ul>
-              <li><a href="https://www.cakeplaza.in/cakes-for-him">All Cakes For Him</a></li>
-              <li><a href="https://cakeplaza.in/cake-for-friends">Cakes For Friend</a></li>
-              <li><a href="https://cakeplaza.in/cakes-for-father">Cakes For Father</a></li>
-              <li><a href="https://cakeplaza.in/cakes-for-husband">Cakes For Husband</a></li>
-              <li><a href="https://cakeplaza.in/cakes-for-brother">Cakes For Brother</a></li>
-              <li><a href="https://cakeplaza.in/cakes-for-boyfriend">Cakes For Boyfriend</a></li>
-            </ul>
-          </details>
-        </li>
-
-        <li>
-          <details>
-            <summary><strong>For Her</strong></summary>
-            <ul>
-              <li><a href="https://www.cakeplaza.in/cakes-for-her">All Cakes For Her</a></li>
-              <li><a href="https://cakeplaza.in/cake-for-friends">Cakes For Friend</a></li>
-              <li><a href="https://cakeplaza.in/cakes-for-mother">Cakes For Mother</a></li>
-              <li><a href="https://cakeplaza.in/cakes-for-wife">Cakes For Wife</a></li>
-              <li><a href="https://cakeplaza.in/cakes-for-girlfriend">Cakes For Girlfriend</a></li>
-            </ul>
-          </details>
-        </li>
-
-      </ul>
-    </details>
-  </li>
-</ul>
-
- <ul class="multi-level-menu">
     <li>
         <details>
-            <summary> All Desserts</summary>
+            <summary>Birthday Cakes</summary>
             <ul>
-                 <li><a href="https://www.cakeplaza.in/jar-cakes">Jar Cakes</a></li>
-            <li><a href="https://cakeplaza.in/desserts/pastry">Pastries</a></li>
-            <li><a href="https://www.cakeplaza.in/cheesecakes">Cheese Cakes</a></li>
-            <li><a href="https://cakeplaza.in/desserts/cup-cakes">Cup Cakes</a></li>
-            <li><a href="https://www.cakeplaza.in/brownies">Brownies</a></li>
-            <li><a href="https://www.cakeplaza.in/cookies">Cookies</a></li>
-            <li><a href="https://www.cakeplaza.in/tea-cakes">Tea Cakes</a></li>
-         
+                <li><a href="{{ route('product.by.category', 'birthday-cakes') }}">1st Birthday Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'anniversary-cakes') }}">Birthday Photo Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'anniversary-cakes') }}">Six Month Birthday Cakes</a></li>
             </ul>
         </details>
     </li>
-  </ul>
- <ul class="multi-level-menu">
-   <li>
-    <details>
-        <summary> Birthday</summary>
-        <ul>
-            <li><a href="https://www.cakeplaza.in/birthday-cakes">Birthday Cakes</a></li>
-            <li><a href="https://www.cakeplaza.in/birthday-cakes/1st-birthday-cakes">1st Birthday Cakes</a></li>
-            <li><a href="https://www.cakeplaza.in/birthday-cakes/birthday-photo-cakes">Birthday Photo Cakes</a></li>
-            <li><a href="https://www.cakeplaza.in/birthday-cakes/six-month-birthday-cakes">Half Birthday Cakes</a></li>
-         
-        </ul>
-    </details>
-</li>
-</ul>
- <ul class="multi-level-menu">
+
     <li>
         <details>
-            <summary> Combos</summary>
+            <summary>Festive & Seasonal Cakes</summary>
             <ul>
-            <li><a href="https://www.cakeplaza.in/combos/flowers-cake">Flowers and Cakes</a></li>
-            <li><a href="https://www.cakeplaza.in/combos/flowers-chocolate">Flowers and Chocolates</a></li>
-            <li><a href="https://www.cakeplaza.in/combos/flowers-teddy">Flowers and Teddy</a></li>
-            <li><a href="https://www.cakeplaza.in/combos/flowers-personalized-gift">Flowers and Sweets</a></li>
-            <li><a href="https://cakeplaza.in/combos/flowers-and-dry-fruits">Flowers and Dry Fruits</a></li>
-            <li><a href="https://cakeplaza.in/combos/flowers-and-fresh-fruits">Flowers and Fresh Fruits</a></li>
-            <li><a href="https://www.cakeplaza.in/combos/flowers-greeting-card">Flowers and Greeting Card</a></li>
-                                  
+                <li><a href="{{ route('product.by.category', 'valentine-s-day-cakes') }}">Valentine’s Day Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'raksha-bandhan-cakes') }}">Raksha Bandhan Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'christmas-cakes') }}">Christmas Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'new-year-cakes') }}">New Year Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'diwali-cakes') }}">Diwali Cakes</a></li>
             </ul>
         </details>
     </li>
-</ul>
- <ul class="multi-level-menu">
+
     <li>
         <details>
-            <summary>Anniversary</summary>
+            <summary>By Cake Type</summary>
             <ul>
-  <li><a href="https://www.cakeplaza.in/anniversary-cakes">All Anniversary Cakes</a></li>
-            <li><a href="https://www.cakeplaza.in/anniversary-cakes/1st-anniversary-cakes">1st Anniversary Cakes</a></li>
-            <li><a href="https://www.cakeplaza.in/anniversary-cakes/25th-anniversary-cakes">25th Anniversary Cakes</a></li>
-            <li><a href="https://www.cakeplaza.in/anniversary-cakes/anniversary-cakes-for-parents">Anniversary Cakes for Parents</a></li>
-            <li><a href="https://www.cakeplaza.in/anniversary-cakes/5th-anniversary-cakes">5th Anniversary Cakes</a></li>
-            <li><a href="https://www.cakeplaza.in/anniversary-cakes/anniversary-photo-cakes">Anniversary Photo Cakes</a></li>
-            <li><a href="https://www.cakeplaza.in/anniversary-cakes/10th-anniversary-cakes">10th Anniversary Cakes</a></li>
-            <li><a href="https://www.cakeplaza.in/anniversary-cakes/50th-anniversary-cakes">50th Anniversary Cakes</a></li>
-         
+                <li><a href="{{ route('product.by.category', 'regular-cakes') }}">Regular Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'designer-cakes') }}">Designer Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'fondant-cakes') }}">Fondant Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'multi-tier-cakes') }}">Multi Tier Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'character-cakes') }}">Character Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'photo-cakes') }}">Photo Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'heart-shaped-cakes') }}">Heart-Shaped Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'pull-me-up-cakes') }}">Pull Me Up Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'pinata-cakes') }}">Pinata Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'bomb-cakes') }}">Bomb Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'jar-cakes') }}">Jar Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'cheesecakes') }}">Cheesecakes</a></li>
             </ul>
         </details>
     </li>
-</ul>
- <ul class="multi-level-menu">
+
     <li>
         <details>
-            <summary>Plants</summary>
+            <summary>Kids Cake</summary>
             <ul>
-                   <li><a href="https://www.cakeplaza.in/plants">Plants</a></li>
-            <li><a href="https://cakeplaza.in/plants/bonsai-plants">Bonsai Plants</a></li>
-            <li><a href="https://cakeplaza.in/plants/indoor-plants">Indoor Plants</a></li>
-            <li><a href="https://cakeplaza.in/plants/outdoor-plants">Outdoor Plants</a></li>
-            <li><a href="https://cakeplaza.in/plants/lucky-bamboo">Lucky Bamboo</a></li>
-          
+                <li><a href="{{ route('product.by.category', 'cartoon-cakes') }}">Cartoon Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'superhero-cakes') }}">Superhero Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'animal-cakes') }}">Animal Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'car-cakes') }}">Car Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'princess-cakes') }}">Princess Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'doll-cake') }}">Doll Cakes</a></li>
             </ul>
         </details>
     </li>
-    </ul>
-    
-      <ul class="multi-level-menu">
-  <li>
-    <details>
-      <summary>Occasion</summary>
-      <ul class="cut">
 
-        <li>
-          <details>
-            <summary><strong>Festive Celebration</strong></summary>
-            <ul>
-              <li><a href="https://cakeplaza.in/festive-seasonal-cakes/friendship-day-cakes">Friendship Day Cakes</a></li>
-              <li><a href="https://cakeplaza.in/festive-seasonal-cakes/independence-day-cakes">Independence Day Cakes</a></li>
-              <li><a href="https://www.cakeplaza.in/raksha-bandhan-cakes">Rakhi Cakes</a></li>
-              <li><a href="https://cakeplaza.in/festive-seasonal-cakes/janmashatmi-cakes">Janmashtami Cakes</a></li>
-              <li><a href="https://cakeplaza.in/festive-seasonal-cakes/teachers-day-cakes">Teachers Day Cakes</a></li>
-            </ul>
-          </details>
-        </li>
-
-        <li>
-          <details>
-            <summary><strong>Special Milestones</strong></summary>
-            <ul>
-              <li><a href="https://www.cakeplaza.in/baby-shower-cakes">Baby Shower Cakes</a></li>
-              <li><a href="https://www.cakeplaza.in/congratulations-cakes">Congratulations Cakes</a></li>
-              <li><a href="https://www.cakeplaza.in/retirement-cakes">Retirement Cakes</a></li>
-              <li><a href="https://www.cakeplaza.in/farewell-cakes">Farewell Cakes</a></li>
-              <li><a href="https://www.cakeplaza.in/wedding-cakes">Wedding Cakes</a></li>
-            </ul>
-          </details>
-        </li>
-
-      </ul>
-    </details>
-  </li>
-</ul>
-
-    
-     <ul class="multi-level-menu">
-       <li>
+    <li>
         <details>
-            <summary>Flowers</summary>
+            <summary>Theme Cake</summary>
             <ul>
-           <li><a href="https://www.cakeplaza.in/flowers/rose-flowers">Roses</a></li>
-            <li><a href="https://www.cakeplaza.in/flowers/gerbera-flowers">Gerberas</a></li>
-            <li><a href="https://www.cakeplaza.in/flowers/lily-flowers">Lillies</a></li>
-            <li><a href="https://www.cakeplaza.in/flowers/orchid-flowers">Orchids</a></li>
-            <li><a href="https://www.cakeplaza.in/flowers/carnation-flowers">Carnations</a></li>
-            <li><a href="https://www.cakeplaza.in/flowers/mixed-flower-bouquets">Mixed Flowers</a></li>
-            <li><a href="https://www.cakeplaza.in/flowers">All Flowers</a></li>
-         
+                <li><a href="{{ route('product.by.category', 'adult-themes') }}">Adult Themes</a></li>
+                <li><a href="{{ route('product.by.category', 'gym-cakes') }}">Gym Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'alcohol-themed-cakes') }}">Alcohol-Themed Cakes</a></li>
+                <li><a href="{{ route('product.by.category', 'naughty-cakes') }}">Naughty Cakes</a></li>
             </ul>
         </details>
     </li>
-    </ul>
-     <ul class="multi-level-menu">
- <li><a href="https://cakeplaza.in/designer-cakes">Designer Cakes</a></li>
- </ul>
-  <ul class="multi-level-menu">
- <li> <a href="https://cakeplaza.in/queryForm">Customized Cakes</a></li></ul>
-    <li><a href="{{route('about-us')}}">About us</a></li>
+
+    <li>
+        <details>
+            <summary>By Relationship</summary>
+            <ul>
+                <li><a href="{{ route('product.by.category', 'cakes-for-him') }}">Cakes for Him</a></li>
+                <li><a href="{{ route('product.by.category', 'cakes-for-father') }}">Cakes for Father</a></li>
+                <li><a href="{{ route('product.by.category', 'cakes-for-husband') }}">Cakes for Husband</a></li>
+                <li><a href="{{ route('product.by.category', 'cakes-for-boyfriend') }}">Cakes for Boyfriend</a></li>
+                <li><a href="{{ route('product.by.category', 'cakes-for-her') }}">Cakes for Her</a></li>
+                <li><a href="{{ route('product.by.category', 'cakes-for-mother') }}">Cakes for Mother</a></li>
+                <li><a href="{{ route('product.by.category', 'cakes-for-wife') }}">Cakes for Wife</a></li>
+            </ul>
+        </details>
+    </li>
+    <li><a href="https://azure-bee-177357.hostingersite.com/website/about-us">About us</a></li>
    
-    <li><a href="{{route('coupon')}}">Coupons & Deals</a></li>
-    <li><a href="{{route('manual_order_form')}}">Manual Order Form</a></li>
-    <li><a href="{{route('Affiliate_Program')}}">Affiliate Program</a></li>
-     <li><a href="{{route('blog')}}">Blog</a></li>
-    <li><a href="{{route('contact_us')}}">Contact Us</a></li>
+    <li><a href="https://azure-bee-177357.hostingersite.com/website/coupon">Coupons & Deals</a></li>
+    <li><a href="https://azure-bee-177357.hostingersite.com/website/manual-order-form">Manual Order Form</a></li>
+    <li><a href="https://azure-bee-177357.hostingersite.com/website/Affiliate-Program">Affiliate Program</a></li>
+     <li><a href="https://azure-bee-177357.hostingersite.com/website/blog">Blog</a></li>
+    <li><a href="https://azure-bee-177357.hostingersite.com/website/contact-us">Contact Us</a></li>
 </ul>
 
   </div>
 
   <!-- Overlay -->
 <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
-
- 
-<script>
-    const words = ["cakes", "plants", "gifts", "flowers"];
-    const prefix = "Search for ";
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const input = document.getElementById("search-input-in-desktop");
-     const input2 = document.getElementById("search-input-in-mobile");
-
-    function type() {
-        const currentWord = words[wordIndex];
-        let displayText = currentWord.substring(0, charIndex);
-        input.setAttribute("placeholder", prefix + displayText);
-        input2.setAttribute("placeholder", prefix + displayText);
-
-        if (!isDeleting && charIndex < currentWord.length) {
-            charIndex++;
-            setTimeout(type, 100); // typing speed
-        } else if (isDeleting && charIndex > 0) {
-            charIndex--;
-            setTimeout(type, 50); // deleting speed
-        } else {
-            if (!isDeleting) {
-                isDeleting = true;
-                setTimeout(type, 1500); // wait before deleting
-            } else {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                setTimeout(type, 500); // wait before typing next
-            }
-        }
-    }
-
-    type(); // Start typing
-</script>
-
+   
 
 
 </header>

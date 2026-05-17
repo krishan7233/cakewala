@@ -19,7 +19,6 @@
                         <tr>
                             <th>Image</th>
                             <th>Name</th>
-                            <th>meta title</th>
                             <th>Category</th>
                             <th>Subcategory</th>
                             <th>Price</th>
@@ -42,14 +41,13 @@
 <script src="{{ asset('assets/plugins/data-tables/datatables.bootstrap5.min.js') }}"></script>
 <script>
     $(function() {
-          let table =$('#product-table').DataTable({
+        $('#product-table').DataTable({
             processing: true,
             serverSide: true,
             ajax: '{{ route('admin.products.productlist_data') }}',
             columns: [
                 { data: 'image', name: 'image', orderable: false, searchable: false },
                 { data: 'name', name: 'name' },
-                 { data: 'product_meta_title', name: 'product_meta_title' },
                 { data: 'category', name: 'category.name' },
                 { data: 'subcategory', name: 'subcategory.name' },
                 { data: 'price', name: 'variants.price' },

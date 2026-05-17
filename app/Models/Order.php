@@ -21,9 +21,4 @@ class Order extends Model
     {
         return $this->hasMany(DeliveryAddress::class, 'id','address_id');
     }
-    
-    public function deliveryAddress()
-    {
-        return $this->belongsTo(DeliveryAddress::class, 'address_id');
-    }
 }
