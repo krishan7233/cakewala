@@ -399,8 +399,6 @@ $(document).ready(function () {
 
 </body>
 </footer>
-
-
 <script src="{{asset('assets/website/js/vnd/lazysizes-5.3.0.min.js')}}"></script>
     <script defer src="{{asset('assets/website/js/vnd/jquery-3.7.1.min.js')}}"></script>
     <script defer src="{{asset('assets/website/js/thor/adv-initialize-6efba37b6ad5b736c9eb3456d6e9fda8.js')}}"></script>
